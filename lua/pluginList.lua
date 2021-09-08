@@ -65,6 +65,12 @@ return require('packer').startup(function(use)
     }
     use {"machakann/vim-sandwich", event = "BufRead"}
 
+    use {
+        "terrortylor/nvim-comment",
+	config = function() require('nvim_comment').setup() end,
+        cmd = "CommentToggle"
+    }
+
     -- navigation
     use {
         'kyazdani42/nvim-tree.lua',
