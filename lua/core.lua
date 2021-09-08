@@ -16,3 +16,6 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.smartindent = true
 opt.mouse = "i"
+
+-- completion for lua
+opt.completeopt = 'menuone,noselect'

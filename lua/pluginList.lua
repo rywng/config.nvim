@@ -43,8 +43,8 @@ return require('packer').startup(function(use)
     use {'neovim/nvim-lspconfig', event = 'BufRead'}
     use {
         'kabouzeid/nvim-lspinstall',
-        after = 'nvim-lspconfig',
-        config = function() require "plugins.lspinstall" end
+        config = function() require "plugins.lspinstall" end,
+        after = 'nvim-lspconfig'
     }
     use {'onsails/lspkind-nvim', after = 'nvim-lspconfig'}
     use {"ray-x/lsp_signature.nvim", after = 'nvim-lspconfig'}
@@ -52,8 +52,10 @@ return require('packer').startup(function(use)
     use {
         'ms-jpq/coq_nvim',
         branch = 'coq',
-        requires = {'ms-jpq/coq.artifacts', branch = 'artifacts'}
+        event = 'InsertEnter',
+        config = function() require "plugins.coq" end
     }
+    use {'ms-jpq/coq.artifacts', after = 'coq_nvim', branch = 'artifacts'}
 
     -- formating and editing
     use {"sbdchd/neoformat", cmd = "Neoformat"}
@@ -89,7 +91,7 @@ return require('packer').startup(function(use)
     }
     use {
         "lukas-reineke/indent-blankline.nvim",
-        after = {"nvim-treesitter","nvim-base16"},
+        after = {"nvim-treesitter", "nvim-base16"},
         config = function() require "plugins.indent-blankline" end
     }
 
