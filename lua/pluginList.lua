@@ -2,7 +2,6 @@
 vim.cmd [[packadd packer.nvim]]
 
 require('packer').init {
-    opt_default = true,
     display = {
         open_fn = function()
             return require("packer.util").float {border = "single"}
@@ -82,6 +81,11 @@ return require('packer').startup(function(use)
         after = 'nvim-treesitter',
         config = function() require "plugins.matchup" end
     }
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {{'nvim-lua/plenary.nvim'}},
+        cmd = 'Telescope'
+    }
 
     -- eye-candy
     use {
@@ -93,6 +97,11 @@ return require('packer').startup(function(use)
         "lukas-reineke/indent-blankline.nvim",
         after = {"nvim-treesitter", "nvim-base16"},
         config = function() require "plugins.indent-blankline" end
+    }
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = {'nvim-lua/plenary.nvim'},
+        config = function() require('gitsigns').setup() end
     }
 
 end)
