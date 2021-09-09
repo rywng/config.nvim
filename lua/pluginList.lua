@@ -39,15 +39,17 @@ return require('packer').startup(function(use)
         config = function() require "plugins.treesitter" end,
         run = ':TSUpdate'
     }
+    use {
+        'lewis6991/spellsitter.nvim',
+        after = "nvim-treesitter",
+        config = function() require('spellsitter').setup() end
+    }
     use {'neovim/nvim-lspconfig', event = 'VimEnter'}
     use {
         'kabouzeid/nvim-lspinstall',
         config = function() require "plugins.lspinstall" end,
         after = 'nvim-lspconfig'
     }
-    use {'onsails/lspkind-nvim', after = 'nvim-lspconfig'}
-    use {"ray-x/lsp_signature.nvim", after = 'nvim-lspconfig'}
-    -- packer
     use {
         'ms-jpq/coq_nvim',
         branch = 'coq',
@@ -70,6 +72,11 @@ return require('packer').startup(function(use)
         config = function() require('nvim_comment').setup() end,
         cmd = "CommentToggle"
     }
+    use {
+        "windwp/nvim-autopairs",
+	after = "coq_nvim",
+        config = function() require("plugins.nvim-autopairs") end
+    }
 
     -- navigation
     use {
@@ -91,6 +98,14 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/plenary.nvim'}},
         cmd = 'Telescope'
+    }
+    use {
+        'phaazon/hop.nvim',
+        event = "BufRead",
+        as = 'hop',
+        config = function()
+            require'hop'.setup {keys = 'etovxqpdygfblzhckisuran'}
+        end
     }
 
     -- eye-candy
@@ -121,14 +136,17 @@ return require('packer').startup(function(use)
         requires = 'winston0410/cmd-parser.nvim'
     }
     use {
-      'norcalli/nvim-colorizer.lua',
-      event = "BufRead",
-      config = function() require'colorizer'.setup() end
+        'norcalli/nvim-colorizer.lua',
+        event = "BufRead",
+        config = function() require'colorizer'.setup() end
     }
+
     -- integrations
     use {
         'glacambre/firenvim',
         run = function() vim.fn['firenvim#install'](0) end
     }
+    use {'michaelb/sniprun', run = 'bash ./install.sh', cmd = "SnipRun"}
+    use {"tpope/vim-fugitive", cmd = "G"}
 
 end)
