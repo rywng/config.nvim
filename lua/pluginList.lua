@@ -67,7 +67,7 @@ return require('packer').startup(function(use)
 
     use {
         "terrortylor/nvim-comment",
-	config = function() require('nvim_comment').setup() end,
+        config = function() require('nvim_comment').setup() end,
         cmd = "CommentToggle"
     }
 
@@ -108,6 +108,22 @@ return require('packer').startup(function(use)
         'lewis6991/gitsigns.nvim',
         requires = {'nvim-lua/plenary.nvim'},
         config = function() require('gitsigns').setup() end
+    }
+    use {
+        'p00f/nvim-ts-rainbow',
+        after = "nvim-treesitter",
+        config = function() require "plugins.nvim-ts-rainbow" end
+    }
+    use {
+        'winston0410/range-highlight.nvim',
+        event = "BufRead",
+        config = function() require("range-highlight").setup {} end,
+        requires = 'winston0410/cmd-parser.nvim'
+    }
+    -- integrations
+    use {
+        'glacambre/firenvim',
+        run = function() vim.fn['firenvim#install'](0) end
     }
 
 end)
