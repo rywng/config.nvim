@@ -35,11 +35,11 @@ return require('packer').startup(function(use)
     -- lsp stuff
     use {
         'nvim-treesitter/nvim-treesitter',
-        event = 'BufRead',
+        event = 'VimEnter',
         config = function() require "plugins.treesitter" end,
         run = ':TSUpdate'
     }
-    use {'neovim/nvim-lspconfig', event = 'BufRead'}
+    use {'neovim/nvim-lspconfig', event = 'VimEnter'}
     use {
         'kabouzeid/nvim-lspinstall',
         config = function() require "plugins.lspinstall" end,
@@ -119,6 +119,11 @@ return require('packer').startup(function(use)
         event = "BufRead",
         config = function() require("range-highlight").setup {} end,
         requires = 'winston0410/cmd-parser.nvim'
+    }
+    use {
+      'norcalli/nvim-colorizer.lua',
+      event = "BufRead",
+      config = function() require'colorizer'.setup() end
     }
     -- integrations
     use {
