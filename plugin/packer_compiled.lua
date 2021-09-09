@@ -69,6 +69,10 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["cmd-parser.nvim"] = {
+    loaded = true,
+    path = "/home/juan/.local/share/nvim/site/pack/packer/start/cmd-parser.nvim"
+  },
   ["coq.artifacts"] = {
     load_after = {
       coq_nvim = true
@@ -88,6 +92,10 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/home/juan/.local/share/nvim/site/pack/packer/opt/emmet-vim"
+  },
+  firenvim = {
+    loaded = true,
+    path = "/home/juan/.local/share/nvim/site/pack/packer/start/firenvim"
   },
   ["gitsigns.nvim"] = {
     config = { "\27LJ\1\0026\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\rgitsigns\frequire\0" },
@@ -171,11 +179,20 @@ _G.packer_plugins = {
     path = "/home/juan/.local/share/nvim/site/pack/packer/opt/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    after = { "indent-blankline.nvim", "vim-matchup" },
+    after = { "indent-blankline.nvim", "vim-matchup", "nvim-ts-rainbow" },
     config = { "\27LJ\1\0022\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\23plugins.treesitter\frequire\0" },
     loaded = false,
     needs_bufread = true,
     path = "/home/juan/.local/share/nvim/site/pack/packer/opt/nvim-treesitter"
+  },
+  ["nvim-ts-rainbow"] = {
+    config = { "\27LJ\1\0027\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\28plugins.nvim-ts-rainbow\frequire\0" },
+    load_after = {
+      ["nvim-treesitter"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/juan/.local/share/nvim/site/pack/packer/opt/nvim-ts-rainbow"
   },
   ["nvim-web-devicons"] = {
     after = { "lualine.nvim" },
@@ -195,6 +212,12 @@ _G.packer_plugins = {
   ["plenary.nvim"] = {
     loaded = true,
     path = "/home/juan/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+  },
+  ["range-highlight.nvim"] = {
+    config = { "\27LJ\1\2A\0\0\2\0\3\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\1G\0\1\0\nsetup\20range-highlight\frequire\0" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/juan/.local/share/nvim/site/pack/packer/opt/range-highlight.nvim"
   },
   ["shade.nvim"] = {
     config = { "\27LJ\1\2-\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\18plugins.shade\frequire\0" },
@@ -258,7 +281,7 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'vim-sandwich', 'nvim-lspconfig'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'range-highlight.nvim', 'nvim-lspconfig', 'vim-sandwich'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au FileType html,css ++once lua require("packer.load")({'emmet-vim'}, { event = "FileType html,css" }, _G.packer_plugins)]]
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'packer.nvim', 'nvim-base16'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'coq_nvim'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
