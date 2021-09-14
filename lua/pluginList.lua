@@ -44,7 +44,7 @@ return require('packer').startup(function(use)
         after = "nvim-treesitter",
         config = function() require('spellsitter').setup() end
     }
-    use {'neovim/nvim-lspconfig', event = 'VimEnter'}
+    use {'neovim/nvim-lspconfig', after = "coq_nvim"}
     use {
         'kabouzeid/nvim-lspinstall',
         config = function() require "plugins.lspinstall" end,
@@ -53,7 +53,7 @@ return require('packer').startup(function(use)
     use {
         'ms-jpq/coq_nvim',
         branch = 'coq',
-        event = 'InsertEnter',
+        event = 'BufEnter',
         config = function() require "plugins.coq" end
     }
     use {'ms-jpq/coq.artifacts', after = 'coq_nvim', branch = 'artifacts'}
@@ -142,10 +142,6 @@ return require('packer').startup(function(use)
     }
 
     -- integrations
-    use {
-        'glacambre/firenvim',
-        run = function() vim.fn['firenvim#install'](0) end
-    }
     use {'michaelb/sniprun', run = 'bash ./install.sh', cmd = "SnipRun"}
     use {"tpope/vim-fugitive", cmd = "G"}
 

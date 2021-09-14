@@ -82,7 +82,7 @@ _G.packer_plugins = {
     path = "/home/juan/.local/share/nvim/site/pack/packer/opt/coq.artifacts"
   },
   coq_nvim = {
-    after = { "nvim-autopairs", "coq.artifacts" },
+    after = { "nvim-autopairs", "nvim-lspconfig", "coq.artifacts" },
     config = { "\27LJ\1\2+\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\16plugins.coq\frequire\0" },
     loaded = false,
     needs_bufread = true,
@@ -92,10 +92,6 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/home/juan/.local/share/nvim/site/pack/packer/opt/emmet-vim"
-  },
-  firenvim = {
-    loaded = true,
-    path = "/home/juan/.local/share/nvim/site/pack/packer/start/firenvim"
   },
   ["gitsigns.nvim"] = {
     config = { "\27LJ\1\0026\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\rgitsigns\frequire\0" },
@@ -164,6 +160,9 @@ _G.packer_plugins = {
   },
   ["nvim-lspconfig"] = {
     after = { "nvim-lspinstall" },
+    load_after = {
+      coq_nvim = true
+    },
     loaded = false,
     needs_bufread = false,
     path = "/home/juan/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig"
@@ -184,7 +183,7 @@ _G.packer_plugins = {
     path = "/home/juan/.local/share/nvim/site/pack/packer/opt/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    after = { "indent-blankline.nvim", "nvim-ts-rainbow", "vim-matchup", "spellsitter.nvim" },
+    after = { "indent-blankline.nvim", "vim-matchup", "nvim-ts-rainbow", "spellsitter.nvim" },
     config = { "\27LJ\1\0022\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\23plugins.treesitter\frequire\0" },
     loaded = false,
     needs_bufread = true,
@@ -310,10 +309,10 @@ vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au BufRead * ++once lua require("packer.load")({'vim-sandwich', 'nvim-colorizer.lua', 'range-highlight.nvim', 'hop'}, { event = "BufRead *" }, _G.packer_plugins)]]
-vim.cmd [[au FileType html,css ++once lua require("packer.load")({'emmet-vim'}, { event = "FileType html,css" }, _G.packer_plugins)]]
-vim.cmd [[au VimEnter * ++once lua require("packer.load")({'nvim-treesitter', 'packer.nvim', 'nvim-lspconfig', 'nvim-base16'}, { event = "VimEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'coq_nvim'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au BufAdd * ++once lua require("packer.load")({'shade.nvim'}, { event = "BufAdd *" }, _G.packer_plugins)]]
+vim.cmd [[au VimEnter * ++once lua require("packer.load")({'nvim-treesitter', 'packer.nvim', 'nvim-base16'}, { event = "VimEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au FileType html,css ++once lua require("packer.load")({'emmet-vim'}, { event = "FileType html,css" }, _G.packer_plugins)]]
+vim.cmd [[au BufEnter * ++once lua require("packer.load")({'coq_nvim'}, { event = "BufEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
