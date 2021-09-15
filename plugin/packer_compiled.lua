@@ -141,6 +141,9 @@ _G.packer_plugins = {
   ["nvim-base16"] = {
     after = { "indent-blankline.nvim" },
     config = { "\27LJ\1\2.\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\19plugins.base16\frequire\0" },
+    load_after = {
+      ["packer.nvim"] = true
+    },
     loaded = false,
     needs_bufread = false,
     path = "/home/juan/.local/share/nvim/site/pack/packer/opt/nvim-base16"
@@ -208,7 +211,7 @@ _G.packer_plugins = {
     path = "/home/juan/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons"
   },
   ["packer.nvim"] = {
-    after = { "nvim-web-devicons" },
+    after = { "nvim-web-devicons", "nvim-base16" },
     loaded = false,
     needs_bufread = false,
     path = "/home/juan/.local/share/nvim/site/pack/packer/opt/packer.nvim"
@@ -308,11 +311,10 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'vim-sandwich', 'nvim-colorizer.lua', 'range-highlight.nvim', 'hop'}, { event = "BufRead *" }, _G.packer_plugins)]]
-vim.cmd [[au BufAdd * ++once lua require("packer.load")({'shade.nvim'}, { event = "BufAdd *" }, _G.packer_plugins)]]
-vim.cmd [[au VimEnter * ++once lua require("packer.load")({'nvim-treesitter', 'packer.nvim', 'nvim-base16'}, { event = "VimEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au FileType html,css ++once lua require("packer.load")({'emmet-vim'}, { event = "FileType html,css" }, _G.packer_plugins)]]
 vim.cmd [[au BufEnter * ++once lua require("packer.load")({'coq_nvim'}, { event = "BufEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au FileType html,css ++once lua require("packer.load")({'emmet-vim'}, { event = "FileType html,css" }, _G.packer_plugins)]]
+vim.cmd [[au VimEnter * ++once lua require("packer.load")({'nvim-treesitter', 'packer.nvim', 'shade.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'vim-sandwich', 'nvim-colorizer.lua', 'range-highlight.nvim', 'hop'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

@@ -1,7 +1,4 @@
 require'shade'.setup({
-  overlay_opacity = 50,
-  opacity_step = 1,
-  keys = {
-    toggle           = '<Leader>s',
-  }
+    overlay_opacity = 70,
+    keys = {toggle = '<Leader>s'}
 })
