@@ -63,6 +63,18 @@ return require('packer').startup(function(use)
         after = 'coq_nvim',
         branch = 'artifacts'
     }
+    use {
+        'ms-jpq/coq.thirdparty',
+        branch = '3p',
+        after = 'coq_nvim',
+        config = function()
+            require("coq_3p") {
+                {src = "nvimlua", short_name = "nLUA"}, {src = "repl"},
+                {src = "figlet", short_name = "BIG"}, {src = "cow"}
+            }
+
+        end
+    }
 
     -- formating and editing
     use {"sbdchd/neoformat", cmd = "Neoformat"}
