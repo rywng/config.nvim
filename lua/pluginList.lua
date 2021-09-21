@@ -44,12 +44,6 @@ return require('packer').startup(function(use)
         after = "nvim-treesitter",
         config = function() require('spellsitter').setup() end
     }
-    use {'neovim/nvim-lspconfig', after = "coq_nvim"}
-    use {
-        'kabouzeid/nvim-lspinstall',
-        config = function() require "plugins.lspinstall" end,
-        after = 'nvim-lspconfig'
-    }
     use {
         'ms-jpq/coq_nvim',
         branch = 'coq',
@@ -74,6 +68,12 @@ return require('packer').startup(function(use)
             }
 
         end
+    }
+    use {'neovim/nvim-lspconfig', after = "coq_nvim"}
+    use {
+        'kabouzeid/nvim-lspinstall',
+        config = function() require "plugins.lspinstall" end,
+        after = 'nvim-lspconfig'
     }
 
     -- formating and editing
@@ -162,5 +162,10 @@ return require('packer').startup(function(use)
     -- integrations
     use {'michaelb/sniprun', run = 'bash ./install.sh', cmd = "SnipRun"}
     use {"tpope/vim-fugitive", cmd = "G"}
+    use {
+        "xuhdev/vim-latex-live-preview",
+        setup = function() vim.g.livepreview_previewer = 'zathura' end,
+        event = "FileType tex"
+    }
 
 end)
