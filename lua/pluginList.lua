@@ -47,7 +47,7 @@ return require('packer').startup(function(use)
     use {
         'ms-jpq/coq_nvim',
         branch = 'coq',
-        event = 'BufEnter',
+        event = 'VimEnter',
         run = ':COQdeps',
         config = function() require "plugins.coq" end
     }
@@ -64,7 +64,7 @@ return require('packer').startup(function(use)
         config = function()
             require("coq_3p") {
                 {src = "nvimlua", short_name = "nLUA"}, {src = "repl"},
-                {src = "figlet", short_name = "BIG"}, {src = "cow"}
+                {src = "figlet", short_name = "BIG"}
             }
 
         end
@@ -83,7 +83,7 @@ return require('packer').startup(function(use)
         event = "FileType html,css",
         setup = function() require "plugins.emmet" end
     }
-    use {"machakann/vim-sandwich", event = "BufRead"}
+    use {"machakann/vim-sandwich", event = "VimEnter"}
 
     use {
         "terrortylor/nvim-comment",
@@ -119,7 +119,7 @@ return require('packer').startup(function(use)
     }
     use {
         'phaazon/hop.nvim',
-        event = "BufRead",
+        event = "VimEnter",
         as = 'hop',
         config = function()
             require'hop'.setup {keys = 'etovxqpdygfblzhckisuran'}
@@ -149,13 +149,13 @@ return require('packer').startup(function(use)
     }
     use {
         'winston0410/range-highlight.nvim',
-        event = "BufRead",
+        event = "CmdlineEnter",
         config = function() require("range-highlight").setup {} end,
         requires = 'winston0410/cmd-parser.nvim'
     }
     use {
         'norcalli/nvim-colorizer.lua',
-        event = "BufRead",
+        event = "VimEnter",
         config = function() require'colorizer'.setup() end
     }
 
