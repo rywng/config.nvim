@@ -33,6 +33,8 @@ vim.api.nvim_set_keymap('', '<leader>w', ':HopWordAC<cr>', {})
 vim.api.nvim_set_keymap('', '<leader>k', ':HopLineStartBC<cr>', {})
 vim.api.nvim_set_keymap('', '<leader>j', ':HopLineStartAC<cr>', {})
 vim.api.nvim_set_keymap('', '<leader>tf', ':Telescope fd<cr>', {})
+vim.api.nvim_set_keymap('', '<leader>tb', ':Telescope buffers<cr>', {})
+vim.api.nvim_set_keymap('', '<leader>tq', ':Telescope quickfix<cr>', {})
 vim.api.nvim_set_keymap('', '<leader>tdd',
                         ':Telescope lsp_document_diagnostics<cr>', {})
 vim.api.nvim_set_keymap('', '<leader>tdw',
