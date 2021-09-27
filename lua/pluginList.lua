@@ -98,6 +98,8 @@ return require('packer').startup(function(use)
         after = "coq_nvim",
         config = function() require("plugins.nvim-autopairs") end
     }
+
+		-- debugging
     use {
         "rcarriga/nvim-dap-ui",
         requires = {"mfussenegger/nvim-dap"},
