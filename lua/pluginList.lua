@@ -33,6 +33,14 @@ return require('packer').startup(function(use)
     }
 
     -- lsp stuff
+    use {'neovim/nvim-lspconfig', event = "VimEnter"}
+    use {
+        'kabouzeid/nvim-lspinstall',
+        config = function() require "plugins.lspinstall" end,
+        after = 'nvim-lspconfig'
+    }
+
+		-- tree sitter
     use {
         'nvim-treesitter/nvim-treesitter',
         event = 'VimEnter',
@@ -44,10 +52,12 @@ return require('packer').startup(function(use)
         after = "nvim-treesitter",
         config = function() require('spellsitter').setup() end
     }
+
+		-- completer
     use {
         'ms-jpq/coq_nvim',
         branch = 'coq',
-        event = 'VimEnter',
+        event = 'InsertEnter',
         run = ':COQdeps',
         config = function() require "plugins.coq" end
     }
@@ -69,13 +79,6 @@ return require('packer').startup(function(use)
 
         end
     }
-    use {'neovim/nvim-lspconfig', after = "coq_nvim"}
-    use {
-        'kabouzeid/nvim-lspinstall',
-        config = function() require "plugins.lspinstall" end,
-        after = 'nvim-lspconfig'
-    }
-
     -- formating and editing
     use {"sbdchd/neoformat", cmd = "Neoformat"}
     use {
@@ -95,12 +98,18 @@ return require('packer').startup(function(use)
         after = "coq_nvim",
         config = function() require("plugins.nvim-autopairs") end
     }
+    use {
+        "rcarriga/nvim-dap-ui",
+        requires = {"mfussenegger/nvim-dap"},
+        config = function() require("plugins.dap") end
+    }
 
     -- navigation
     use {
         'kyazdani42/nvim-tree.lua',
         cmd = 'NvimTreeToggle',
-        requires = 'kyazdani42/nvim-web-devicons'
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function() require("plugins.nvim-tree") end
     }
     use {
         "vimwiki/vimwiki",
