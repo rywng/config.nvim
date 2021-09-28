@@ -22,6 +22,9 @@ vim.api.nvim_set_keymap('i', '!', '!<c-g>u', {noremap = true})
 vim.api.nvim_set_keymap('i', '?', '?<c-g>u', {noremap = true})
 
 -- plugin mappings
+-- lsp stuff
+vim.api.nvim_buf_set_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>',
+                            {noremap = true})
 -- toggle NvimTree
 vim.api.nvim_set_keymap('', '<C-n>', ':NvimTreeToggle<cr>', {silent = true})
 -- toggle formatter
@@ -33,11 +36,17 @@ vim.api.nvim_set_keymap('', '<leader>w', ':HopWordAC<cr>', {silent = true})
 vim.api.nvim_set_keymap('', '<leader>k', ':HopLineStartBC<cr>', {silent = true})
 vim.api.nvim_set_keymap('', '<leader>j', ':HopLineStartAC<cr>', {silent = true})
 vim.api.nvim_set_keymap('', '<leader>tf', ':Telescope fd<cr>', {silent = true})
-vim.api.nvim_set_keymap('', '<leader>tb', ':Telescope buffers<cr>', {silent = true})
-vim.api.nvim_set_keymap('', '<leader>tq', ':Telescope quickfix<cr>', {silent = true})
+vim.api.nvim_set_keymap('', '<leader>tb', ':Telescope buffers<cr>',
+                        {silent = true})
+vim.api.nvim_set_keymap('', '<leader>tq', ':Telescope quickfix<cr>',
+                        {silent = true})
 vim.api.nvim_set_keymap('', '<leader>tdd',
-                        ':Telescope lsp_document_diagnostics<cr>', {silent = true})
+                        ':Telescope lsp_document_diagnostics<cr>',
+                        {silent = true})
 vim.api.nvim_set_keymap('', '<leader>tdw',
-                        ':Telescope lsp_workspace_diagnostics<cr>', {silent = true})
-vim.api.nvim_set_keymap('', '<leader>dt', ':lua require("dapui").toggle()<cr>', {silent = true})
-vim.api.nvim_set_keymap('', '<leader>de', ':lua require("dapui").eval()<cr>', {silent = true})
+                        ':Telescope lsp_workspace_diagnostics<cr>',
+                        {silent = true})
+vim.api.nvim_set_keymap('', '<leader>dt', ':lua require("dapui").toggle()<cr>',
+                        {silent = true})
+vim.api.nvim_set_keymap('', '<leader>de', ':lua require("dapui").eval()<cr>',
+                        {silent = true})
