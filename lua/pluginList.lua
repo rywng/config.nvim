@@ -99,13 +99,6 @@ return require('packer').startup(function(use)
         config = function() require("plugins.nvim-autopairs") end
     }
 
-		-- debugging
-    use {
-        "rcarriga/nvim-dap-ui",
-        requires = {"mfussenegger/nvim-dap"},
-        config = function() require("plugins.dap") end
-    }
-
     -- navigation
     use {
         'kyazdani42/nvim-tree.lua',
