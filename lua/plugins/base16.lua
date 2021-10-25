@@ -15,5 +15,4 @@ require('base16-colorscheme').setup({
     base0D = "#84a0c6",
     base0E = "#a093c7",
     base0F = "#e27878"
-
 })

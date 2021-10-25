@@ -24,6 +24,8 @@ opt.completeopt = 'noinsert'
 
 -- neoformat settings.
 global.neoformat_basic_format_align = 1
+global.neoformat_basic_format_retab = 1
 global.neoformat_basic_format_trim = 1
+
 -- leader settings
 global.mapleader = ' '

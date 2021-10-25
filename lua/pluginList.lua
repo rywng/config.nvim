@@ -57,7 +57,7 @@ return require('packer').startup(function(use)
     use {
         'ms-jpq/coq_nvim',
         branch = 'coq',
-        event = 'InsertEnter',
+				after = 'nvim-lspinstall',
         run = ':COQdeps',
         config = function() require "plugins.coq" end
     }
@@ -164,7 +164,6 @@ return require('packer').startup(function(use)
     }
 
     -- integrations
-    use {'michaelb/sniprun', run = 'bash ./install.sh', cmd = "SnipRun"}
     use {"tpope/vim-fugitive", cmd = "G"}
     use {
         "xuhdev/vim-latex-live-preview",
