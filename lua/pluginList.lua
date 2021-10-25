@@ -40,10 +40,10 @@ return require('packer').startup(function(use)
         after = 'nvim-lspconfig'
     }
 
-		-- tree sitter
+    -- tree sitter
     use {
         'nvim-treesitter/nvim-treesitter',
-        event = 'VimEnter',
+				event = "VimEnter",
         config = function() require "plugins.treesitter" end,
         run = ':TSUpdate'
     }
@@ -53,11 +53,11 @@ return require('packer').startup(function(use)
         config = function() require('spellsitter').setup() end
     }
 
-		-- completer
+    -- completer
     use {
         'ms-jpq/coq_nvim',
         branch = 'coq',
-				after = 'nvim-lspinstall',
+        after = 'nvim-lspinstall',
         run = ':COQdeps',
         config = function() require "plugins.coq" end
     }
@@ -144,12 +144,12 @@ return require('packer').startup(function(use)
     use {
         'lewis6991/gitsigns.nvim',
         requires = {'nvim-lua/plenary.nvim'},
-        config = function() require('gitsigns').setup() end
+        config = function() require "plugins.gitsigns" end
     }
     use {
         'p00f/nvim-ts-rainbow',
-        after = "nvim-treesitter",
-        config = function() require "plugins.nvim-ts-rainbow" end
+				after = "nvim-treesitter",
+				config = function() require "plugins.nvim-ts-rainbow" end
     }
     use {
         'winston0410/range-highlight.nvim',
@@ -165,10 +165,4 @@ return require('packer').startup(function(use)
 
     -- integrations
     use {"tpope/vim-fugitive", cmd = "G"}
-    use {
-        "xuhdev/vim-latex-live-preview",
-        setup = function() vim.g.livepreview_previewer = 'zathura' end,
-        event = "FileType tex"
-    }
-
 end)
