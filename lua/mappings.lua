@@ -22,6 +22,9 @@ vim.api.nvim_set_keymap('i', '!', '!<c-g>u', {noremap = true})
 vim.api.nvim_set_keymap('i', '?', '?<c-g>u', {noremap = true})
 
 -- plugin mappings
+-- gitsigns
+vim.api.nvim_set_keymap('', '<leader>gs', ':Gitsigns toggle_signs<cr>',
+                        {silent = true})
 -- lsp stuff
 vim.api.nvim_buf_set_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>',
                             {noremap = true})

@@ -74,7 +74,6 @@ return require('packer').startup(function(use)
         config = function()
             require("coq_3p") {
                 {src = "nvimlua", short_name = "nLUA"}, {src = "repl"},
-                {src = "figlet", short_name = "BIG"}
             }
 
         end
