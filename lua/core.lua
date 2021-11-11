@@ -5,6 +5,7 @@ local global = vim.g
 -- look and feel
 vim.opt.shortmess:append({ I = true }) -- remove intro message
 opt.relativenumber = true
+opt.cursorline = true
 opt.number = true
 opt.showmode = false
 opt.scrolloff = 10
