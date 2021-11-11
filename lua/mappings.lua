@@ -33,11 +33,8 @@ vim.api.nvim_set_keymap('', '<C-n>', ':NvimTreeToggle<cr>', {silent = true})
 -- toggle formatter
 vim.api.nvim_set_keymap('', '<leader>fm', ':Neoformat<cr>', {silent = true})
 vim.api.nvim_set_keymap('', '<leader>/', ':CommentToggle<cr>', {silent = true})
-vim.api.nvim_set_keymap('', '<leader>r', ':SnipRun<cr>', {silent = true})
 vim.api.nvim_set_keymap('', '<leader>b', ':HopWordBC<cr>', {silent = true})
 vim.api.nvim_set_keymap('', '<leader>w', ':HopWordAC<cr>', {silent = true})
-vim.api.nvim_set_keymap('', '<leader>k', ':HopLineStartBC<cr>', {silent = true})
-vim.api.nvim_set_keymap('', '<leader>j', ':HopLineStartAC<cr>', {silent = true})
 vim.api.nvim_set_keymap('', '<leader>tf', ':Telescope fd<cr>', {silent = true})
 vim.api.nvim_set_keymap('', '<leader>tb', ':Telescope buffers<cr>',
                         {silent = true})
