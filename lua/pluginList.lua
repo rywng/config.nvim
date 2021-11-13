@@ -132,6 +132,11 @@ return require('packer').startup(function(use)
 
     -- eye-candy
     use {
+        "Pocco81/TrueZen.nvim",
+        cmd = {'TZAtaraxis', 'TZFocus', 'TZMinimalist'},
+				config = function() require "plugins.truezen" end
+    }
+    use {
         "lukas-reineke/indent-blankline.nvim",
         after = {"nvim-treesitter", "nvim-base16"},
         config = function() require "plugins.indent-blankline" end
@@ -154,7 +159,7 @@ return require('packer').startup(function(use)
     }
     use {
         'norcalli/nvim-colorizer.lua',
-        event = "VimEnter",
+        cmd = 'ColorizerToggle',
         config = function() require'colorizer'.setup() end
     }
 

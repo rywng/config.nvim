@@ -1,5 +1,5 @@
 require("indent_blankline").setup {
-    buftype_exclude = {"terminal", "help", "packer"},
+    buftype_exclude = {"terminal", "help", "packer", "NvimTree", "tagbar"},
     char = "▏",
     space_char_blankline = ' ',
     max_indent_increase = 2,
