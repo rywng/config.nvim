@@ -43,7 +43,7 @@ return require('packer').startup(function(use)
     -- tree sitter
     use {
         'nvim-treesitter/nvim-treesitter',
-				event = "VimEnter",
+        event = "VimEnter",
         config = function() require "plugins.treesitter" end,
         run = ':TSUpdate'
     }
@@ -73,7 +73,7 @@ return require('packer').startup(function(use)
         after = 'coq_nvim',
         config = function()
             require("coq_3p") {
-                {src = "nvimlua", short_name = "nLUA"}, {src = "repl"},
+                {src = "nvimlua", short_name = "nLUA"}, {src = "repl"}
             }
 
         end
@@ -120,6 +120,7 @@ return require('packer').startup(function(use)
         requires = {{'nvim-lua/plenary.nvim'}},
         cmd = 'Telescope'
     }
+    use {'preservim/tagbar', cmd = 'TagbarToggle'}
     use {
         'phaazon/hop.nvim',
         event = "VimEnter",
@@ -130,11 +131,6 @@ return require('packer').startup(function(use)
     }
 
     -- eye-candy
-    use {
-        'sunjon/shade.nvim',
-        event = "VimEnter",
-        config = function() require "plugins.shade" end
-    }
     use {
         "lukas-reineke/indent-blankline.nvim",
         after = {"nvim-treesitter", "nvim-base16"},
@@ -147,8 +143,8 @@ return require('packer').startup(function(use)
     }
     use {
         'p00f/nvim-ts-rainbow',
-				after = "nvim-treesitter",
-				config = function() require "plugins.nvim-ts-rainbow" end
+        after = "nvim-treesitter",
+        config = function() require "plugins.nvim-ts-rainbow" end
     }
     use {
         'winston0410/range-highlight.nvim',
