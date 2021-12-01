@@ -33,9 +33,9 @@ return require('packer').startup(function(use)
     }
 
     -- lsp stuff
-    use {'neovim/nvim-lspconfig', event = "VimEnter"}
+    use {'neovim/nvim-lspconfig', event = "BufEnter"}
     use {
-        'kabouzeid/nvim-lspinstall',
+        'williamboman/nvim-lsp-installer',
         config = function() require "plugins.lspinstall" end,
         after = 'nvim-lspconfig'
     }
@@ -57,7 +57,7 @@ return require('packer').startup(function(use)
     use {
         'ms-jpq/coq_nvim',
         branch = 'coq',
-        after = 'nvim-lspinstall',
+        after = 'nvim-lsp-installer',
         run = ':COQdeps',
         config = function() require "plugins.coq" end
     }
@@ -134,7 +134,7 @@ return require('packer').startup(function(use)
     use {
         "Pocco81/TrueZen.nvim",
         cmd = {'TZAtaraxis', 'TZFocus', 'TZMinimalist'},
-				config = function() require "plugins.truezen" end
+        config = function() require "plugins.truezen" end
     }
     use {
         "lukas-reineke/indent-blankline.nvim",
