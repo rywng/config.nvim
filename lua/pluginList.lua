@@ -23,7 +23,7 @@ return require('packer').startup(function(use)
     use {'kyazdani42/nvim-web-devicons', after = 'packer.nvim'}
     use {
         'hoob3rt/lualine.nvim',
-        after = 'nvim-web-devicons',
+        after = {'nvim-web-devicons', 'nvim-base16'},
         config = function() require "plugins.statusline" end
     }
     use {
@@ -61,12 +61,12 @@ return require('packer').startup(function(use)
         run = ':COQdeps',
         config = function() require "plugins.coq" end
     }
-    use {
-        'ms-jpq/coq.artifacts',
-        run = ':COQdeps',
-        after = 'coq_nvim',
-        branch = 'artifacts'
-    }
+    -- use {
+    --     'ms-jpq/coq.artifacts',
+    --     run = ':COQdeps',
+    --     after = 'coq_nvim',
+    --     branch = 'artifacts'
+    -- }
     use {
         'ms-jpq/coq.thirdparty',
         branch = '3p',
