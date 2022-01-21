@@ -82,7 +82,7 @@ return require('packer').startup(function(use)
     use {"sbdchd/neoformat", cmd = "Neoformat"}
     use {
         "mattn/emmet-vim",
-        event = "FileType html,css",
+        event = "FileType html,css,markdown",
         setup = function() require "plugins.emmet" end
     }
     use {"machakann/vim-sandwich", event = "VimEnter"}
