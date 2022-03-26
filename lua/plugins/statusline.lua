@@ -1,7 +1,7 @@
 require'lualine'.setup {
     options = {
         icons_enabled = true,
-        theme = 'iceberg_dark',
+        theme = 'everforest',
         component_separators = {'|', '|'},
         section_separators = {'', ''},
         disabled_filetypes = {}

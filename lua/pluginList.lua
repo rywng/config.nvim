@@ -20,17 +20,22 @@ return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim', event = 'VimEnter'}
 
     -- core UI
+    use {
+        'https://github.com/sainnhe/everforest',
+        after = 'packer.nvim',
+        config = function() vim.cmd("colorscheme everforest") end
+    }
     use {'kyazdani42/nvim-web-devicons', after = 'packer.nvim'}
     use {
         'hoob3rt/lualine.nvim',
-        after = {'nvim-web-devicons', 'nvim-base16'},
+        after = {'nvim-web-devicons'},
         config = function() require "plugins.statusline" end
     }
-    use {
-        'RRethy/nvim-base16',
-        after = 'packer.nvim',
-        config = function() require "plugins.base16" end
-    }
+    -- use {
+    --     'RRethy/nvim-base16',
+    --     after = 'packer.nvim',
+    --     config = function() require "plugins.base16" end
+    -- }
 
     -- lsp stuff
     use {'neovim/nvim-lspconfig', event = "BufEnter"}
@@ -82,7 +87,7 @@ return require('packer').startup(function(use)
     use {"sbdchd/neoformat", cmd = "Neoformat"}
     use {
         "mattn/emmet-vim",
-        event = "FileType html,css,markdown",
+        event = "FileType html,htmldjango,css,markdown",
         setup = function() require "plugins.emmet" end
     }
     use {"machakann/vim-sandwich", event = "VimEnter"}
@@ -138,7 +143,7 @@ return require('packer').startup(function(use)
     }
     use {
         "lukas-reineke/indent-blankline.nvim",
-        after = {"nvim-treesitter", "nvim-base16"},
+        after = {"nvim-treesitter"},
         config = function() require "plugins.indent-blankline" end
     }
     use {
