@@ -21,9 +21,9 @@ return require('packer').startup(function(use)
 
     -- core UI
     use {
-        'https://github.com/sainnhe/everforest',
+        'https://github.com/b4skyx/serenade',
         after = 'packer.nvim',
-        config = function() vim.cmd("colorscheme everforest") end
+        config = function() vim.cmd("colorscheme serenade") end
     }
     use {'kyazdani42/nvim-web-devicons', after = 'packer.nvim'}
     use {
