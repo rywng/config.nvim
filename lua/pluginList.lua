@@ -23,7 +23,11 @@ return require('packer').startup(function(use)
     use {
         'https://github.com/b4skyx/serenade',
         after = 'packer.nvim',
-        config = function() vim.cmd("colorscheme serenade") end
+        config = function()
+            vim.g.serenade_enable_italic = 1
+						vim.g.serenade_better_performance = 1
+            vim.cmd("colorscheme serenade")
+        end
     }
     use {'kyazdani42/nvim-web-devicons', after = 'packer.nvim'}
     use {
