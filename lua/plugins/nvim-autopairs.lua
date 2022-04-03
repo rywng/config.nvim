@@ -1,7 +1,9 @@
 local remap = vim.api.nvim_set_keymap
 local npairs = require('nvim-autopairs')
 
-npairs.setup({map_bs = false})
+npairs.setup({map_bs = true, map_cr = true})
+
+vim.g.coq_settings = {keymap = {recommended = false}}
 
 -- these mappings are coq recommended mappings unrelated to nvim-autopairs
 remap('i', '<esc>', [[pumvisible() ? "<c-e><esc>" : "<esc>"]],

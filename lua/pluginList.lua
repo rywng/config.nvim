@@ -17,29 +17,24 @@ require('packer').init {
 }
 
 return require('packer').startup(function(use)
-    use {'wbthomason/packer.nvim', event = 'VimEnter'}
+    use {'wbthomason/packer.nvim', event = "VimEnter"}
 
     -- core UI
     use {
-        'https://github.com/b4skyx/serenade',
+        'b4skyx/serenade',
         after = 'packer.nvim',
         config = function()
             vim.g.serenade_enable_italic = 1
-						vim.g.serenade_better_performance = 1
+            vim.g.serenade_better_performance = 1
             vim.cmd("colorscheme serenade")
         end
     }
     use {'kyazdani42/nvim-web-devicons', after = 'packer.nvim'}
     use {
         'hoob3rt/lualine.nvim',
-        after = {'nvim-web-devicons'},
+        after = {'serenade', 'nvim-web-devicons'},
         config = function() require "plugins.statusline" end
     }
-    -- use {
-    --     'RRethy/nvim-base16',
-    --     after = 'packer.nvim',
-    --     config = function() require "plugins.base16" end
-    -- }
 
     -- lsp stuff
     use {'neovim/nvim-lspconfig', event = "BufEnter"}
@@ -52,14 +47,9 @@ return require('packer').startup(function(use)
     -- tree sitter
     use {
         'nvim-treesitter/nvim-treesitter',
-        event = "VimEnter",
+        event = "UIEnter",
         config = function() require "plugins.treesitter" end,
         run = ':TSUpdate'
-    }
-    use {
-        'lewis6991/spellsitter.nvim',
-        after = "nvim-treesitter",
-        config = function() require('spellsitter').setup() end
     }
 
     -- completer
@@ -70,19 +60,19 @@ return require('packer').startup(function(use)
         run = ':COQdeps',
         config = function() require "plugins.coq" end
     }
-    -- use {
-    --     'ms-jpq/coq.artifacts',
-    --     run = ':COQdeps',
-    --     after = 'coq_nvim',
-    --     branch = 'artifacts'
-    -- }
+    use {
+        'ms-jpq/coq.artifacts',
+        after = 'coq_nvim',
+        branch = 'artifacts'
+    }
     use {
         'ms-jpq/coq.thirdparty',
         branch = '3p',
         after = 'coq_nvim',
         config = function()
             require("coq_3p") {
-                {src = "nvimlua", short_name = "nLUA"}, {src = "repl"}
+                {src = "nvimlua", short_name = "nLUA"}, {src = "repl"},
+                {src = "vimtex", short_name = "vTEX"}
             }
 
         end
@@ -91,10 +81,10 @@ return require('packer').startup(function(use)
     use {"sbdchd/neoformat", cmd = "Neoformat"}
     use {
         "mattn/emmet-vim",
-        event = "FileType html,htmldjango,css,markdown",
+        ft = {'html', 'htmldjango', 'css', 'markdown'},
         setup = function() require "plugins.emmet" end
     }
-    use {"machakann/vim-sandwich", event = "VimEnter"}
+    use {"machakann/vim-sandwich", event = "BufEnter"}
 
     use {
         "terrortylor/nvim-comment",
@@ -103,7 +93,7 @@ return require('packer').startup(function(use)
     }
     use {
         "windwp/nvim-autopairs",
-        after = "coq_nvim",
+        event = "BufEnter",
         config = function() require("plugins.nvim-autopairs") end
     }
 
@@ -132,7 +122,7 @@ return require('packer').startup(function(use)
     use {'preservim/tagbar', cmd = 'TagbarToggle'}
     use {
         'phaazon/hop.nvim',
-        event = "VimEnter",
+        event = "UIEnter",
         as = 'hop',
         config = function()
             require'hop'.setup {keys = 'etovxqpdygfblzhckisuran'}
@@ -168,8 +158,8 @@ return require('packer').startup(function(use)
     }
     use {
         'norcalli/nvim-colorizer.lua',
-        cmd = 'ColorizerToggle',
-        config = function() require'colorizer'.setup() end
+        after = "packer.nvim",
+        config = function() require "plugins.nvim-colorizer" end
     }
 
     -- integrations
