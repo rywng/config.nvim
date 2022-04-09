@@ -12,8 +12,8 @@ require('packer').init {
         clone_timeout = 600 -- Timeout, in seconds, for git clones
     },
     auto_clean = true,
-    compile_on_sync = true
-    --		auto_reload_compiled = true
+    compile_on_sync = true,
+    auto_reload_compiled = true
 }
 
 return require('packer').startup(function(use)
@@ -60,11 +60,7 @@ return require('packer').startup(function(use)
         run = ':COQdeps',
         config = function() require "plugins.coq" end
     }
-    use {
-        'ms-jpq/coq.artifacts',
-        after = 'coq_nvim',
-        branch = 'artifacts'
-    }
+    use {'ms-jpq/coq.artifacts', after = 'coq_nvim', branch = 'artifacts'}
     use {
         'ms-jpq/coq.thirdparty',
         branch = '3p',

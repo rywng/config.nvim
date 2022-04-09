@@ -39,6 +39,8 @@ vim.api.nvim_set_keymap('', '<leader>/', ':CommentToggle<cr>', {silent = true})
 -- toggle Hop
 vim.api.nvim_set_keymap('', '<leader>b', ':HopWordBC<cr>', {silent = true})
 vim.api.nvim_set_keymap('', '<leader>w', ':HopWordAC<cr>', {silent = true})
+vim.api.nvim_set_keymap('', '<leader>l', ':HopWordCurrentLine<cr>',
+                        {silent = true})
 -- telescope stuff
 vim.api.nvim_set_keymap('', '<leader>tf', ':Telescope fd<cr>', {silent = true})
 vim.api.nvim_set_keymap('', '<leader>tb', ':Telescope buffers<cr>',
