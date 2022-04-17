@@ -3,7 +3,7 @@ local opt = vim.o
 local global = vim.g
 
 -- look and feel
-vim.opt.shortmess:append({ I = true }) -- remove intro message
+vim.opt.shortmess:append({I = true}) -- remove intro message
 opt.relativenumber = true
 opt.number = true
 opt.showmode = false
@@ -24,7 +24,6 @@ opt.completeopt = 'noinsert'
 
 -- neoformat settings.
 global.neoformat_basic_format_align = 1
-global.neoformat_basic_format_retab = 1
 global.neoformat_basic_format_trim = 1
 
 -- leader settings
