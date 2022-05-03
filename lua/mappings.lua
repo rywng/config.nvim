@@ -28,6 +28,12 @@ vim.api.nvim_set_keymap('', '<leader>gs', ':Gitsigns toggle_signs<cr>',
 -- lsp stuff
 vim.api.nvim_buf_set_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>',
                             {noremap = true})
+vim.api.nvim_set_keymap('', '<leader>K',
+                        '<cmd>lua vim.diagnostic.open_float()<CR>',
+                        {noremap = true})
+vim.api.nvim_set_keymap('', '<leader>qf',
+                        '<cmd>lua vim.diagnostic.setqflist({open = false})<cr><cmd>Telescope quickfix<cr>',
+                        {silent = true})
 -- toggle tagbar
 vim.api.nvim_set_keymap('', '<leader>tt', ':TagbarToggle<cr>', {silent = true})
 -- toggle NvimTree
@@ -42,14 +48,6 @@ vim.api.nvim_set_keymap('', '<leader>w', ':HopWordAC<cr>', {silent = true})
 vim.api.nvim_set_keymap('', '<leader>l', ':HopWordCurrentLine<cr>',
                         {silent = true})
 -- telescope stuff
-vim.api.nvim_set_keymap('', '<leader>tf', ':Telescope fd<cr>', {silent = true})
+vim.api.nvim_set_keymap('', '<leader>fd', ':Telescope fd<cr>', {silent = true})
 vim.api.nvim_set_keymap('', '<leader>tb', ':Telescope buffers<cr>',
-                        {silent = true})
-vim.api.nvim_set_keymap('', '<leader>tq', ':Telescope quickfix<cr>',
-                        {silent = true})
-vim.api.nvim_set_keymap('', '<leader>tdd',
-                        ':Telescope lsp_document_diagnostics<cr>',
-                        {silent = true})
-vim.api.nvim_set_keymap('', '<leader>tdw',
-                        ':Telescope lsp_workspace_diagnostics<cr>',
                         {silent = true})

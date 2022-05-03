@@ -17,12 +17,14 @@ require('gitsigns').setup {
         ["n <leader>hp"] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
         ["n <leader>hb"] = '<cmd>lua require"gitsigns".blame_line()<CR>'
     },
-    numhl = false,
 
-    sign_priority = 5,
+    -- signs
+    status_formatter = nil, -- Use default
+    numhl = false,
+    sign_priority = 10,
     signs = {
-        add = {hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr"},
-        change = {hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr"},
+        add = {hl = "DiffAdd", text = "+", numhl = "GitSignsAddNr"},
+        change = {hl = "DiffChange", text = ">", numhl = "GitSignsChangeNr"},
         changedelete = {
             hl = "DiffChange",
             text = "~",
@@ -35,7 +37,15 @@ require('gitsigns').setup {
             numhl = "GitSignsDeleteNr"
         }
     },
+    yadm = {enable = true},
 
-    status_formatter = nil, -- Use default
-    watch_gitdir = {interval = 100}
+    -- Current line blame
+    current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+    current_line_blame_opts = {
+        virt_text = true,
+        virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+        delay = 250,
+        ignore_whitespace = false
+    },
+    current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>'
 }

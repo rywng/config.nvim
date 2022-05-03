@@ -25,6 +25,7 @@ return require('packer').startup(function(use)
         after = 'packer.nvim',
         config = function()
             vim.g.serenade_enable_italic = 1
+						vim.g.serenade_sign_column_background = 'none'
             vim.g.serenade_better_performance = 1
             vim.cmd("colorscheme serenade")
         end
@@ -113,6 +114,7 @@ return require('packer').startup(function(use)
     use {
         'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/plenary.nvim'}},
+        config = function() require "plugins.telescope" end,
         cmd = 'Telescope'
     }
     use {'preservim/tagbar', cmd = 'TagbarToggle'}
