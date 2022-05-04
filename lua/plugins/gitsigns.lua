@@ -22,6 +22,7 @@ require('gitsigns').setup {
     status_formatter = nil, -- Use default
     numhl = false,
     sign_priority = 10,
+		attach_to_untracked = false, -- fix gitsigns with yadm in ~
     signs = {
         add = {hl = "DiffAdd", text = "+", numhl = "GitSignsAddNr"},
         change = {hl = "DiffChange", text = ">", numhl = "GitSignsChangeNr"},
