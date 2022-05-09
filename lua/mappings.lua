@@ -15,6 +15,7 @@ vim.api.nvim_set_keymap('', '<A-K>', '<C-w>K', {})
 vim.api.nvim_set_keymap('', '<A-L>', '<C-w>L', {})
 vim.api.nvim_set_keymap('', '<A->>', '<C-w>>', {})
 vim.api.nvim_set_keymap('', '<A-<>', '<C-w><', {})
+vim.api.nvim_set_keymap('', '<A-T>', '<C-w>T', {})
 -- undo to the last , . or !
 vim.api.nvim_set_keymap('i', ',', ',<c-g>u', {noremap = true})
 vim.api.nvim_set_keymap('i', '.', '.<c-g>u', {noremap = true})
