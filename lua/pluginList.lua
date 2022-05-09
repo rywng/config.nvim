@@ -25,7 +25,7 @@ return require('packer').startup(function(use)
         after = 'packer.nvim',
         config = function()
             vim.g.serenade_enable_italic = 1
-						vim.g.serenade_sign_column_background = 'none'
+            vim.g.serenade_sign_column_background = 'none'
             vim.g.serenade_better_performance = 1
             vim.cmd("colorscheme serenade")
         end
@@ -162,4 +162,9 @@ return require('packer').startup(function(use)
 
     -- integrations
     use {"tpope/vim-fugitive", cmd = "G"}
+    use {
+        "JuanCldCmt/glow.nvim",
+        branch = 'main',
+        cmd = {"Glow", "GlowInstall"}
+    }
 end)

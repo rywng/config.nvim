@@ -1,4 +1,5 @@
--- Core Settings
+-- CORE SETTINGS
+
 local opt = vim.o
 local global = vim.g
 
@@ -25,6 +26,9 @@ opt.completeopt = 'noinsert'
 -- neoformat settings.
 global.neoformat_basic_format_align = 1
 global.neoformat_basic_format_trim = 1
+
+-- glow settings
+global.glow_border = "rounded"
 
 -- leader settings
 global.mapleader = ' '
