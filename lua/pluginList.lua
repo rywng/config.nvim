@@ -32,7 +32,7 @@ return require('packer').startup(function(use)
     }
     use {'kyazdani42/nvim-web-devicons', after = 'packer.nvim'}
     use {
-        'hoob3rt/lualine.nvim',
+        'nvim-lualine/lualine.nvim',
         after = {'serenade', 'nvim-web-devicons'},
         config = function() require "plugins.statusline" end
     }
@@ -43,6 +43,11 @@ return require('packer').startup(function(use)
         'williamboman/nvim-lsp-installer',
         config = function() require "plugins.lspinstall" end,
         after = 'nvim-lspconfig'
+    }
+    use {
+        "ray-x/lsp_signature.nvim",
+        after = "nvim-lsp-installer",
+        config = function() require "plugins.lsp_signature" end
     }
 
     -- tree sitter
@@ -162,9 +167,5 @@ return require('packer').startup(function(use)
 
     -- integrations
     use {"tpope/vim-fugitive", cmd = "G"}
-    use {
-        "JuanCldCmt/glow.nvim",
-        branch = 'main',
-        cmd = {"Glow", "GlowInstall"}
-    }
+    use {"JuanCldCmt/glow.nvim", branch = 'main', cmd = {"Glow", "GlowInstall"}}
 end)
