@@ -116,6 +116,12 @@ return require('packer').startup(function(use)
         after = 'nvim-treesitter',
         config = function() require "plugins.matchup" end
     }
+    -- Lua
+    use {
+        'abecodes/tabout.nvim',
+        config = function() require('tabout').setup {} end,
+        after = {'nvim-treesitter', 'nvim-autopairs', 'coq_nvim'} -- if a completion plugin is using tabs load it before
+    }
     use {
         'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/plenary.nvim'}},
@@ -152,6 +158,26 @@ return require('packer').startup(function(use)
         'p00f/nvim-ts-rainbow',
         after = "nvim-treesitter",
         config = function() require "plugins.nvim-ts-rainbow" end
+    }
+    use {
+        'nvim-treesitter/nvim-treesitter-context',
+        after = "nvim-treesitter",
+        config = function()
+            require'treesitter-context'.setup {
+                enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+                max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+                patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+                    -- For all filetypes
+                    -- Note that setting an entry here replaces all other patterns for this entry.
+                    -- By setting the 'default' entry below, you can control which nodes you want to
+                    -- appear in the context window.
+                    default = {
+                        'class', 'function', 'method', 'for', -- These won't appear in the context
+                        'while', 'if', 'switch', 'case'
+                    }
+                }
+            }
+        end
     }
     use {
         'winston0410/range-highlight.nvim',
