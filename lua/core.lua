@@ -32,3 +32,6 @@ global.glow_border = "rounded"
 
 -- leader settings
 global.mapleader = ' '
+
+-- indent blankline settings
+global.indent_blankline_char = '▏'
