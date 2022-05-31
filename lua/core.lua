@@ -5,13 +5,13 @@ local global = vim.g
 
 -- look and feel
 vim.opt.shortmess:append({I = true}) -- remove intro message
+opt.termguicolors = true
+opt.ruler = true
 opt.relativenumber = true
 opt.number = true
 opt.showmode = false
 opt.scrolloff = 10
-opt.ruler = true
-opt.termguicolors = true
-opt.tabstop = 2
+opt.softtabstop = 2
 opt.shiftwidth = 2
 
 -- controlling
@@ -19,6 +19,7 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.smartindent = true
 opt.mouse = "i"
+opt.autoindent = true
 
 -- completion for lua
 opt.completeopt = 'noinsert'

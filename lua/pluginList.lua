@@ -147,7 +147,7 @@ return require('packer').startup(function(use)
     use {
         "lukas-reineke/indent-blankline.nvim",
         after = {"nvim-treesitter", "nvim-treesitter-context"},
-	 	 	 	event = "UIEnter",
+        event = "UIEnter",
         config = function() require "plugins.indent-blankline" end
     }
     use {
@@ -196,3 +196,4 @@ return require('packer').startup(function(use)
     use {"tpope/vim-fugitive", cmd = "G"}
     use {"JuanCldCmt/glow.nvim", branch = 'main', cmd = {"Glow", "GlowInstall"}}
 end)
+-- vim:set shiftwidth=4 tabstop=4:
