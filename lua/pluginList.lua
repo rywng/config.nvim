@@ -107,11 +107,6 @@ return require('packer').startup(function(use)
         config = function() require("plugins.nvim-tree") end
     }
     use {
-        "vimwiki/vimwiki",
-        cmd = "VimwikiIndex",
-        setup = function() require "plugins.vimwiki" end
-    }
-    use {
         'andymass/vim-matchup',
         after = 'nvim-treesitter',
         config = function() require "plugins.matchup" end
@@ -139,11 +134,6 @@ return require('packer').startup(function(use)
     }
 
     -- eye-candy
-    use {
-        "Pocco81/TrueZen.nvim",
-        cmd = {'TZAtaraxis', 'TZFocus', 'TZMinimalist'},
-        config = function() require "plugins.truezen" end
-    }
     use {
         "lukas-reineke/indent-blankline.nvim",
         after = {"nvim-treesitter", "nvim-treesitter-context"},
@@ -194,6 +184,9 @@ return require('packer').startup(function(use)
 
     -- integrations
     use {"tpope/vim-fugitive", cmd = "G"}
-    use {"JuanCldCmt/glow.nvim", branch = 'main', cmd = {"Glow", "GlowInstall"}}
+    use {"ellisonleao/glow.nvim", branch = 'main', cmd = {"Glow", "GlowInstall"}}
+
+    -- fixes and misc. stuff
+    use {"antoinemadec/FixCursorHold.nvim"}
 end)
 -- vim:set shiftwidth=4 tabstop=4:
