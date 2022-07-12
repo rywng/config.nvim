@@ -89,9 +89,8 @@ return require('packer').startup(function(use)
     use {"machakann/vim-sandwich", event = "BufEnter"}
 
     use {
-        "terrortylor/nvim-comment",
-        config = function() require('nvim_comment').setup() end,
-        cmd = "CommentToggle"
+        'numToStr/Comment.nvim',
+        config = function() require('Comment').setup() end
     }
     use {
         "windwp/nvim-autopairs",
@@ -184,7 +183,11 @@ return require('packer').startup(function(use)
 
     -- integrations
     use {"tpope/vim-fugitive", cmd = "G"}
-    use {"ellisonleao/glow.nvim", branch = 'main', cmd = {"Glow", "GlowInstall"}}
+    use {
+        "ellisonleao/glow.nvim",
+        branch = 'main',
+        cmd = {"Glow", "GlowInstall"}
+    }
 
     -- fixes and misc. stuff
     use {"antoinemadec/FixCursorHold.nvim"}

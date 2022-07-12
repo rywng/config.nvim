@@ -1,5 +1,4 @@
 -- CORE SETTINGS
-
 local opt = vim.o
 local global = vim.g
 

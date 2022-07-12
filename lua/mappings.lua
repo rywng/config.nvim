@@ -41,8 +41,6 @@ vim.api.nvim_set_keymap('', '<leader>tt', ':TagbarToggle<cr>', {silent = true})
 vim.api.nvim_set_keymap('', '<C-n>', ':NvimTreeToggle<cr>', {silent = true})
 -- toggle formatter
 vim.api.nvim_set_keymap('', '<leader>fm', ':Neoformat<cr>', {silent = true})
--- toggle comment
-vim.api.nvim_set_keymap('', '<leader>/', ':CommentToggle<cr>', {silent = true})
 -- toggle Hop
 vim.api.nvim_set_keymap('', '<leader>b', ':HopWordBC<cr>', {silent = true})
 vim.api.nvim_set_keymap('', '<leader>w', ':HopWordAC<cr>', {silent = true})
