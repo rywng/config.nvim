@@ -62,7 +62,7 @@ return require('packer').startup(function(use)
     use {
         'ms-jpq/coq_nvim',
         branch = 'coq',
-        after = 'nvim-lsp-installer',
+        after = {'nvim-lsp-installer', 'zk-nvim'},
         run = ':COQdeps',
         config = function() require "plugins.coq" end
     }
@@ -79,6 +79,7 @@ return require('packer').startup(function(use)
 
         end
     }
+
     -- formating and editing
     use {"sbdchd/neoformat", cmd = "Neoformat"}
     use {
@@ -110,7 +111,6 @@ return require('packer').startup(function(use)
         after = 'nvim-treesitter',
         config = function() require "plugins.matchup" end
     }
-    -- Lua
     use {
         'abecodes/tabout.nvim',
         config = function() require('tabout').setup {} end,
@@ -184,9 +184,9 @@ return require('packer').startup(function(use)
     -- integrations
     use {"tpope/vim-fugitive", cmd = "G"}
     use {
-        "ellisonleao/glow.nvim",
-        branch = 'main',
-        cmd = {"Glow", "GlowInstall"}
+        "mickael-menu/zk-nvim",
+        filetypes = {'markdown'},
+        config = function() require "plugins.zk" end
     }
 
     -- fixes and misc. stuff
