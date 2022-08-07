@@ -1,3 +1,4 @@
+-- vim:set shiftwidth=4 tabstop=4:
 -- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 require'nvim-tree'.setup {
@@ -14,11 +15,5 @@ require'nvim-tree'.setup {
         icons = {hint = "", info = "", warning = "", error = ""}
     },
     system_open = {cmd = nil, args = {}},
-    view = {
-        width = 30,
-        height = 30,
-        hide_root_folder = false,
-        side = 'left',
-    }
+    view = {width = 30, height = 30, hide_root_folder = false, side = 'left'}
 }
-

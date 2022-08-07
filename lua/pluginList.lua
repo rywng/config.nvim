@@ -17,12 +17,11 @@ require('packer').init {
 }
 
 return require('packer').startup(function(use)
-    use {'wbthomason/packer.nvim', event = "VimEnter"}
+    use {'wbthomason/packer.nvim'}
 
     -- core UI
     use {
         'b4skyx/serenade',
-        after = 'packer.nvim',
         config = function()
             vim.g.serenade_enable_italic = 1
             vim.g.serenade_sign_column_background = 'none'
@@ -30,15 +29,22 @@ return require('packer').startup(function(use)
             vim.cmd("colorscheme serenade")
         end
     }
-    use {'kyazdani42/nvim-web-devicons', after = 'packer.nvim'}
+    use {'kyazdani42/nvim-web-devicons'}
     use {
         'nvim-lualine/lualine.nvim',
         after = {'serenade', 'nvim-web-devicons'},
         config = function() require "plugins.statusline" end
     }
+    use {
+        'romgrk/barbar.nvim',
+        requires = {'kyazdani42/nvim-web-devicons'},
+        event = 'BufAdd',
+        after = {'nvim-web-devicons', 'serenade'},
+        config = function() require "plugins.barbar" end
+    }
 
     -- lsp stuff
-    use {'neovim/nvim-lspconfig', event = "BufEnter"}
+    use {'neovim/nvim-lspconfig', event = "UIEnter"}
     use {
         'williamboman/nvim-lsp-installer',
         config = function() require "plugins.lspinstall" end,
@@ -47,7 +53,7 @@ return require('packer').startup(function(use)
     use {
         "ray-x/lsp_signature.nvim",
         after = "nvim-lsp-installer",
-        config = function() require "plugins.lsp_signature" end
+        config = function() require "plugins.lsp-signature" end
     }
 
     -- tree sitter
@@ -59,44 +65,46 @@ return require('packer').startup(function(use)
     }
 
     -- completer
+    use {'L3MON4D3/LuaSnip', event = "UIEnter"}
     use {
-        'ms-jpq/coq_nvim',
-        branch = 'coq',
-        -- after = 'nvim-lsp-installer',
-        run = ':COQdeps',
-        config = function() require "plugins.coq" end
-    }
-    use {'ms-jpq/coq.artifacts', after = 'coq_nvim', branch = 'artifacts'}
-    use {
-        'ms-jpq/coq.thirdparty',
-        branch = '3p',
-        after = 'coq_nvim',
-        config = function()
-            require("coq_3p") {
-                {src = "nvimlua", short_name = "nLUA"}, {src = "repl"},
-                {src = "vimtex", short_name = "vTEX"}
-            }
-
-        end
+        event = "InsertEnter",
+        after = {'nvim-lsp-installer', 'nvim-treesitter', 'LuaSnip'},
+        "hrsh7th/nvim-cmp",
+        config = function() require "plugins.cmp" end,
+        requires = {
+            -- local
+            {'hrsh7th/cmp-cmdline', after = 'nvim-cmp'},
+            {'hrsh7th/cmp-buffer', after = 'nvim-cmp'},
+            {'hrsh7th/cmp-path', after = 'nvim-cmp'},
+            {'petertriho/cmp-git', after = 'nvim-cmp'}, -- end
+            -- lsp
+            {'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'nvim-cmp'},
+            {'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp'}, -- end
+            -- TS
+            {'ray-x/cmp-treesitter', after = 'nvim-cmp'}, -- end
+            -- Snip
+            {'saadparwaiz1/cmp_luasnip', after = {'nvim-cmp', 'LuaSnip'}}
+        }
     }
 
     -- formating and editing
+    use {
+        "windwp/nvim-autopairs",
+        after = 'nvim-cmp',
+        config = function() require("plugins.nvim-autopairs") end
+    }
     use {"sbdchd/neoformat", cmd = "Neoformat"}
     use {
         "mattn/emmet-vim",
         ft = {'html', 'htmldjango', 'css', 'markdown'},
         setup = function() require "plugins.emmet" end
     }
-    use {"machakann/vim-sandwich", event = "BufEnter"}
+    use {"machakann/vim-sandwich", event = "UIEnter"}
 
     use {
         'numToStr/Comment.nvim',
+        event = "UIEnter",
         config = function() require('Comment').setup() end
-    }
-    use {
-        "windwp/nvim-autopairs",
-        event = "BufEnter",
-        config = function() require("plugins.nvim-autopairs") end
     }
 
     -- navigation
@@ -114,7 +122,7 @@ return require('packer').startup(function(use)
     use {
         'abecodes/tabout.nvim',
         config = function() require('tabout').setup {} end,
-        after = {'nvim-treesitter', 'nvim-autopairs', 'coq_nvim'} -- if a completion plugin is using tabs load it before
+        after = {'nvim-treesitter', 'nvim-autopairs', 'nvim-cmp'} -- if a completion plugin is using tabs load it before
     }
     use {
         'nvim-telescope/telescope.nvim',
@@ -135,8 +143,7 @@ return require('packer').startup(function(use)
     -- eye-candy
     use {
         "lukas-reineke/indent-blankline.nvim",
-        after = {"nvim-treesitter", "nvim-treesitter-context"},
-        event = "UIEnter",
+        after = {"nvim-treesitter"},
         config = function() require "plugins.indent-blankline" end
     }
     use {
@@ -177,7 +184,7 @@ return require('packer').startup(function(use)
     }
     use {
         'norcalli/nvim-colorizer.lua',
-        after = "packer.nvim",
+        event = "BufEnter",
         config = function() require "plugins.nvim-colorizer" end
     }
 
@@ -186,12 +193,12 @@ return require('packer').startup(function(use)
     use {
         "mickael-menu/zk-nvim",
         requires = {"nvim-telescope/telescope.nvim"},
-        after = {"nvim-telescope/telescope.nvim"},
+        after = {"telescope.nvim"},
         ft = {'markdown'},
         config = function() require "plugins.zk" end
     }
 
     -- fixes and misc. stuff
-    use {"antoinemadec/FixCursorHold.nvim"}
+    use {"antoinemadec/FixCursorHold.nvim", event = "UIEnter"}
 end)
 -- vim:set shiftwidth=4 tabstop=4:
