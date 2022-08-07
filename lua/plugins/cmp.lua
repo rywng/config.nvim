@@ -49,9 +49,9 @@ cmp.setup({
             end
         end, {"i", "s"})
     }),
-    sources = cmp.config.sources({
-        {name = 'nvim_lsp'}, {name = 'treesitter'}, {name = 'luasnip'} -- For luasnip users.
-    }, {{name = 'buffer'}, {name = 'path'}})
+    sources = cmp.config.sources({{name = 'nvim_lsp'}}, {{name = 'treesitter'}},
+                                 {{name = 'luasnip'}},
+                                 {{name = 'buffer'}, {name = 'path'}})
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
@@ -68,12 +68,6 @@ cmp.setup.cmdline(':', {
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
-    sources = cmp.config.sources({
-        {name = 'cmp_git'} -- You can specify the `cmp_git` source if you were installed it.
-    }, {{name = 'buffer'}})
-})
-
--- Set config for neovim config file
-cmp.setup.filetype('lua', {
-    sources = cmp.config.sources({{name = 'plugins'}}, {{name = 'buffer'}})
+    sources = cmp.config.sources({{name = 'git'}},
+                                 {{name = 'buffer'}})
 })

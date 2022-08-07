@@ -4,9 +4,9 @@ vim.cmd [[packadd packer.nvim]]
 require('packer').init {
     display = {
         open_fn = function()
-            return require("packer.util").float {border = "single"}
+            return require('packer.util').float {border = 'single'}
         end,
-        prompt_border = "single"
+        prompt_border = 'single'
     },
     git = {
         clone_timeout = 600 -- Timeout, in seconds, for git clones
@@ -26,61 +26,63 @@ return require('packer').startup(function(use)
             vim.g.serenade_enable_italic = 1
             vim.g.serenade_sign_column_background = 'none'
             vim.g.serenade_better_performance = 1
-            vim.cmd("colorscheme serenade")
+            vim.cmd('colorscheme serenade')
         end
     }
     use {'kyazdani42/nvim-web-devicons'}
     use {
         'nvim-lualine/lualine.nvim',
         after = {'serenade', 'nvim-web-devicons'},
-        config = function() require "plugins.statusline" end
+        config = function() require 'plugins.statusline' end
     }
     use {
         'romgrk/barbar.nvim',
         requires = {'kyazdani42/nvim-web-devicons'},
         event = 'BufAdd',
         after = {'nvim-web-devicons', 'serenade'},
-        config = function() require "plugins.barbar" end
+        config = function() require 'plugins.barbar' end
     }
 
     -- lsp stuff
-    use {'neovim/nvim-lspconfig', event = "UIEnter"}
+    use {'neovim/nvim-lspconfig', event = 'UIEnter'}
     use {
         'williamboman/nvim-lsp-installer',
-        config = function() require "plugins.lspinstall" end,
-        after = 'nvim-lspconfig'
+        after = 'nvim-lspconfig',
+        config = function() require 'plugins.lspinstall' end
     }
+    use {'hrsh7th/cmp-nvim-lsp', after = 'nvim-lsp-installer'}
     use {
-        "ray-x/lsp_signature.nvim",
-        after = "nvim-lsp-installer",
-        config = function() require "plugins.lsp-signature" end
+        'ray-x/lsp_signature.nvim',
+        after = 'nvim-lsp-installer',
+        config = function() require 'plugins.lsp-signature' end
     }
 
     -- tree sitter
     use {
         'nvim-treesitter/nvim-treesitter',
-        event = "UIEnter",
-        config = function() require "plugins.treesitter" end,
+        event = 'UIEnter',
+        config = function() require 'plugins.treesitter' end,
         run = ':TSUpdate'
     }
 
     -- completer
-    use {'L3MON4D3/LuaSnip', event = "UIEnter"}
+    use {'L3MON4D3/LuaSnip', event = 'UIEnter'}
     use {
-        event = "InsertEnter",
-        after = {'nvim-lsp-installer', 'nvim-treesitter', 'LuaSnip'},
-        "hrsh7th/nvim-cmp",
-        config = function() require "plugins.cmp" end,
+        'hrsh7th/nvim-cmp',
+        event = 'InsertEnter',
+        after = {'LuaSnip', 'cmp-nvim-lsp', 'nvim-treesitter'},
+        config = function() require 'plugins.cmp' end,
         requires = {
             -- local
             {'hrsh7th/cmp-cmdline', after = 'nvim-cmp'},
             {'hrsh7th/cmp-buffer', after = 'nvim-cmp'},
-            {'hrsh7th/cmp-path', after = 'nvim-cmp'},
-            {'petertriho/cmp-git', after = 'nvim-cmp'}, -- end
+            {'hrsh7th/cmp-path', after = 'nvim-cmp'}, {
+                'petertriho/cmp-git',
+                after = 'nvim-cmp',
+                config = function() require("cmp_git").setup() end
+            }, {'delphinus/cmp-ctags', after = 'nvim-cmp'}, -- end
             -- lsp
-            {'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'nvim-cmp'},
-            {'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp'}, -- end
-            -- TS
+            {'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'nvim-cmp'}, -- TS
             {'ray-x/cmp-treesitter', after = 'nvim-cmp'}, -- end
             -- Snip
             {'saadparwaiz1/cmp_luasnip', after = {'nvim-cmp', 'LuaSnip'}}
@@ -89,21 +91,21 @@ return require('packer').startup(function(use)
 
     -- formating and editing
     use {
-        "windwp/nvim-autopairs",
+        'windwp/nvim-autopairs',
         after = 'nvim-cmp',
-        config = function() require("plugins.nvim-autopairs") end
+        config = function() require('plugins.nvim-autopairs') end
     }
-    use {"sbdchd/neoformat", cmd = "Neoformat"}
+    use {'sbdchd/neoformat', cmd = 'Neoformat'}
     use {
-        "mattn/emmet-vim",
+        'mattn/emmet-vim',
         ft = {'html', 'htmldjango', 'css', 'markdown'},
-        setup = function() require "plugins.emmet" end
+        setup = function() require 'plugins.emmet' end
     }
-    use {"machakann/vim-sandwich", event = "UIEnter"}
+    use {'machakann/vim-sandwich', event = 'UIEnter'}
 
     use {
         'numToStr/Comment.nvim',
-        event = "UIEnter",
+        event = 'UIEnter',
         config = function() require('Comment').setup() end
     }
 
@@ -112,12 +114,12 @@ return require('packer').startup(function(use)
         'kyazdani42/nvim-tree.lua',
         cmd = 'NvimTreeToggle',
         requires = 'kyazdani42/nvim-web-devicons',
-        config = function() require("plugins.nvim-tree") end
+        config = function() require('plugins.nvim-tree') end
     }
     use {
         'andymass/vim-matchup',
         after = 'nvim-treesitter',
-        config = function() require "plugins.matchup" end
+        config = function() require 'plugins.matchup' end
     }
     use {
         'abecodes/tabout.nvim',
@@ -126,14 +128,14 @@ return require('packer').startup(function(use)
     }
     use {
         'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/plenary.nvim'}},
-        config = function() require "plugins.telescope" end,
-        event = "UIEnter"
+        event = 'UIEnter',
+        requires = {'nvim-lua/plenary.nvim'},
+        config = function() require 'plugins.telescope' end
     }
     use {'preservim/tagbar', cmd = 'TagbarToggle'}
     use {
         'phaazon/hop.nvim',
-        event = "UIEnter",
+        event = 'UIEnter',
         as = 'hop',
         config = function()
             require'hop'.setup {keys = 'etovxqpdygfblzhckisuran'}
@@ -142,23 +144,24 @@ return require('packer').startup(function(use)
 
     -- eye-candy
     use {
-        "lukas-reineke/indent-blankline.nvim",
-        after = {"nvim-treesitter"},
-        config = function() require "plugins.indent-blankline" end
+        'lukas-reineke/indent-blankline.nvim',
+        after = {'nvim-treesitter'},
+        config = function() require 'plugins.indent-blankline' end
     }
     use {
         'lewis6991/gitsigns.nvim',
+		event = 'UIEnter',
         requires = {'nvim-lua/plenary.nvim'},
-        config = function() require "plugins.gitsigns" end
+        config = function() require 'plugins.gitsigns' end
     }
     use {
         'p00f/nvim-ts-rainbow',
-        after = "nvim-treesitter",
-        config = function() require "plugins.nvim-ts-rainbow" end
+        after = 'nvim-treesitter',
+        config = function() require 'plugins.nvim-ts-rainbow' end
     }
     use {
         'nvim-treesitter/nvim-treesitter-context',
-        after = "nvim-treesitter",
+        after = 'nvim-treesitter',
         config = function()
             require'treesitter-context'.setup {
                 enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
@@ -178,27 +181,28 @@ return require('packer').startup(function(use)
     }
     use {
         'winston0410/range-highlight.nvim',
-        event = "CmdlineEnter",
-        config = function() require("range-highlight").setup {} end,
+        event = 'CmdlineEnter',
+        config = function() require('range-highlight').setup {} end,
         requires = 'winston0410/cmd-parser.nvim'
     }
     use {
         'norcalli/nvim-colorizer.lua',
-        event = "BufEnter",
-        config = function() require "plugins.nvim-colorizer" end
+        event = 'BufEnter',
+        config = function() require 'plugins.nvim-colorizer' end
     }
 
     -- integrations
-    use {"tpope/vim-fugitive", cmd = "G"}
+    use {'tpope/vim-fugitive', cmd = 'G'}
     use {
-        "mickael-menu/zk-nvim",
-        requires = {"nvim-telescope/telescope.nvim"},
-        after = {"telescope.nvim"},
+        'mickael-menu/zk-nvim',
+        requires = {'nvim-telescope/telescope.nvim'},
+        event = 'UIEnter',
+        after = {'telescope.nvim'},
         ft = {'markdown'},
-        config = function() require "plugins.zk" end
+        config = function() require 'plugins.zk' end
     }
 
     -- fixes and misc. stuff
-    use {"antoinemadec/FixCursorHold.nvim", event = "UIEnter"}
+    use {'antoinemadec/FixCursorHold.nvim', event = 'UIEnter'}
 end)
 -- vim:set shiftwidth=4 tabstop=4:

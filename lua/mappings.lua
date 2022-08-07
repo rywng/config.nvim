@@ -16,8 +16,10 @@ map('', '<A-H>', '<C-w>H', {})
 map('', '<A-J>', '<C-w>J', {})
 map('', '<A-K>', '<C-w>K', {})
 map('', '<A-L>', '<C-w>L', {})
-map('', '<A->>', '<C-w>>', {})
-map('', '<A-<>', '<C-w><', {})
+map('', '<M-S-.>', '<C-w>>', {})
+map('', '<M-S-,>', '<C-w><', {})
+map('', '<M-S-=>', '<C-w>+', {})
+map('', '<M-->', '<C-w>-', {})
 map('', '<A-T>', '<C-w>T', {})
 
 -- undo to the last , . or !
@@ -28,17 +30,15 @@ map('i', '?', '?<c-g>u', {noremap = true})
 
 -- plugin mappings
 -- gitsigns
-map('', '<leader>gs', ':Gitsigns toggle_signs<cr>',
-                        {silent = true})
+map('', '<leader>gs', ':Gitsigns toggle_signs<cr>', {silent = true})
 -- lsp stuff
 vim.api.nvim_buf_set_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>',
                             {noremap = true})
-map('', '<leader>K',
-                        '<cmd>lua vim.diagnostic.open_float()<CR>',
-                        {noremap = true})
+map('', '<leader>K', '<cmd>lua vim.diagnostic.open_float()<CR>',
+    {noremap = true})
 map('', '<leader>qf',
-                        '<cmd>lua vim.diagnostic.setqflist({open = false})<cr><cmd>Telescope quickfix<cr>',
-                        {silent = true})
+    '<cmd>lua vim.diagnostic.setqflist({open = false})<cr><cmd>Telescope quickfix<cr>',
+    {silent = true})
 
 -- toggle tagbar
 map('', '<leader>tt', ':TagbarToggle<cr>', {silent = true})
@@ -52,19 +52,17 @@ map('', '<leader>fm', ':Neoformat<cr>', {silent = true})
 -- toggle Hop
 map('', '<leader>b', ':HopWordBC<cr>', {silent = true})
 map('', '<leader>w', ':HopWordAC<cr>', {silent = true})
-map('', '<leader>l', ':HopWordCurrentLine<cr>',
-                        {silent = true})
+map('', '<leader>l', ':HopWordCurrentLine<cr>', {silent = true})
 
 -- telescope stuff
 map('', '<leader>fd', ':Telescope fd<cr>', {silent = true})
-map('', '<leader>tb', ':Telescope buffers<cr>',
-                        {silent = true})
+map('', '<leader>tb', ':Telescope buffers<cr>', {silent = true})
 
 -- Barbar controls
-local opts = { noremap = true, silent = true }
+local opts = {noremap = true, silent = true}
 -- Move to previous/next
-map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
-map('n', '<A-.>', '<Cmd>BufferNext<CR>', opts)
+map('n', 'gT', '<Cmd>BufferPrevious<CR>', opts)
+map('n', 'gt', '<Cmd>BufferNext<CR>', opts)
 -- Re-order to previous/next
 map('n', '<A-P>', '<Cmd>BufferMovePrevious<CR>', opts)
 map('n', '<A-N>', '<Cmd>BufferMoveNext<CR>', opts)

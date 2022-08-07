@@ -29,8 +29,8 @@ require'bufferline'.setup {
     icon_custom_colors = true,
 
     -- Configure icons on the bufferline.
-    icon_separator_active = '▎',
-    icon_separator_inactive = '▎',
+    icon_separator_active = '│',
+    icon_separator_inactive = '|',
     icon_close_tab = '',
     icon_close_tab_modified = '●',
     icon_pinned = '車',
@@ -61,31 +61,3 @@ require'bufferline'.setup {
     -- where X is the buffer number. But only a static string is accepted here.
     no_name_title = nil
 }
-
--- nvim-tree integration
-local nvim_tree_events = require('nvim-tree.events')
-local bufferline_state = require('bufferline.state')
-
--- track the window id of nvim-tree
-local id
-
-local function get_tree_size() return vim.api.nvim_win_get_width(id) end
-
-nvim_tree_events.on_tree_open(function()
-    id = vim.api.nvim_eval('win_getid()')
-    bufferline_state.set_offset(get_tree_size())
-end)
-
-nvim_tree_events.on_tree_resize(function()
-    if id ~= nil then
-        if vim.api.nvim_eval('win_gettype(' .. id .. ')') ~= 'unknown' then
-            bufferline_state.set_offset(get_tree_size())
-        end
-    end
-end)
-
-nvim_tree_events.on_tree_close(function()
-    id = nil
-    bufferline_state.set_offset(0)
-end)
-
