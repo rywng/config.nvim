@@ -62,7 +62,7 @@ return require('packer').startup(function(use)
     use {
         'ms-jpq/coq_nvim',
         branch = 'coq',
-        after = {'nvim-lsp-installer', 'zk-nvim'},
+        -- after = 'nvim-lsp-installer',
         run = ':COQdeps',
         config = function() require "plugins.coq" end
     }
@@ -185,8 +185,8 @@ return require('packer').startup(function(use)
     use {"tpope/vim-fugitive", cmd = "G"}
     use {
         "mickael-menu/zk-nvim",
-		requires = {"nvim-telescope/telescope.nvim"},
-		after = {"nvim-telescope/telescope.nvim"},
+        requires = {"nvim-telescope/telescope.nvim"},
+        after = {"nvim-telescope/telescope.nvim"},
         ft = {'markdown'},
         config = function() require "plugins.zk" end
     }

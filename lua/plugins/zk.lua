@@ -7,7 +7,8 @@ require("zk").setup({
         -- `config` is passed to `vim.lsp.start_client(config)`
         config = {
             cmd = {"zk", "lsp"},
-            name = "zk"
+            name = "zk",
+            root_dir = vim.loop.cwd()
             -- on_attach = ...
             -- etc, see `:h vim.lsp.start_client()`
         },
