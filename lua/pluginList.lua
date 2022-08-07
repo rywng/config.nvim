@@ -120,7 +120,7 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/plenary.nvim'}},
         config = function() require "plugins.telescope" end,
-        cmd = 'Telescope'
+        event = "UIEnter"
     }
     use {'preservim/tagbar', cmd = 'TagbarToggle'}
     use {
@@ -185,7 +185,9 @@ return require('packer').startup(function(use)
     use {"tpope/vim-fugitive", cmd = "G"}
     use {
         "mickael-menu/zk-nvim",
-        filetypes = {'markdown'},
+		requires = {"nvim-telescope/telescope.nvim"},
+		after = {"nvim-telescope/telescope.nvim"},
+        ft = {'markdown'},
         config = function() require "plugins.zk" end
     }
 
