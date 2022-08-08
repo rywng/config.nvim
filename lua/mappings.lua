@@ -32,8 +32,9 @@ map('i', '?', '?<c-g>u', {noremap = true})
 -- gitsigns
 map('', '<leader>gs', ':Gitsigns toggle_signs<cr>', {silent = true})
 -- lsp stuff
-vim.api.nvim_buf_set_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>',
-                            {noremap = true})
+map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>',
+    {silent = false, noremap = true})
+map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {noremap = true})
 map('', '<leader>K', '<cmd>lua vim.diagnostic.open_float()<CR>',
     {noremap = true})
 map('', '<leader>qf',
