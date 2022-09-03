@@ -1,46 +1,25 @@
--- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
-
-require('packer').init {
-    display = {
-        open_fn = function()
-            return require('packer.util').float {border = 'single'}
-        end,
-        prompt_border = 'single'
-    },
-    git = {
-        clone_timeout = 600 -- Timeout, in seconds, for git clones
-    },
-    auto_clean = true,
-    compile_on_sync = true,
-    auto_reload_compiled = true
-}
-
 return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim'}
 
     -- core UI
-    use {
-        'b4skyx/serenade',
+    use({
+        'sainnhe/everforest',
         config = function()
-            vim.g.serenade_enable_italic = 1
-            vim.g.serenade_sign_column_background = 'none'
-            vim.g.serenade_better_performance = 1
-            vim.cmd('colorscheme serenade')
+            vim.g.everforest_better_performance = 1
+            vim.cmd('colorscheme everforest')
         end
-    }
-    use {'sainnhe/everforest', event = "CmdlineEnter"}
+    })
     use {'kyazdani42/nvim-web-devicons'}
     use {
         'nvim-lualine/lualine.nvim',
-        after = {'serenade', 'nvim-web-devicons'},
+        after = {'nvim-web-devicons'},
         config = function() require 'plugins.statusline' end
     }
     use {
         'romgrk/barbar.nvim',
         requires = {'kyazdani42/nvim-web-devicons'},
         event = 'BufAdd',
-        after = {'nvim-web-devicons', 'serenade'},
+        after = {'nvim-web-devicons'},
         config = function() require 'plugins.barbar' end
     }
 
