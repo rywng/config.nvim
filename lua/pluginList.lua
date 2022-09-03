@@ -29,6 +29,7 @@ return require('packer').startup(function(use)
             vim.cmd('colorscheme serenade')
         end
     }
+    use {'sainnhe/everforest', event = "CmdlineEnter"}
     use {'kyazdani42/nvim-web-devicons'}
     use {
         'nvim-lualine/lualine.nvim',
@@ -150,7 +151,7 @@ return require('packer').startup(function(use)
     }
     use {
         'lewis6991/gitsigns.nvim',
-		event = 'UIEnter',
+        event = 'UIEnter',
         requires = {'nvim-lua/plenary.nvim'},
         config = function() require 'plugins.gitsigns' end
     }
