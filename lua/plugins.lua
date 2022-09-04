@@ -4,9 +4,10 @@ return require('packer').startup(function(use)
     -- core UI
     use({
         'juancldcmt/sere-forest',
-		branch = "dev",
         config = function()
             vim.g.everforest_better_performance = 1
+            vim.g.everforest_enable_italic = 1
+            vim.g.everforest_transparent_background = 1
             vim.cmd('colorscheme everforest')
         end
     })
@@ -16,13 +17,13 @@ return require('packer').startup(function(use)
         after = {'nvim-web-devicons'},
         config = function() require 'plugins.statusline' end
     }
-    use {
-        'romgrk/barbar.nvim',
-        requires = {'kyazdani42/nvim-web-devicons'},
-        event = 'BufAdd',
-        after = {'nvim-web-devicons'},
-        config = function() require 'plugins.barbar' end
-    }
+    -- use {
+    --     'romgrk/barbar.nvim',
+    --     requires = {'kyazdani42/nvim-web-devicons'},
+    --     event = 'BufAdd',
+    --     after = {'nvim-web-devicons'},
+    --     config = function() require 'plugins.barbar' end
+    -- }
 
     -- lsp stuff
     use {'neovim/nvim-lspconfig', event = 'UIEnter'}
@@ -174,14 +175,6 @@ return require('packer').startup(function(use)
 
     -- integrations
     use {'tpope/vim-fugitive', cmd = 'G'}
-    use {
-        'mickael-menu/zk-nvim',
-        requires = {'nvim-telescope/telescope.nvim'},
-        event = 'UIEnter',
-        after = {'telescope.nvim'},
-        ft = {'markdown'},
-        config = function() require 'plugins.zk' end
-    }
 
     -- fixes and misc. stuff
     use {'antoinemadec/FixCursorHold.nvim', event = 'UIEnter'}

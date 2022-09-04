@@ -1,7 +1,7 @@
 require'lualine'.setup {
     options = {
         icons_enabled = true,
-        theme = 'auto',
+        theme = 'everforest',
         component_separators = {'|', '|'},
         section_separators = {'', ''},
         disabled_filetypes = {}
@@ -9,7 +9,7 @@ require'lualine'.setup {
     sections = {
         lualine_a = {'mode'},
         lualine_b = {'branch'},
-        lualine_c = {'filename'},
+        lualine_c = {'filename', 'diagonostics'},
         lualine_x = {'encoding', 'fileformat', 'filetype'},
         lualine_y = {'progress'},
         lualine_z = {'location'}
@@ -22,6 +22,14 @@ require'lualine'.setup {
         lualine_y = {},
         lualine_z = {}
     },
-    tabline = {},
+    -- Tabline is broken, disable for now.
+    -- tabline = {
+    --     lualine_a = {'buffers'},
+    --     lualine_b = {},
+    --     lualine_c = {},
+    --     lualine_x = {},
+    --     lualine_y = {},
+    --     lualine_z = {'tabs'}
+    -- },
     extensions = {}
 }
