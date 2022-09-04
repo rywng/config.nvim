@@ -3,7 +3,8 @@ return require('packer').startup(function(use)
 
     -- core UI
     use({
-        'sainnhe/everforest',
+        'juancldcmt/sere-forest',
+		branch = "dev",
         config = function()
             vim.g.everforest_better_performance = 1
             vim.cmd('colorscheme everforest')
