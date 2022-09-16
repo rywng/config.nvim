@@ -1,11 +1,11 @@
 local map = vim.api.nvim_set_keymap
 
 -- generic mappings
-map('v', '<', '<gv', {noremap = true})
-map('v', '>', '>gv', {noremap = true})
-map('n', 'Y', 'y$', {noremap = true})
-map('n', 'n', 'nzzzv', {noremap = true})
-map('n', 'N', 'Nzzzv', {noremap = true})
+map('v', '<', '<gv', { noremap = true })
+map('v', '>', '>gv', { noremap = true })
+map('n', 'Y', 'y$', { noremap = true })
+map('n', 'n', 'nzzzv', { noremap = true })
+map('n', 'N', 'Nzzzv', { noremap = true })
 
 -- Shortcutting split navigation
 map('', '<A-h>', '<C-w>h', {})
@@ -23,38 +23,41 @@ map('', '<M-->', '<C-w>-', {})
 map('', '<A-T>', '<C-w>T', {})
 
 -- undo to the last , . or !
-map('i', ',', ',<c-g>u', {noremap = true})
-map('i', '.', '.<c-g>u', {noremap = true})
-map('i', '!', '!<c-g>u', {noremap = true})
-map('i', '?', '?<c-g>u', {noremap = true})
+map('i', ',', ',<c-g>u', { noremap = true })
+map('i', '.', '.<c-g>u', { noremap = true })
+map('i', '!', '!<c-g>u', { noremap = true })
+map('i', '?', '?<c-g>u', { noremap = true })
 
 -- plugin mappings
 -- gitsigns
-map('', '<leader>gs', ':Gitsigns toggle_signs<cr>', {silent = true})
+map('', '<leader>gs', ':Gitsigns toggle_signs<cr>', { silent = true })
 -- lsp stuff
 map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>',
-    {silent = false, noremap = true})
-map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {noremap = true})
+	{ silent = false, noremap = true })
+map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true })
 map('', '<leader>K', '<cmd>lua vim.diagnostic.open_float()<CR>',
-    {noremap = true})
+	{ noremap = true })
 map('', '<leader>qf',
-    '<cmd>lua vim.diagnostic.setqflist({open = false})<cr><cmd>Telescope quickfix<cr>',
-    {silent = true})
+	'<cmd>lua vim.diagnostic.setqflist({open = false})<cr><cmd>Telescope quickfix<cr>',
+	{ silent = true })
 
 -- toggle tagbar
-map('', '<leader>tt', ':TagbarToggle<cr>', {silent = true})
+map('', '<leader>tt', ':TagbarToggle<cr>', { silent = true })
 
 -- toggle NvimTree
-map('', '<C-n>', ':NvimTreeToggle<cr>', {silent = true})
+map('', '<C-n>', ':NvimTreeToggle<cr>', { silent = true })
 
 -- toggle formatter
-map('', '<leader>fm', ':Neoformat<cr>', {silent = true})
+map('', '<leader>fm', ':lua vim.lsp.buf.formatting()<cr>', { silent = true })
 
 -- toggle Hop
-map('', '<leader>b', ':HopWordBC<cr>', {silent = true})
-map('', '<leader>w', ':HopWordAC<cr>', {silent = true})
-map('', '<leader>l', ':HopWordCurrentLine<cr>', {silent = true})
+map('', '<leader>b', ':HopWordBC<cr>', { silent = true })
+map('', '<leader>w', ':HopWordAC<cr>', { silent = true })
+map('', '<leader>l', ':HopWordCurrentLine<cr>', { silent = true })
 
 -- telescope stuff
-map('', '<leader>fd', ':Telescope fd<cr>', {silent = true})
-map('', '<leader>tb', ':Telescope buffers<cr>', {silent = true})
+map('', '<leader>fd', ':Telescope fd<cr>',
+
+
+	{ silent = true })
+map('', '<leader>tb', ':Telescope buffers<cr>', { silent = true })
