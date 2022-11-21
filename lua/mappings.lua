@@ -48,7 +48,7 @@ map('', '<leader>tt', ':TagbarToggle<cr>', { silent = true })
 map('', '<C-n>', ':NvimTreeToggle<cr>', { silent = true })
 
 -- toggle formatter
-map('', '<leader>fm', ':lua vim.lsp.buf.formatting()<cr>', { silent = true })
+map('', '<leader>fm', ':lua vim.lsp.buf.format({async = true})<cr>', { silent = true })
 
 -- toggle Hop
 map('', '<leader>b', ':HopWordBC<cr>', { silent = true })

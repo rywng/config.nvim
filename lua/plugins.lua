@@ -134,11 +134,6 @@ return require('packer').startup(function(use)
 
 	-- eye-candy
 	use {
-		'lukas-reineke/indent-blankline.nvim',
-		after = { 'nvim-treesitter' },
-		config = function() require 'plugins.indent-blankline' end
-	}
-	use {
 		'lewis6991/gitsigns.nvim',
 		event = 'UIEnter',
 		requires = { 'nvim-lua/plenary.nvim' },
