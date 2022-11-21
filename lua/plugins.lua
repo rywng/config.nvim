@@ -72,7 +72,7 @@ return require('packer').startup(function(use)
 	}
 
 	-- formating and editing
-	use { "williamboman/mason.nvim", event = "UIEnter" }
+	use { "williamboman/mason.nvim", event = 'BufEnter'}
 	use {
 		'windwp/nvim-autopairs',
 		after = 'nvim-cmp',
