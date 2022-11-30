@@ -101,12 +101,6 @@ return require('packer').startup(function(use)
 
 	-- navigation
 	use {
-		'kyazdani42/nvim-tree.lua',
-		cmd = 'NvimTreeToggle',
-		requires = 'kyazdani42/nvim-web-devicons',
-		config = function() require('plugins.nvim-tree') end
-	}
-	use {
 		'andymass/vim-matchup',
 		after = 'nvim-treesitter',
 		config = function() require 'plugins.matchup' end
