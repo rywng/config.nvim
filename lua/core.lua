@@ -18,15 +18,8 @@ vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 o.ignorecase = true
 o.smartcase = true
 o.smartindent = true
-o.mouse = "i"
 o.autoindent = true
-
--- neoformat settings.
-global.neoformat_basic_format_align = 1
-global.neoformat_basic_format_trim = 1
+o.mouse = "a"
 
 -- leader settings
 global.mapleader = ' '
-
--- indent blankline settings
-global.indent_blankline_char = '▏'

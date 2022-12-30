@@ -128,6 +128,10 @@ return require('packer').startup(function(use)
 
 	-- eye-candy
 	use {
+		'eandrju/cellular-automaton.nvim',
+		cmd = "CellularAutomaton"
+	}
+	use {
 		'lewis6991/gitsigns.nvim',
 		event = 'UIEnter',
 		requires = { 'nvim-lua/plenary.nvim' },
