@@ -3,12 +3,9 @@ return require('packer').startup(function(use)
 
 	-- core UI
 	use({
-		'juancldcmt/sere-forest',
+		'ellisonleao/gruvbox.nvim',
 		config = function()
-			vim.g.everforest_better_performance = 1
-			vim.g.everforest_enable_italic = 1
-			vim.g.everforest_transparent_background = 1
-			vim.cmd('colorscheme everforest')
+			vim.cmd('colorscheme gruvbox')
 		end
 	})
 	use { 'kyazdani42/nvim-web-devicons' }
