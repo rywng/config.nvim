@@ -56,8 +56,5 @@ map('', '<leader>w', ':HopWordAC<cr>', { silent = true })
 map('', '<leader>l', ':HopWordCurrentLine<cr>', { silent = true })
 
 -- telescope stuff
-map('', '<leader>fd', ':Telescope fd<cr>',
-
-
-	{ silent = true })
+map('', '<leader>fd', ':Telescope fd<cr>', { silent = true })
 map('', '<leader>tb', ':Telescope buffers<cr>', { silent = true })

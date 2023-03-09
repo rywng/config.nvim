@@ -25,7 +25,7 @@ return require('packer').startup(function(use)
 	-- lsp stuff
 	use {
 		'neovim/nvim-lspconfig',
-		after = "mason-lspconfig.nvim",
+		after = { "mason-lspconfig.nvim", "null-ls.nvim" },
 		config = function() require 'plugins.lsp' end
 	}
 	use { 'williamboman/mason-lspconfig.nvim', after = 'mason.nvim' }
@@ -68,7 +68,7 @@ return require('packer').startup(function(use)
 			{ 'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'nvim-cmp' }, -- TS
 			{ 'ray-x/cmp-treesitter',                 after = 'nvim-cmp' }, -- end
 			-- Snip
-			{ 'saadparwaiz1/cmp_luasnip',             after = { 'nvim-cmp', 'LuaSnip' } }
+			{ 'saadparwaiz1/cmp_luasnip',             after = { 'nvim-cmp', 'LuaSnip' } },
 		}
 	}
 
@@ -81,11 +81,15 @@ return require('packer').startup(function(use)
 	}
 	use {
 		"jose-elias-alvarez/null-ls.nvim",
-		config = function()
-			require('plugins.null-ls')
-		end,
 		requires = { "nvim-lua/plenary.nvim" },
-		event = "CmdlineEnter"
+		event = 'BufEnter'
+	}
+	use {
+		"jay-babu/mason-null-ls.nvim",
+		config = function()
+			require 'plugins.null-ls'
+		end,
+		after = { "mason.nvim", "null-ls.nvim" }
 	}
 	use {
 		'mattn/emmet-vim',
@@ -105,11 +109,6 @@ return require('packer').startup(function(use)
 		'andymass/vim-matchup',
 		after = 'nvim-treesitter',
 		config = function() require 'plugins.matchup' end
-	}
-	use {
-		'abecodes/tabout.nvim',
-		config = function() require('tabout').setup {} end,
-		after = { 'nvim-treesitter', 'nvim-autopairs', 'nvim-cmp' } -- if a completion plugin is using tabs load it before
 	}
 	use {
 		'nvim-telescope/telescope.nvim',
