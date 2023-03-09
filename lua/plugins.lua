@@ -45,7 +45,11 @@ return require('packer').startup(function(use)
 	}
 
 	-- completer
-	use { 'L3MON4D3/LuaSnip', event = 'UIEnter' }
+	use {
+		'L3MON4D3/LuaSnip',
+		event = 'UIEnter',
+		requires = { 'rafamadriz/friendly-snippets' }
+	}
 	use {
 		'hrsh7th/nvim-cmp',
 		event = 'InsertEnter',
@@ -54,22 +58,22 @@ return require('packer').startup(function(use)
 		requires = {
 			-- local
 			{ 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
-			{ 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-			{ 'hrsh7th/cmp-path', after = 'nvim-cmp' }, {
-				'petertriho/cmp-git',
-				after = 'nvim-cmp',
-				config = function() require("cmp_git").setup() end
-			}, { 'delphinus/cmp-ctags', after = 'nvim-cmp' }, -- end
+			{ 'hrsh7th/cmp-buffer',  after = 'nvim-cmp' },
+			{ 'hrsh7th/cmp-path',    after = 'nvim-cmp' }, {
+			'petertriho/cmp-git',
+			after = 'nvim-cmp',
+			config = function() require("cmp_git").setup() end
+		}, { 'delphinus/cmp-ctags',               after = 'nvim-cmp' }, -- end
 			-- lsp
 			{ 'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'nvim-cmp' }, -- TS
-			{ 'ray-x/cmp-treesitter', after = 'nvim-cmp' }, -- end
+			{ 'ray-x/cmp-treesitter',                 after = 'nvim-cmp' }, -- end
 			-- Snip
-			{ 'saadparwaiz1/cmp_luasnip', after = { 'nvim-cmp', 'LuaSnip' } }
+			{ 'saadparwaiz1/cmp_luasnip',             after = { 'nvim-cmp', 'LuaSnip' } }
 		}
 	}
 
 	-- formating and editing
-	use { "williamboman/mason.nvim", event = 'BufEnter'}
+	use { "williamboman/mason.nvim", event = 'BufEnter' }
 	use {
 		'windwp/nvim-autopairs',
 		after = 'nvim-cmp',
@@ -146,7 +150,8 @@ return require('packer').startup(function(use)
 			require 'treesitter-context'.setup {
 				enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
 				max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-				patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+				patterns = {
+					-- Match patterns for TS nodes. These get wrapped to match at word boundaries.
 					-- For all filetypes
 					-- Note that setting an entry here replaces all other patterns for this entry.
 					-- By setting the 'default' entry below, you can control which nodes you want to
