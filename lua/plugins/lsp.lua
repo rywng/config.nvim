@@ -1,5 +1,5 @@
 require("mason").setup {ui = {icons = {package_installed = "✓"}}}
-require("mason-lspconfig").setup {ensure_installed = {"sumneko_lua"}}
+require("mason-lspconfig").setup {}
 -- Dynamic loading of lsp servers
 require("mason-lspconfig").setup_handlers {
     -- The first entry (without a key) will be the default handler
