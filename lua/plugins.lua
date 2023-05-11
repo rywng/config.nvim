@@ -54,7 +54,7 @@ return require("packer").startup(function(use)
 				end,
 			},
 		},
-		event = "BufEnter",
+		event = "UIEnter",
 		run = ":TSUpdate",
 	})
 
@@ -214,8 +214,5 @@ return require("packer").startup(function(use)
 
 	-- integrations
 	use({ "tpope/vim-fugitive", cmd = "G" })
-
-	-- fixes and misc. stuff
-	use({ "antoinemadec/FixCursorHold.nvim", event = "UIEnter" })
 end)
 -- vim:set shiftwidth=4 tabstop=4:
