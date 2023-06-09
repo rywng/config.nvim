@@ -38,7 +38,7 @@ require('gitsigns').setup {
             numhl = "GitSignsDeleteNr"
         }
     },
-    yadm = {enable = true},
+    -- yadm = {enable = true},
 
     -- Current line blame
     current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
