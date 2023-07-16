@@ -16,13 +16,6 @@ return require("packer").startup(function(use)
 			require("plugins.statusline")
 		end,
 	})
-	-- use {
-	--     'romgrk/barbar.nvim',
-	--     requires = {'kyazdani42/nvim-web-devicons'},
-	--     event = 'BufAdd',
-	--     after = {'nvim-web-devicons'},
-	--     config = function() require 'plugins.barbar' end
-	-- }
 
 	-- lsp stuff
 	use({
@@ -36,7 +29,7 @@ return require("packer").startup(function(use)
 	use({ "hrsh7th/cmp-nvim-lsp", after = "nvim-lspconfig" })
 	use({
 		"ray-x/lsp_signature.nvim",
-		after = {"nvim-cmp"},
+		after = { "nvim-cmp" },
 		config = function()
 			require("plugins.lsp-signature")
 		end,
@@ -74,8 +67,8 @@ return require("packer").startup(function(use)
 		requires = {
 			-- local
 			{ "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
-			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
-			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
+			{ "hrsh7th/cmp-buffer",  after = "nvim-cmp" },
+			{ "hrsh7th/cmp-path",    after = "nvim-cmp" },
 			{
 				"petertriho/cmp-git",
 				after = "nvim-cmp",
@@ -83,12 +76,12 @@ return require("packer").startup(function(use)
 					require("cmp_git").setup()
 				end,
 			},
-			{ "delphinus/cmp-ctags", after = "nvim-cmp" }, -- end
+			{ "delphinus/cmp-ctags",                  after = "nvim-cmp" }, -- end
 			-- lsp
 			{ "hrsh7th/cmp-nvim-lsp-document-symbol", after = "nvim-cmp" }, -- TS
-			{ "ray-x/cmp-treesitter", after = "nvim-cmp" }, -- end
+			{ "ray-x/cmp-treesitter",                 after = "nvim-cmp" }, -- end
 			-- Snip
-			{ "saadparwaiz1/cmp_luasnip", after = { "nvim-cmp", "LuaSnip" } },
+			{ "saadparwaiz1/cmp_luasnip",             after = { "nvim-cmp", "LuaSnip" } },
 		},
 	})
 
@@ -154,6 +147,13 @@ return require("packer").startup(function(use)
 		config = function()
 			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 		end,
+	})
+	use({
+		"c0r73x/neotags.lua",
+		event = "BufEnter",
+		config = function ()
+			require("neotags").setup()
+		end
 	})
 
 	-- eye-candy
