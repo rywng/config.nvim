@@ -151,8 +151,13 @@ return require("packer").startup(function(use)
 	use({
 		"c0r73x/neotags.lua",
 		event = "BufEnter",
-		config = function ()
-			require("neotags").setup()
+		config = function()
+			require("neotags").setup({
+				ctags = {
+					directory = vim.env.HOME .. '/.cache/nvim/neotags/' -- default directory where to store tags
+
+				}
+			})
 		end
 	})
 

@@ -11,7 +11,7 @@ o.showmode = false
 o.scrolloff = 10
 
 -- controlling
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 o.ignorecase = true
 o.smartcase = true
 o.smartindent = true
@@ -20,3 +20,6 @@ o.mouse = "i"
 
 -- leader settings
 global.mapleader = ' '
+
+-- env settings for plugins
+global.tagbar_sort = 0
