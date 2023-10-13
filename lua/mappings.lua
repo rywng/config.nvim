@@ -1,5 +1,12 @@
 local map = vim.api.nvim_set_keymap
 
+-- vscode
+if vim.g.vscode then
+    -- undo/REDO via vscode
+    map("n","u","<Cmd>call VSCodeNotify('undo')<CR>")
+    map("n","<C-r>","<Cmd>call VSCodeNotify('redo')<CR>") 
+end
+
 -- generic mappings
 map('v', '<', '<gv', { noremap = true })
 map('v', '>', '>gv', { noremap = true })

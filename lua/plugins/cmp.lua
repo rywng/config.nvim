@@ -21,7 +21,7 @@ cmp.setup({
 		end,
 	},
 	mapping = {
-		    ["<Tab>"] = cmp.mapping(function(fallback)
+		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
 				-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
@@ -34,7 +34,7 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
-		    ["<S-Tab>"] = cmp.mapping(function(fallback)
+		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
 			elseif luasnip.jumpable(-1) then
@@ -43,21 +43,21 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
-		    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-		    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-		    ['<C-Space>'] = cmp.mapping.complete(),
-		    ['<C-e>'] = cmp.mapping.abort(),
-		    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items
+		['<C-b>'] = cmp.mapping.scroll_docs(-4),
+		['<C-f>'] = cmp.mapping.scroll_docs(4),
+		['<C-Space>'] = cmp.mapping.complete(),
+		['<C-e>'] = cmp.mapping.abort(),
+		['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items
 		-- ... Your other mappings ...
 	},
 	sources = cmp.config.sources({
+		{ name = "luasnip" }, -- For luasnip users.
+		{ name = "ctags" },
 		{ name = "nvim_lsp" },
 		{ name = "treesitter" },
-		{ name = "buffer" },
-		{ name = "luasnip" }, -- For luasnip users.
-		{ name = "path" },
+		{ name = "async_path" },
 		{ name = "git" },
-		{ name = "ctags" },
+		{ name = "buffer" },
 	})
 	-- ... Your other configuration ...
 })

@@ -68,7 +68,7 @@ return require("packer").startup(function(use)
 			-- local
 			{ "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-buffer",  after = "nvim-cmp" },
-			{ "hrsh7th/cmp-path",    after = "nvim-cmp" },
+			{ "FelipeLema/cmp-async-path",    after = "nvim-cmp" },
 			{
 				"petertriho/cmp-git",
 				after = "nvim-cmp",
@@ -148,18 +148,18 @@ return require("packer").startup(function(use)
 			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 		end,
 	})
-	use({
-		"c0r73x/neotags.lua",
-		event = "BufEnter",
-		config = function()
-			require("neotags").setup({
-				ctags = {
-					directory = vim.env.HOME .. '/.cache/nvim/neotags/' -- default directory where to store tags
-
-				}
-			})
-		end
-	})
+	-- use({
+	-- 	"c0r73x/neotags.lua",
+	-- 	event = "BufEnter",
+	-- 	config = function()
+	-- 		require("neotags").setup({
+	-- 			enable = string.find(vim.fn.getcwd(), "/home/"),
+	-- 			ctags = {
+	-- 				directory = vim.env.HOME .. '/.cache/nvim/neotags' -- default directory where to store tags
+	-- 			},
+	-- 		})
+	-- 	end
+	-- })
 
 	-- eye-candy
 	use({
