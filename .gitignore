@@ -1,2 +1,3 @@
 #exclude precomplied things
 /plugin/*
+lazy-lock.json

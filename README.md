@@ -1,5 +1,5 @@
 ## Nvim.config
 
-Neovim config, using lua and packer.nvim.
+Neovim config, using lua and lazy.nvim
 
 Optimized for speed and stability.
