@@ -3,8 +3,9 @@ local map = vim.api.nvim_set_keymap
 -- vscode
 if vim.g.vscode then
     -- undo/REDO via vscode
-    map("n","u","<Cmd>call VSCodeNotify('undo')<CR>")
-    map("n","<C-r>","<Cmd>call VSCodeNotify('redo')<CR>") 
+    map("n","u","<Cmd>call VSCodeNotify('undo')<CR>", {})
+    map("n","<C-r>","<Cmd>call VSCodeNotify('redo')<CR>", {}) 
+    map("n","gf", "<Cmd>call VSCodeCall('editor.action.openLink')<CR>", {silent = true, noremap = true})
 end
 
 -- generic mappings
@@ -50,9 +51,6 @@ map('', '<leader>qf',
 
 -- toggle tagbar
 map('', '<leader>tt', ':TagbarToggle<cr>', { silent = true })
-
--- toggle NvimTree
-map('', '<C-n>', ':NvimTreeToggle<cr>', { silent = true })
 
 -- toggle formatter
 map('', '<leader>fm', ':lua vim.lsp.buf.format({async = true})<cr>', { silent = true })
