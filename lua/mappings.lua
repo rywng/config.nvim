@@ -2,10 +2,10 @@ local map = vim.api.nvim_set_keymap
 
 -- vscode
 if vim.g.vscode then
-    -- undo/REDO via vscode
-    map("n","u","<Cmd>call VSCodeNotify('undo')<CR>", {})
-    map("n","<C-r>","<Cmd>call VSCodeNotify('redo')<CR>", {}) 
-    map("n","gf", "<Cmd>call VSCodeCall('editor.action.openLink')<CR>", {silent = true, noremap = true})
+	-- undo/REDO via vscode
+	map("n", "u", "<Cmd>call VSCodeNotify('undo')<CR>", {})
+	map("n", "<C-r>", "<Cmd>call VSCodeNotify('redo')<CR>", {})
+	map("n", "gf", "<Cmd>call VSCodeCall('editor.action.openLink')<CR>", { silent = true, noremap = true })
 end
 
 -- generic mappings
@@ -39,21 +39,8 @@ map('i', '?', '?<c-g>u', { noremap = true })
 -- plugin mappings
 -- gitsigns
 map('', '<leader>gs', ':Gitsigns toggle_signs<cr>', { silent = true })
--- lsp stuff
-map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>',
-	{ silent = false, noremap = true })
-map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true })
-map('', '<leader>K', '<cmd>lua vim.diagnostic.open_float()<CR>',
-	{ noremap = true })
-map('', '<leader>qf',
-	'<cmd>lua vim.diagnostic.setqflist({open = false})<cr><cmd>Telescope quickfix<cr>',
-	{ silent = true })
-
 -- toggle tagbar
 map('', '<leader>tt', ':TagbarToggle<cr>', { silent = true })
-
--- toggle formatter
-map('', '<leader>fm', ':lua vim.lsp.buf.format({async = true})<cr>', { silent = true })
 
 -- toggle Hop
 map('', '<leader>b', ':HopWordBC<cr>', { silent = true })

@@ -10,12 +10,14 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-opts = {
+
+local opts = {
 	install = {
 		colorscheme = { "gruvbox" }
 	}
 }
-require("lazy").setup({
+
+local plugins = {
 	{
 		"ellisonleao/gruvbox.nvim",
 		lazy = false,
@@ -109,7 +111,13 @@ require("lazy").setup({
 		}
 	},
 	"machakann/vim-sandwich",
-	"numToStr/Comment.nvim",
+	{
+		"numToStr/Comment.nvim",
+		event = "BufEnter",
+		config = function ()
+			require("Comment").setup()
+		end
+	},
 	"andymass/vim-matchup",
 	{
 		"nvim-telescope/telescope.nvim",
@@ -126,4 +134,23 @@ require("lazy").setup({
 		"winston0410/range-highlight.nvim",
 		event = "CmdlineEnter"
 	}
-}, opts)
+}
+
+local vscode_plugins = {
+	"machakann/vim-sandwich",
+	{
+		"numToStr/Comment.nvim",
+		event = "BufEnter",
+		config = function ()
+			require("Comment").setup()
+		end
+	},
+}
+
+if vim.g.vscode then
+	-- VSCode extension
+	require("lazy").setup(vscode_plugins, opts)
+else
+	-- ordinary Neovim
+	require("lazy").setup(plugins, opts)
+end
