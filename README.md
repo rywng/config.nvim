@@ -1,5 +1,9 @@
-## Nvim.config
+# Nvim.config
 
-Neovim config, using lua and lazy.nvim
+Minimalistic neovim config, with full LSP and TS support and completion
 
-Optimized for speed and stability.
+The package manager is Lazy.nvim
+
+## Minimalistic
+
+Use lua plugins when possible, lazy load and byte-compile when possible, use neovim builtin features when possible.
