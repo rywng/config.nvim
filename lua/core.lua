@@ -11,7 +11,7 @@ o.showmode = false
 o.scrolloff = 10
 
 -- controlling
-vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+vim.opt.completeopt = { 'menu', 'menuone', 'noinsert' }
 o.ignorecase = true
 o.smartcase = true
 o.smartindent = true

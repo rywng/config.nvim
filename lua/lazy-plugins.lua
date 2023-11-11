@@ -36,11 +36,13 @@ local plugins = {
 	},
 	-- TS, LSP, Completion
 	{
-		"williamboman/mason.nvim"
+		"williamboman/mason.nvim",
+		lazy = true
 	},
 	{
 
 		"nvim-treesitter/nvim-treesitter",
+		lazy = true,
 		config = function()
 			require("plugins.treesitter")
 		end
@@ -52,13 +54,17 @@ local plugins = {
 		},
 	},
 	{
+		"L3MON4D3/LuaSnip",
+		dependencies = { "rafamadriz/friendly-snippets" },
+		lazy = true
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
-			{
-				"hrsh7th/cmp-nvim-lsp",
-			},
+			"hrsh7th/cmp-nvim-lsp",
 			-- TODO: check the cmp sources
 			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-cmdline",
 			"FelipeLema/cmp-async-path",
 			"ray-x/cmp-treesitter",

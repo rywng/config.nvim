@@ -9,6 +9,7 @@ end
 local luasnip = require("luasnip")
 local cmp = require("cmp")
 
+
 cmp.setup({
 	-- ... Your other configuration ...
 	snippet = {
@@ -23,9 +24,7 @@ cmp.setup({
 	mapping = {
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				cmp.select_next_item()
-				-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-				-- they way you will only jump inside the snippet region
+				cmp.confirm({ select = true })
 			elseif luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
 			elseif has_words_before() then
@@ -45,6 +44,8 @@ cmp.setup({
 		end, { "i", "s" }),
 		['<C-b>'] = cmp.mapping.scroll_docs(-4),
 		['<C-f>'] = cmp.mapping.scroll_docs(4),
+		['<C-n>'] = cmp.mapping.select_next_item(),
+		['<C-p>'] = cmp.mapping.select_prev_item(),
 		['<C-Space>'] = cmp.mapping.complete(),
 		['<C-e>'] = cmp.mapping.abort(),
 		['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items
@@ -53,12 +54,15 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = "luasnip" }, -- For luasnip users.
 		{ name = "nvim_lsp" },
+		{ name = 'nvim_lua' },
 		{ name = "treesitter" },
 		{ name = "async_path" },
 		{ name = "git" },
 		{ name = "buffer" },
-	})
-	-- ... Your other configuration ...
+	}),
+	completion = {
+		completeopt = 'menu,menuone,noinsert'
+	}
 })
 
 cmp.setup.cmdline({ '/', '?' }, {
