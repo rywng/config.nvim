@@ -49,6 +49,7 @@ local plugins = {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
+		event = {"BufReadPre", "BufNewFile"},
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 		},
@@ -93,27 +94,33 @@ local plugins = {
 	},
 	{
 		"hrsh7th/cmp-nvim-lsp",
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"neovim/nvim-lspconfig",
-			dependencies = {
-				{
-					"williamboman/mason-lspconfig.nvim",
-					dependencies = {
-						"williamboman/mason.nvim",
-					}
-				},
-				"null-ls.nvim"
+		},
+		lazy = true
+	},
+	{
+		"neovim/nvim-lspconfig",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			{
+				"williamboman/mason-lspconfig.nvim",
+				dependencies = {
+					"williamboman/mason.nvim",
+				}
 			},
-			config = function()
-				require("plugins.lsp")
-			end,
-		}
+		},
+		config = function()
+			require("plugins.lsp")
+		end,
 	},
 	{
 		"jay-babu/mason-null-ls.nvim",
 		config = function()
 			require("plugins.null-ls")
 		end,
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"williamboman/mason.nvim",
 			"jose-elias-alvarez/null-ls.nvim"

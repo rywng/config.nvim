@@ -67,9 +67,12 @@ cmp.setup({
 
 cmp.setup.cmdline({ '/', '?' }, {
 	mapping = cmp.mapping.preset.cmdline(),
+	completion = {
+		completeopt = 'menu,menuone,noselect'
+	},
 	sources = {
 		{ name = 'buffer' }
-	}
+	},
 })
 
 -- Set configuration for specific filetype.
@@ -85,6 +88,9 @@ cmp.setup.filetype('gitcommit', {
 -- `:` cmdline setup.
 cmp.setup.cmdline(':', {
 	mapping = cmp.mapping.preset.cmdline(),
+	completion = {
+		completeopt = 'menu,menuone,noselect'
+	},
 	sources = cmp.config.sources({
 		{ name = 'path' }
 	}, {
