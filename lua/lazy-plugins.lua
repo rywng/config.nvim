@@ -60,9 +60,7 @@ local plugins = {
 			-- TODO: check the cmp sources
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-nvim-lsp-document-symbol",
 			"FelipeLema/cmp-async-path",
-			"petertriho/cmp-git",
 			"ray-x/cmp-treesitter",
 			{
 				"saadparwaiz1/cmp_luasnip",
@@ -75,12 +73,17 @@ local plugins = {
 				config = function()
 					require("plugins.nvim-autopairs")
 				end
-			}
+			},
 		},
 		event = { "InsertEnter", "CmdlineEnter" },
 		config = function()
 			require("plugins/cmp")
 		end
+	},
+	{
+		"Dynge/gitmoji.nvim",
+		ft = "gitcommit",
+		dependencies = "hrsh7th/nvim-cmp"
 	},
 	{
 		"hrsh7th/cmp-nvim-lsp",
@@ -110,7 +113,6 @@ local plugins = {
 			"jose-elias-alvarez/null-ls.nvim"
 		}
 	},
-
 	-- Code editing
 	{
 		"machakann/vim-sandwich",
@@ -134,8 +136,21 @@ local plugins = {
 			require("plugins.telescope")
 		end
 	},
+	{
+		"tpope/vim-fugitive",
+		event = "CmdlineEnter"
+	},
 
 	-- Eye candy UI
+	{
+		"NvChad/nvim-colorizer.lua",
+		cmd = { "ColorizerAttachToBuffer",
+			"ColorizerToggle"
+		},
+		config = function()
+			require("colorizer").setup()
+		end
+	},
 	{
 		"winston0410/range-highlight.nvim",
 		event = "CmdlineEnter"
@@ -151,9 +166,15 @@ local plugins = {
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "BufEnter",
-		config = function()
-			require('gitsigns').setup()
-		end
+		opts = {
+			signcolumn = false,
+			numhl = true,
+			current_line_blame_opts = {
+				delay = 300,
+				ignore_whitespace = false,
+				virt_text_priority = 100,
+			},
+		},
 	}
 }
 
@@ -166,6 +187,7 @@ local vscode_plugins = {
 			require("Comment").setup()
 		end
 	},
+	"tpope/vim-fugitive"
 }
 
 if vim.g.vscode then
