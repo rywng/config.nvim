@@ -18,6 +18,7 @@ local opts = {
 }
 
 local plugins = {
+	-- main UI
 	{
 		"ellisonleao/gruvbox.nvim",
 		lazy = false,
@@ -33,22 +34,21 @@ local plugins = {
 			require("plugins.statusline")
 		end
 	},
+	-- TS, LSP, Completion
 	{
 		"williamboman/mason.nvim"
 	},
 	{
-		"nvim-treesitter/nvim-treesitter-context",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter"
-		},
+
+		"nvim-treesitter/nvim-treesitter",
+		config = function()
+			require("plugins.treesitter")
+		end
 	},
 	{
-		"HiPhish/nvim-ts-rainbow2",
+		"nvim-treesitter/nvim-treesitter-context",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
-			config = function()
-				require("plugins.treesitter")
-			end
 		},
 	},
 	{
@@ -110,15 +110,23 @@ local plugins = {
 			"jose-elias-alvarez/null-ls.nvim"
 		}
 	},
-	"machakann/vim-sandwich",
+
+	-- Code editing
+	{
+		"machakann/vim-sandwich",
+		keys = "s"
+	},
 	{
 		"numToStr/Comment.nvim",
-		event = "BufEnter",
-		config = function ()
+		keys = "g",
+		config = function()
 			require("Comment").setup()
 		end
 	},
-	"andymass/vim-matchup",
+	{
+		"andymass/vim-matchup",
+		event = "BufEnter"
+	},
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = { 'nvim-lua/plenary.nvim' },
@@ -126,13 +134,26 @@ local plugins = {
 			require("plugins.telescope")
 		end
 	},
-	{
-		"preservim/tagbar",
-		cmd = "TagbarToggle"
-	},
+
+	-- Eye candy UI
 	{
 		"winston0410/range-highlight.nvim",
 		event = "CmdlineEnter"
+	},
+	{
+		'simrat39/symbols-outline.nvim',
+		cmd = { 'SymbolsOutline', 'SymbolsOutlineOpen' },
+		opts = { autofold_depth = 12 }
+	},
+	{
+		'stevearc/dressing.nvim'
+	},
+	{
+		"lewis6991/gitsigns.nvim",
+		event = "BufEnter",
+		config = function()
+			require('gitsigns').setup()
+		end
 	}
 }
 
@@ -141,7 +162,7 @@ local vscode_plugins = {
 	{
 		"numToStr/Comment.nvim",
 		event = "BufEnter",
-		config = function ()
+		config = function()
 			require("Comment").setup()
 		end
 	},

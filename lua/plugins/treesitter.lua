@@ -1,4 +1,3 @@
-local rainbow = require("ts-rainbow")
 require("nvim-treesitter.configs").setup({
 	ensure_installed = { "lua" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 	highlight = {
@@ -11,17 +10,4 @@ require("nvim-treesitter.configs").setup({
 		use_languagetree = true,
 	},
 	indent = { enable = true },
-	rainbow = {
-		enable = true,
-		strategy = rainbow.strategy['local'],
-		hlgroups = {
-			"TSRainbowYellow",
-			"TSRainbowBlue",
-			"TSRainbowOrange",
-			"TSRainbowGreen",
-			"TSRainbowViolet",
-			"TSRainbowCyan",
-			"TSRainbowRed",
-		},
-	},
 })

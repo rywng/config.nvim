@@ -35,18 +35,9 @@ map('i', ',', ',<c-g>u', { noremap = true })
 map('i', '.', '.<c-g>u', { noremap = true })
 map('i', '!', '!<c-g>u', { noremap = true })
 map('i', '?', '?<c-g>u', { noremap = true })
-
 -- plugin mappings
--- gitsigns
-map('', '<leader>gs', ':Gitsigns toggle_signs<cr>', { silent = true })
--- toggle tagbar
-map('', '<leader>tt', ':TagbarToggle<cr>', { silent = true })
-
--- toggle Hop
-map('', '<leader>b', ':HopWordBC<cr>', { silent = true })
-map('', '<leader>w', ':HopWordAC<cr>', { silent = true })
-map('', '<leader>l', ':HopWordCurrentLine<cr>', { silent = true })
-
--- telescope stuff
+-- symbols outline
+map('n', '<leader>o', ':SymbolsOutline<cr>', { silent = true })
+-- telescope
 map('', '<leader>fd', ':Telescope fd<cr>', { silent = true })
-map('', '<leader>tb', ':Telescope buffers<cr>', { silent = true })
+map('', '<leader>bf', ':Telescope buffers<cr>', { silent = true })
