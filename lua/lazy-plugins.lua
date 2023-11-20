@@ -49,7 +49,7 @@ local plugins = {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
-		event = {"BufReadPre", "BufNewFile"},
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 		},
@@ -75,17 +75,20 @@ local plugins = {
 					"L3MON4D3/LuaSnip"
 				}
 			},
-			{
-				"windwp/nvim-autopairs",
-				config = function()
-					require("plugins.nvim-autopairs")
-				end
-			},
 		},
 		event = { "InsertEnter", "CmdlineEnter" },
 		config = function()
 			require("plugins/cmp")
 		end
+	},
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		opts = {
+			map_c_w = true,
+			enable_check_bracket_line = true,
+			check_ts = true,
+		},
 	},
 	{
 		"Dynge/gitmoji.nvim",
