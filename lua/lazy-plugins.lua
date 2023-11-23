@@ -14,6 +14,9 @@ vim.opt.rtp:prepend(lazypath)
 local opts = {
 	install = {
 		colorscheme = { "gruvbox" }
+	},
+	dev = {
+		path = "~/.local/src"
 	}
 }
 
@@ -45,7 +48,8 @@ local plugins = {
 		lazy = true,
 		config = function()
 			require("plugins.treesitter")
-		end
+		end,
+		build = ":TSUpdate"
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
@@ -63,7 +67,6 @@ local plugins = {
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
-			-- TODO: check the cmp sources
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-cmdline",
@@ -148,6 +151,7 @@ local plugins = {
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = { 'nvim-lua/plenary.nvim' },
+		event = "CmdlineEnter",
 		config = function()
 			require("plugins.telescope")
 		end
@@ -177,7 +181,8 @@ local plugins = {
 		opts = { autofold_depth = 12 }
 	},
 	{
-		'stevearc/dressing.nvim'
+		'stevearc/dressing.nvim',
+		event = "UIEnter"
 	},
 	{
 		"lewis6991/gitsigns.nvim",
@@ -191,6 +196,22 @@ local plugins = {
 				virt_text_priority = 100,
 			},
 		},
+	},
+
+	-- misc and games
+	{
+		"m4xshen/hardtime.nvim",
+		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+		opts = {
+			restriction_mode = "hint",
+			max_count = 4,
+			disable_mouse = false
+		},
+		event = "VeryLazy"
+	},
+	{
+		"seandewar/killersheep.nvim",
+		cmd = "KillKillKill"
 	}
 }
 

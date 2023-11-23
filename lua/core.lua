@@ -9,6 +9,7 @@ o.relativenumber = true
 o.number = true
 o.showmode = false
 o.scrolloff = 10
+global.netrw_bufsettings = "noma nomod relativenumber nowrap ro nobl"
 
 -- controlling
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
