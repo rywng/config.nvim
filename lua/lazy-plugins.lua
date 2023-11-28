@@ -95,7 +95,13 @@ local plugins = {
 	},
 	{
 		"Dynge/gitmoji.nvim",
-		ft = "gitcommit",
+		ft = { "gitcommit", "NeogitCommitMessage" },
+		opts = {
+			filetypes = { "gitcommit", "octo", "NeogitCommitMessage" },
+			completion = {
+				append_space = true,
+			},
+		},
 		dependencies = "hrsh7th/nvim-cmp"
 	},
 	{
@@ -151,8 +157,12 @@ local plugins = {
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		dependencies = { 'nvim-lua/plenary.nvim'},
+		dependencies = { 'nvim-lua/plenary.nvim' },
 		event = "CmdlineEnter",
+		keys = {
+			vim.keymap.set('', '<leader>fd', ':Telescope fd<cr>'),
+			vim.keymap.set('', '<leader>bf', ':Telescope buffers<cr>'),
+		},
 		config = function()
 			require("plugins.telescope")
 		end
@@ -202,6 +212,9 @@ local plugins = {
 	{
 		'simrat39/symbols-outline.nvim',
 		cmd = { 'SymbolsOutline', 'SymbolsOutlineOpen' },
+		keys = {
+			vim.keymap.set('n', '<leader>o', ':SymbolsOutline<cr>'),
+		},
 		opts = { autofold_depth = 12 }
 	},
 	{
@@ -240,7 +253,10 @@ local plugins = {
 }
 
 local vscode_plugins = {
-	"machakann/vim-sandwich",
+	{
+		"machakann/vim-sandwich",
+		keys = "s"
+	},
 	{
 		"numToStr/Comment.nvim",
 		event = "BufEnter",
@@ -248,7 +264,6 @@ local vscode_plugins = {
 			require("Comment").setup()
 		end
 	},
-	"tpope/vim-fugitive"
 }
 
 if vim.g.vscode then
