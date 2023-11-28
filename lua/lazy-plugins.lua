@@ -129,7 +129,7 @@ local plugins = {
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"williamboman/mason.nvim",
-			"jose-elias-alvarez/null-ls.nvim"
+			"nvimtools/none-ls.nvim"
 		}
 	},
 	-- Code editing
@@ -139,6 +139,7 @@ local plugins = {
 	},
 	{
 		"numToStr/Comment.nvim",
+		event = "ModeChanged",
 		keys = "g",
 		config = function()
 			require("Comment").setup()
@@ -150,15 +151,38 @@ local plugins = {
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		dependencies = { 'nvim-lua/plenary.nvim' },
+		dependencies = { 'nvim-lua/plenary.nvim'},
 		event = "CmdlineEnter",
 		config = function()
 			require("plugins.telescope")
 		end
 	},
 	{
-		"tpope/vim-fugitive",
-		event = "CmdlineEnter"
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"nvim-telescope/telescope.nvim", -- optional
+			"sindrets/diffview.nvim", -- optional
+		},
+		event = "CmdlineEnter",
+		config = true
+	},
+	{
+		-- TODO: add events, keys and cmds
+		"folke/trouble.nvim",
+		lazy = true,
+		cmd = "Troubletoggle",
+		keys = {
+			vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end),
+			vim.keymap.set("n", "<leader>xw",
+				function() require("trouble").toggle("workspace_diagnostics") end),
+			vim.keymap.set("n", "<leader>xd",
+				function() require("trouble").toggle("document_diagnostics") end),
+			vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end),
+			vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end),
+			vim.keymap.set("n", "<leader>gr", function() require("trouble").toggle("lsp_references") end)
+		},
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 
 	-- Eye candy UI
