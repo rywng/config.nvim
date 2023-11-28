@@ -174,7 +174,7 @@ local plugins = {
 			"nvim-telescope/telescope.nvim", -- optional
 			"sindrets/diffview.nvim", -- optional
 		},
-		event = "CmdlineEnter",
+		cmd = {"Neogit", "NeogitResetState"},
 		config = true
 	},
 	{
@@ -236,16 +236,6 @@ local plugins = {
 	},
 
 	-- misc and games
-	{
-		"m4xshen/hardtime.nvim",
-		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-		opts = {
-			restriction_mode = "hint",
-			max_count = 4,
-			disable_mouse = false
-		},
-		event = "VeryLazy"
-	},
 	{
 		"seandewar/killersheep.nvim",
 		cmd = "KillKillKill"
