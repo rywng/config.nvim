@@ -151,9 +151,10 @@ local plugins = {
 		dependencies = { 'nvim-lua/plenary.nvim' },
 		event = "CmdlineEnter",
 		keys = {
-			vim.keymap.set('', '<leader>tf', ':Telescope fd<cr>'),
-			vim.keymap.set('', '<leader>t/', ':Telescope live_grep<cr>'),
+			vim.keymap.set('', '<leader>t/', ':Telescope lsp_dynamic_workspace_symbols<cr>'),
+			vim.keymap.set('', '<leader>tg', ':Telescope live_grep<cr>'),
 			vim.keymap.set('', '<leader>tb', ':Telescope buffers<cr>'),
+			vim.keymap.set('', '<leader>tf', ':Telescope fd<cr>'),
 		},
 		config = function()
 			require("plugins.telescope")
