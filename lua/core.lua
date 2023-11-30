@@ -3,20 +3,20 @@ local o = vim.o
 local global = vim.g
 
 -- look and feel
-o.termguicolors = true
-o.ruler = true
-o.relativenumber = true
 o.number = true
-o.showmode = false
+o.relativenumber = true
+o.ruler = true
 o.scrolloff = 10
+o.showmode = false
+o.spell = true
 global.netrw_bufsettings = "noma nomod relativenumber nowrap ro nobl"
 
 -- controlling
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+o.autoindent = true
 o.ignorecase = true
 o.smartcase = true
 o.smartindent = true
-o.autoindent = true
 
 -- leader settings
 global.mapleader = ' '
