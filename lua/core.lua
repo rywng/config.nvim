@@ -11,6 +11,9 @@ o.ruler = true
 o.scrolloff = 10
 o.showmode = false
 o.spell = true
+if vim.fn.has("termguicolors") == 1 then
+	o.termguicolors = true
+end
 
 -- controlling
 global.mapleader = ' '

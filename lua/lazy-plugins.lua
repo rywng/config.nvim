@@ -12,9 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local opts = {
-	install = {
-		colorscheme = { "gruvbox" }
-	},
 	dev = {
 		path = "~/.local/src"
 	}
@@ -23,11 +20,15 @@ local opts = {
 local plugins = {
 	-- main UI
 	{
-		"ellisonleao/gruvbox.nvim",
+		"sainnhe/gruvbox-material",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd([[colorscheme gruvbox]])
+			vim.g.gruvbox_material_better_performance = true
+			vim.g.gruvbox_material_enable_bold = true
+			vim.g.gruvbox_material_foreground = 1
+			vim.g.gruvbox_material_diagnostic_virtual_text = 'colored'
+			vim.cmd([[colorscheme gruvbox-material]])
 		end
 	},
 	{
@@ -163,7 +164,6 @@ local plugins = {
 	{
 		"folke/trouble.nvim",
 		lazy = true,
-		cmd = "Troubletoggle",
 		keys = {
 			vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end),
 			vim.keymap.set("n", "<leader>xw",
@@ -179,7 +179,7 @@ local plugins = {
 			vim.keymap.set('n', '<leader>D', function()
 				require("trouble").toggle("lsp_type_definitions")
 			end),
-			vim.keymap.set('n', 'gd', function ()
+			vim.keymap.set('n', 'gd', function()
 				require("trouble").toggle("lsp_definitions")
 			end),
 			vim.keymap.set('n', '<leader>gi', function()
