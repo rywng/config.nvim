@@ -171,7 +171,19 @@ local plugins = {
 				function() require("trouble").toggle("document_diagnostics") end),
 			vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end),
 			vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end),
-			vim.keymap.set("n", "<leader>gr", function() require("trouble").toggle("lsp_references") end)
+			-- lsp
+			vim.keymap.set("n", "<leader>gr", function()
+				require("trouble").toggle("lsp_references")
+			end),
+			vim.keymap.set('n', '<leader>D', function()
+				require("trouble").toggle("lsp_type_definitions")
+			end),
+			vim.keymap.set('n', 'gd', function ()
+				require("trouble").toggle("lsp_definitions")
+			end),
+			vim.keymap.set('n', '<leader>gi', function()
+				require("trouble").toggle("lsp_implementations")
+			end),
 		},
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
@@ -266,7 +278,9 @@ local plugins = {
 		keys = {
 			vim.keymap.set("n", "<leader>ng", ":Neogit<cr>")
 		},
-		config = true
+		opts = {
+			disable_hint = true,
+		},
 	},
 }
 
