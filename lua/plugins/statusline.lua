@@ -2,8 +2,8 @@ require 'lualine'.setup {
 	options = {
 		icons_enabled = true,
 		theme = 'gruvbox',
-		component_separators = { '|', '|' },
-		section_separators = { '', '' },
+		component_separators = { left = "", right = "|" },
+		section_separators = "",
 		disabled_filetypes = {}
 	},
 	sections = {
@@ -12,10 +12,7 @@ require 'lualine'.setup {
 			'branch',
 		},
 		lualine_c = {
-			{
-				'filename',
-				path = 1
-			},
+			{ 'filename', path = 1 },
 			'diff',
 		},
 		lualine_x = { 'encoding', 'fileformat', 'filetype' },

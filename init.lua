@@ -1,6 +1,4 @@
--- source options
+-- source options and mappings
 require('core')
--- load mappings
-require('mappings')
 -- load plugins and its options
 require('lazy-plugins')
