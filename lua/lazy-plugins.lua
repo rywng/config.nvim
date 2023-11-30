@@ -35,7 +35,8 @@ local plugins = {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("plugins.statusline")
-		end
+		end,
+		event = "UIEnter"
 	},
 	-- TS, LSP, Completion
 	{
@@ -160,8 +161,9 @@ local plugins = {
 		dependencies = { 'nvim-lua/plenary.nvim' },
 		event = "CmdlineEnter",
 		keys = {
-			vim.keymap.set('', '<leader>fd', ':Telescope fd<cr>'),
-			vim.keymap.set('', '<leader>bf', ':Telescope buffers<cr>'),
+			vim.keymap.set('', '<leader>tf', ':Telescope fd<cr>'),
+			vim.keymap.set('', '<leader>tg', ':Telescope live_grep<cr>'),
+			vim.keymap.set('', '<leader>tb', ':Telescope buffers<cr>'),
 		},
 		config = function()
 			require("plugins.telescope")
@@ -174,11 +176,10 @@ local plugins = {
 			"nvim-telescope/telescope.nvim", -- optional
 			"sindrets/diffview.nvim", -- optional
 		},
-		cmd = {"Neogit", "NeogitResetState"},
+		cmd = { "Neogit", "NeogitResetState" },
 		config = true
 	},
 	{
-		-- TODO: add events, keys and cmds
 		"folke/trouble.nvim",
 		lazy = true,
 		cmd = "Troubletoggle",
@@ -208,6 +209,25 @@ local plugins = {
 	{
 		"winston0410/range-highlight.nvim",
 		event = "CmdlineEnter"
+	},
+	{
+		'cameron-wags/rainbow_csv.nvim',
+		config = true,
+		ft = {
+			'csv',
+			'tsv',
+			'csv_semicolon',
+			'csv_whitespace',
+			'csv_pipe',
+			'rfc_csv',
+			'rfc_semicolon'
+		},
+		cmd = {
+			'RainbowDelim',
+			'RainbowDelimSimple',
+			'RainbowDelimQuoted',
+			'RainbowMultiDelim'
+		}
 	},
 	{
 		'simrat39/symbols-outline.nvim',

@@ -1,4 +1,3 @@
--- TODO: Use vim.keymap.set()
 local map = vim.keymap.set
 
 -- vscode
