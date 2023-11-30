@@ -72,7 +72,6 @@ local plugins = {
 			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-cmdline",
 			"FelipeLema/cmp-async-path",
-			"ray-x/cmp-treesitter",
 			{
 				"saadparwaiz1/cmp_luasnip",
 				dependencies = {
@@ -84,15 +83,6 @@ local plugins = {
 		config = function()
 			require("plugins/cmp")
 		end
-	},
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		opts = {
-			map_c_w = true,
-			enable_check_bracket_line = true,
-			check_ts = true,
-		},
 	},
 	{
 		"Dynge/gitmoji.nvim",
@@ -162,22 +152,12 @@ local plugins = {
 		event = "CmdlineEnter",
 		keys = {
 			vim.keymap.set('', '<leader>tf', ':Telescope fd<cr>'),
-			vim.keymap.set('', '<leader>tg', ':Telescope live_grep<cr>'),
+			vim.keymap.set('', '<leader>t/', ':Telescope live_grep<cr>'),
 			vim.keymap.set('', '<leader>tb', ':Telescope buffers<cr>'),
 		},
 		config = function()
 			require("plugins.telescope")
 		end
-	},
-	{
-		"NeogitOrg/neogit",
-		dependencies = {
-			"nvim-lua/plenary.nvim", -- required
-			"nvim-telescope/telescope.nvim", -- optional
-			"sindrets/diffview.nvim", -- optional
-		},
-		cmd = { "Neogit", "NeogitResetState" },
-		config = true
 	},
 	{
 		"folke/trouble.nvim",
@@ -194,6 +174,21 @@ local plugins = {
 			vim.keymap.set("n", "<leader>gr", function() require("trouble").toggle("lsp_references") end)
 		},
 		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
+	{
+		"danymat/neogen",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		cmd = "Neogen",
+		opts = {
+			snippet_engine = "luasnip"
+		},
+		config = true,
+	},
+	{
+		'altermo/ultimate-autopair.nvim',
+		event = { 'InsertEnter', 'CmdlineEnter' },
+		opts = {
+		},
 	},
 
 	-- Eye candy UI
@@ -259,7 +254,20 @@ local plugins = {
 	{
 		"seandewar/killersheep.nvim",
 		cmd = "KillKillKill"
-	}
+	},
+	{
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"nvim-telescope/telescope.nvim", -- optional
+			"sindrets/diffview.nvim", -- optional
+		},
+		cmd = { "Neogit", "NeogitResetState" },
+		keys = {
+			vim.keymap.set("n", "<leader>ng", ":Neogit<cr>")
+		},
+		config = true
+	},
 }
 
 local vscode_plugins = {
