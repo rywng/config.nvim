@@ -4,16 +4,17 @@ local global = vim.g
 local map = vim.keymap.set
 
 -- look and feel
+global.netrw_banner = 0
 global.netrw_bufsettings = "noma nomod relativenumber nowrap ro nobl"
+global.netrw_liststyle = 3
+global.netrw_winsize = 25
 o.number = true
 o.relativenumber = true
 o.ruler = true
 o.scrolloff = 10
 o.showmode = false
-o.spell = true
-if vim.fn.has("termguicolors") == 1 then
-	o.termguicolors = true
-end
+o.termguicolors = true
+o.title = true
 
 -- controlling
 global.mapleader = ' '
