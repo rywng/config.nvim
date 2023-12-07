@@ -252,6 +252,20 @@ local plugins = {
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "BufEnter",
+		keys = {
+			-- View changed in git
+			vim.keymap.set('n', ']c', function()
+				if vim.wo.diff then return ']c' end
+				vim.schedule(function() require("gitsigns").next_hunk() end)
+				return '<Ignore>'
+			end, { expr = true }),
+
+			vim.keymap.set('n', '[c', function()
+				if vim.wo.diff then return '[c' end
+				vim.schedule(function() require("gitsigns").prev_hunk() end)
+				return '<Ignore>'
+			end, { expr = true })
+		},
 		opts = {
 			signcolumn = false,
 			numhl = true,
