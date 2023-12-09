@@ -63,7 +63,13 @@ local plugins = {
 	{
 		"L3MON4D3/LuaSnip",
 		dependencies = { "rafamadriz/friendly-snippets" },
-		lazy = true
+		config = function()
+			require("luasnip").setup()
+			require("luasnip.loaders.from_vscode").lazy_load()
+		end,
+		lazy = true,
+		-- install jsregexp (optional!).
+		build = "make install_jsregexp"
 	},
 	{
 		"hrsh7th/nvim-cmp",
@@ -84,17 +90,6 @@ local plugins = {
 		config = function()
 			require("plugins/cmp")
 		end
-	},
-	{
-		"Dynge/gitmoji.nvim",
-		ft = { "gitcommit", "NeogitCommitMessage" },
-		opts = {
-			filetypes = { "gitcommit", "octo", "NeogitCommitMessage" },
-			completion = {
-				append_space = true,
-			},
-		},
-		dependencies = "hrsh7th/nvim-cmp"
 	},
 	{
 		"hrsh7th/cmp-nvim-lsp",
