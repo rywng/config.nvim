@@ -157,36 +157,16 @@ local plugins = {
 			vim.keymap.set('', '<leader>tb', ':Telescope buffers<cr>'),
 			vim.keymap.set('', '<leader>tf', ':Telescope fd<cr>'),
 		},
-		config = function()
-			require("plugins.telescope")
-		end
+		opts = {
+			defaults = {
+				layout_strategy = 'flex',
+				layout_config = { flex = { flip_columns = 144 } },
+			},
+		},
 	},
 	{
-		"folke/trouble.nvim",
-		lazy = true,
-		keys = {
-			vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end),
-			vim.keymap.set("n", "<leader>xw",
-				function() require("trouble").toggle("workspace_diagnostics") end),
-			vim.keymap.set("n", "<leader>xd",
-				function() require("trouble").toggle("document_diagnostics") end),
-			vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end),
-			vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end),
-			-- lsp
-			vim.keymap.set("n", "<leader>gr", function()
-				require("trouble").toggle("lsp_references")
-			end),
-			vim.keymap.set('n', '<leader>D', function()
-				require("trouble").toggle("lsp_type_definitions")
-			end),
-			vim.keymap.set('n', 'gd', function()
-				require("trouble").toggle("lsp_definitions")
-			end),
-			vim.keymap.set('n', '<leader>gi', function()
-				require("trouble").toggle("lsp_implementations")
-			end),
-		},
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		'kevinhwang91/nvim-bqf',
+		ft = 'qf'
 	},
 	{
 		"danymat/neogen",
@@ -252,19 +232,27 @@ local plugins = {
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "BufEnter",
+		lazy = true,
 		keys = {
 			-- View changed in git
 			vim.keymap.set('n', ']c', function()
 				if vim.wo.diff then return ']c' end
-				vim.schedule(function() require("gitsigns").next_hunk() end)
+				vim.schedule(function()
+					require("gitsigns").next_hunk()
+				end)
 				return '<Ignore>'
 			end, { expr = true }),
 
 			vim.keymap.set('n', '[c', function()
 				if vim.wo.diff then return '[c' end
-				vim.schedule(function() require("gitsigns").prev_hunk() end)
+				vim.schedule(function()
+					require("gitsigns").prev_hunk()
+				end)
 				return '<Ignore>'
-			end, { expr = true })
+			end, { expr = true }),
+
+			vim.keymap.set("n", "<leader>hp",
+				function() require("gitsigns").preview_hunk() end)
 		},
 		opts = {
 			signcolumn = false,
