@@ -15,6 +15,7 @@ o.scrolloff = 10
 o.showmode = false
 o.termguicolors = true
 o.title = true
+vim.opt.diffopt = { "internal", "filler", "closeoff", "iwhite" }
 
 -- controlling
 global.mapleader = ' '
@@ -22,7 +23,7 @@ o.autoindent = true
 o.ignorecase = true
 o.smartcase = true
 o.smartindent = true
-vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect', 'noinsert' }
 
 -- vscode
 if vim.g.vscode then

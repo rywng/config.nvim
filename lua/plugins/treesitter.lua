@@ -72,20 +72,13 @@ require("nvim-treesitter.configs").setup({
 			goto_previous_start = {
 				["[m"] = "@function.outer",
 				["[["] = "@class.outer",
+				["[o"] = "@loop.*",
+				["[z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
 			},
 			goto_previous_end = {
 				["[M"] = "@function.outer",
 				["[]"] = "@class.outer",
 			},
-			-- Below will go to either the start or the end, whichever is closer.
-			-- Use if you want more granular movements
-			-- Make it even more gradual by adding multiple queries and regex.
-			goto_next = {
-				["]d"] = "@conditional.outer",
-			},
-			goto_previous = {
-				["[d"] = "@conditional.outer",
-			}
 		},
 	},
 })
