@@ -47,18 +47,15 @@ local plugins = {
 	{
 
 		"nvim-treesitter/nvim-treesitter",
-		lazy = true,
 		config = function()
 			require("plugins.treesitter")
 		end,
-		build = ":TSUpdate"
-	},
-	{
-		"nvim-treesitter/nvim-treesitter-context",
 		event = { "BufReadPre", "BufNewFile" },
+		build = ":TSUpdate",
 		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
+			"nvim-treesitter/nvim-treesitter-context",
+			"nvim-treesitter/nvim-treesitter-textobjects"
+		}
 	},
 	{
 		"L3MON4D3/LuaSnip",
