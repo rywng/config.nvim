@@ -145,21 +145,36 @@ local plugins = {
 		event = "BufEnter"
 	},
 	{
+		'nvim-telescope/telescope-fzf-native.nvim',
+		build = 'make',
+		lazy = true
+	},
+	{
 		"nvim-telescope/telescope.nvim",
-		dependencies = { 'nvim-lua/plenary.nvim' },
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			'nvim-telescope/telescope-fzf-native.nvim'
+		},
 		event = "CmdlineEnter",
 		keys = {
-			vim.keymap.set('', '<leader>t/', ':Telescope lsp_dynamic_workspace_symbols<cr>'),
-			vim.keymap.set('', '<leader>tg', ':Telescope live_grep<cr>'),
-			vim.keymap.set('', '<leader>tb', ':Telescope buffers<cr>'),
-			vim.keymap.set('', '<leader>tf', ':Telescope fd<cr>'),
+			vim.keymap.set('n', '<leader>f/', ':Telescope lsp_dynamic_workspace_symbols<cr>'),
+			vim.keymap.set('n', '<leader>fg', ':Telescope live_grep<cr>'),
+			vim.keymap.set('n', '<leader>fb', ':Telescope buffers<cr>'),
+			vim.keymap.set('n', '<leader>ff', ':Telescope find_files<cr>'),
+			vim.keymap.set('n', '<leader>fd', ':Telescope diagnostics'),
+			vim.keymap.set('n', '<leader>fs', ':Telescope spell_suggest'),
 		},
-		opts = {
-			defaults = {
-				layout_strategy = 'flex',
-				layout_config = { flex = { flip_columns = 144 } },
-			},
-		},
+		config = function()
+			require("telescope").setup {
+				defaults = {
+					layout_strategy = 'flex',
+					layout_config = {
+						flex = { flip_columns = 144 }
+					},
+				},
+			}
+			require('telescope').load_extension('fzf')
+		end
 	},
 	{
 		'kevinhwang91/nvim-bqf',
