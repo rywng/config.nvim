@@ -14,7 +14,11 @@ vim.opt.rtp:prepend(lazypath)
 local opts = {
 	dev = {
 		path = "~/.local/src"
-	}
+	},
+	install = {
+		-- try to load one of these colorschemes when starting an installation during startup
+		colorscheme = { "gruvbox-material", "habamax" },
+	},
 }
 
 local plugins = {
@@ -125,6 +129,7 @@ local plugins = {
 	-- Code editing
 	{
 		"machakann/vim-sandwich",
+		event = "ModeChanged",
 		keys = "s"
 	},
 	{
@@ -263,6 +268,10 @@ local plugins = {
 		cmd = "KillKillKill"
 	},
 	{
+		"sindrets/diffview.nvim",
+		event = "CmdlineEnter"
+	},
+	{
 		"NeogitOrg/neogit",
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- required
@@ -282,12 +291,11 @@ local plugins = {
 local vscode_plugins = {
 	{
 		"machakann/vim-sandwich",
-		event = "ModeChanged",
+		event = "BufEnter",
 		keys = "s"
 	},
 	{
 		"numToStr/Comment.nvim",
-		event = "BufEnter",
 		config = function()
 			require("Comment").setup()
 		end
