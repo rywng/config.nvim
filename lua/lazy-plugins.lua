@@ -282,6 +282,7 @@ local plugins = {
 local vscode_plugins = {
 	{
 		"machakann/vim-sandwich",
+		event = "ModeChanged",
 		keys = "s"
 	},
 	{
