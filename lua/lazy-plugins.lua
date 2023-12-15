@@ -161,8 +161,8 @@ local plugins = {
 			vim.keymap.set('n', '<leader>fg', ':Telescope live_grep<cr>'),
 			vim.keymap.set('n', '<leader>fb', ':Telescope buffers<cr>'),
 			vim.keymap.set('n', '<leader>ff', ':Telescope find_files<cr>'),
-			vim.keymap.set('n', '<leader>fd', ':Telescope diagnostics'),
-			vim.keymap.set('n', '<leader>fs', ':Telescope spell_suggest'),
+			vim.keymap.set('n', '<leader>fd', ':Telescope diagnostics<cr>'),
+			vim.keymap.set('n', '<leader>fs', ':Telescope spell_suggest<cr>'),
 		},
 		config = function()
 			require("telescope").setup {
