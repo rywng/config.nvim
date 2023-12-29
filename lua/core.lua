@@ -27,10 +27,13 @@ vim.opt.completeopt = { 'menu', 'menuone', 'noselect', 'noinsert' }
 
 -- vscode
 if vim.g.vscode then
+	vim.opt.syntax = "OFF"
+	global.clipboard = global.vscode_clipboard
 	-- undo/REDO via vscode
 	map("n", "u", "<Cmd>call VSCodeNotify('undo')<CR>")
 	map("n", "<C-r>", "<Cmd>call VSCodeNotify('redo')<CR>")
 	map("n", "gf", "<Cmd>call VSCodeCall('editor.action.openLink')<CR>", { noremap = true })
+	map({ "i", "n" }, "", "<Cmd>call VSCodeCall('editor.action.triggerParameterHints')<CR>", { noremap = true })
 end
 
 -- generic mappings
