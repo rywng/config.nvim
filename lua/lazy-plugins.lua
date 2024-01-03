@@ -146,7 +146,7 @@ local plugins = {
 	},
 	{
 		'nvim-telescope/telescope-fzf-native.nvim',
-		build = 'make',
+		build = 'CFLAGS=-march=native make',
 		lazy = true
 	},
 	{
@@ -296,7 +296,7 @@ local plugins = {
 		},
 		cmd = { "Neogit", "NeogitResetState" },
 		keys = {
-			vim.keymap.set("n", "<leader>ng", ":Neogit<cr>")
+			vim.keymap.set("n", "<leader>gi", ":Neogit<cr>")
 		},
 		opts = {
 			disable_hint = true,
