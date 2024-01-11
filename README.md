@@ -1,8 +1,8 @@
 # config.nvim/
 
-<a href="https://dotfyle.com/JuanCldCmt/confignvim"><img src="https://dotfyle.com/JuanCldCmt/confignvim/badges/plugins?style=flat" /></a>
-<a href="https://dotfyle.com/JuanCldCmt/confignvim"><img src="https://dotfyle.com/JuanCldCmt/confignvim/badges/leaderkey?style=flat" /></a>
-<a href="https://dotfyle.com/JuanCldCmt/confignvim"><img src="https://dotfyle.com/JuanCldCmt/confignvim/badges/plugin-manager?style=flat" /></a>
+<a href="https://dotfyle.com/rywng/confignvim"><img src="https://dotfyle.com/rywng/confignvim/badges/plugins?style=flat" /></a>
+<a href="https://dotfyle.com/rywng/confignvim"><img src="https://dotfyle.com/rywng/confignvim/badges/leaderkey?style=flat" /></a>
+<a href="https://dotfyle.com/rywng/confignvim"><img src="https://dotfyle.com/rywng/confignvim/badges/plugin-manager?style=flat" /></a>
 
 Minimalistic but fully functional neovim config, with full LSP and TS support and completion
 
@@ -12,102 +12,86 @@ Never override default keymap with different functionality.
 
 ## Install Instructions
 
-> Install requires Neovim 0.9+. Always review the code before installing a configuration.
+ > Install requires Neovim 0.9+. Always review the code before installing a configuration.
 
 Clone the repository and install the plugins:
 
 ```sh
-git clone git@github.com:JuanCldCmt/config.nvim ~/.config/JuanCldCmt/config.nvim
-NVIM_APPNAME=JuanCldCmt/config.nvim/ nvim --headless +"Lazy! sync" +qa
+git clone git@github.com:rywng/config.nvim ~/.config/rywng/config.nvim
+NVIM_APPNAME=rywng/config.nvim/ nvim --headless +"Lazy! sync" +qa
 ```
 
 Open Neovim with this config:
 
 ```sh
-NVIM_APPNAME=JuanCldCmt/config.nvim/ nvim
+NVIM_APPNAME=rywng/config.nvim/ nvim
 ```
 
 ## Plugins
 
 ### color
 
-- [NvChad/nvim-colorizer.lua](https://dotfyle.com/plugins/NvChad/nvim-colorizer.lua)
-- [winston0410/range-highlight.nvim](https://dotfyle.com/plugins/winston0410/range-highlight.nvim)
-
++ [NvChad/nvim-colorizer.lua](https://dotfyle.com/plugins/NvChad/nvim-colorizer.lua)
++ [winston0410/range-highlight.nvim](https://dotfyle.com/plugins/winston0410/range-highlight.nvim)
 ### colorscheme
 
-- [sainnhe/gruvbox-material](https://dotfyle.com/plugins/sainnhe/gruvbox-material)
-
++ [sainnhe/gruvbox-material](https://dotfyle.com/plugins/sainnhe/gruvbox-material)
 ### comment
 
-- [numToStr/Comment.nvim](https://dotfyle.com/plugins/numToStr/Comment.nvim)
-- [danymat/neogen](https://dotfyle.com/plugins/danymat/neogen)
-
++ [numToStr/Comment.nvim](https://dotfyle.com/plugins/numToStr/Comment.nvim)
++ [danymat/neogen](https://dotfyle.com/plugins/danymat/neogen)
 ### completion
 
-- [hrsh7th/nvim-cmp](https://dotfyle.com/plugins/hrsh7th/nvim-cmp)
-
++ [hrsh7th/nvim-cmp](https://dotfyle.com/plugins/hrsh7th/nvim-cmp)
 ### editing-support
 
-- [nvim-treesitter/nvim-treesitter-context](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-context)
-- [altermo/ultimate-autopair.nvim](https://dotfyle.com/plugins/altermo/ultimate-autopair.nvim)
-
++ [nvim-treesitter/nvim-treesitter-context](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-context)
++ [altermo/ultimate-autopair.nvim](https://dotfyle.com/plugins/altermo/ultimate-autopair.nvim)
 ### fuzzy-finder
 
-- [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
-
++ [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
 ### game
 
-- [seandewar/killersheep.nvim](https://dotfyle.com/plugins/seandewar/killersheep.nvim)
-
++ [seandewar/killersheep.nvim](https://dotfyle.com/plugins/seandewar/killersheep.nvim)
 ### git
 
-- [lewis6991/gitsigns.nvim](https://dotfyle.com/plugins/lewis6991/gitsigns.nvim)
-- [NeogitOrg/neogit](https://dotfyle.com/plugins/NeogitOrg/neogit)
-- [sindrets/diffview.nvim](https://dotfyle.com/plugins/sindrets/diffview.nvim)
-
++ [lewis6991/gitsigns.nvim](https://dotfyle.com/plugins/lewis6991/gitsigns.nvim)
++ [NeogitOrg/neogit](https://dotfyle.com/plugins/NeogitOrg/neogit)
++ [sindrets/diffview.nvim](https://dotfyle.com/plugins/sindrets/diffview.nvim)
 ### lsp
 
-- [simrat39/symbols-outline.nvim](https://dotfyle.com/plugins/simrat39/symbols-outline.nvim)
-- [nvimtools/none-ls.nvim](https://dotfyle.com/plugins/nvimtools/none-ls.nvim)
-- [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
-
++ [simrat39/symbols-outline.nvim](https://dotfyle.com/plugins/simrat39/symbols-outline.nvim)
++ [nvimtools/none-ls.nvim](https://dotfyle.com/plugins/nvimtools/none-ls.nvim)
++ [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
 ### lsp-installer
 
-- [williamboman/mason.nvim](https://dotfyle.com/plugins/williamboman/mason.nvim)
-
++ [williamboman/mason.nvim](https://dotfyle.com/plugins/williamboman/mason.nvim)
 ### nvim-dev
 
-- [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
-
++ [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
 ### plugin-manager
 
-- [folke/lazy.nvim](https://dotfyle.com/plugins/folke/lazy.nvim)
-
++ [folke/lazy.nvim](https://dotfyle.com/plugins/folke/lazy.nvim)
 ### quickfix
 
-- [kevinhwang91/nvim-bqf](https://dotfyle.com/plugins/kevinhwang91/nvim-bqf)
-
++ [kevinhwang91/nvim-bqf](https://dotfyle.com/plugins/kevinhwang91/nvim-bqf)
 ### snippet
 
-- [L3MON4D3/LuaSnip](https://dotfyle.com/plugins/L3MON4D3/LuaSnip)
-- [rafamadriz/friendly-snippets](https://dotfyle.com/plugins/rafamadriz/friendly-snippets)
-
++ [L3MON4D3/LuaSnip](https://dotfyle.com/plugins/L3MON4D3/LuaSnip)
++ [rafamadriz/friendly-snippets](https://dotfyle.com/plugins/rafamadriz/friendly-snippets)
 ### statusline
 
-- [nvim-lualine/lualine.nvim](https://dotfyle.com/plugins/nvim-lualine/lualine.nvim)
-
++ [nvim-lualine/lualine.nvim](https://dotfyle.com/plugins/nvim-lualine/lualine.nvim)
 ### syntax
 
-- [nvim-treesitter/nvim-treesitter-textobjects](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-textobjects)
-- [nvim-treesitter/nvim-treesitter](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter)
-
++ [nvim-treesitter/nvim-treesitter-textobjects](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-textobjects)
++ [nvim-treesitter/nvim-treesitter](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter)
 ### utility
 
-- [stevearc/dressing.nvim](https://dotfyle.com/plugins/stevearc/dressing.nvim)
-
++ [stevearc/dressing.nvim](https://dotfyle.com/plugins/stevearc/dressing.nvim)
 ## Language Servers
 
-- rust_analyzer
++ rust_analyzer
 
-This readme was generated by [Dotfyle](https://dotfyle.com)
+
+ This readme was generated by [Dotfyle](https://dotfyle.com)

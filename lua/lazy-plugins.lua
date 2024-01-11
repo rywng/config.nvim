@@ -231,14 +231,6 @@ local plugins = {
 		}
 	},
 	{
-		'simrat39/symbols-outline.nvim',
-		cmd = { 'SymbolsOutline', 'SymbolsOutlineOpen' },
-		keys = {
-			vim.keymap.set('n', '<leader>o', ':SymbolsOutline<cr>'),
-		},
-		opts = { autofold_depth = 12 }
-	},
-	{
 		'stevearc/dressing.nvim',
 		event = "UIEnter"
 	},
