@@ -169,7 +169,7 @@ local plugins = {
 				defaults = {
 					layout_strategy = 'flex',
 					layout_config = {
-						flex = { flip_columns = 144 }
+						flex = { flip_columns = 160 }
 					},
 				},
 			}
