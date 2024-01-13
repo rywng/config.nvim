@@ -9,7 +9,10 @@ require("nvim-treesitter.configs").setup({
 		"vim",
 		"vimdoc",
 		"query"
-	},                                  -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+	},         -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+	matchup = {
+		enable = true, -- mandatory, false will disable the whole extension
+	},
 	highlight = {
 		enable = true,              -- false will disable the whole extension
 		additional_vim_regex_highlighting = true, -- git commit, etc.

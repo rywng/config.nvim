@@ -142,7 +142,7 @@ local plugins = {
 	},
 	{
 		"andymass/vim-matchup",
-		event = "BufEnter"
+		event = { "BufReadPre", "BufNewFile" },
 	},
 	{
 		'nvim-telescope/telescope-fzf-native.nvim',
@@ -203,8 +203,15 @@ local plugins = {
 		cmd = { "ColorizerAttachToBuffer",
 			"ColorizerToggle"
 		},
+		event = "BufRead",
 		config = function()
-			require("colorizer").setup()
+			require 'colorizer'.setup {
+				filetypes = {
+					'*',
+					css = { rgb_fn = true, },
+					html = { names = false, }
+				},
+			}
 		end
 	},
 	{
