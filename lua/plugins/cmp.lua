@@ -15,18 +15,17 @@ cmp.setup({
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
-			-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
 			require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-			-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 		end,
 	},
 	mapping = {
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.confirm({ select = true })
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
+			elseif luasnip.jumpable(1) then
+				luasnip.jump(1)
+			elseif luasnip.expandable() then
+				luasnip.expand()
 			elseif has_words_before() then
 				cmp.complete()
 			else
@@ -52,7 +51,7 @@ cmp.setup({
 		-- ... Your other mappings ...
 	},
 	sources = cmp.config.sources({
-		{ name = "luasnip" }, -- For luasnip users.
+		{ name = "luasnip",   max_item_count = 4 }, -- For luasnip users.
 		{ name = "nvim_lsp" },
 		{ name = 'nvim_lua' },
 		{ name = "treesitter" },

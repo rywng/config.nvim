@@ -12,6 +12,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local opts = {
+	defaults = {
+		lazy = true,
+	},
 	dev = {
 		path = "~/.local/src"
 	},
@@ -126,6 +129,37 @@ local plugins = {
 			"nvimtools/none-ls.nvim"
 		}
 	},
+
+	-- rust lsp support
+	{
+		'mrcjkb/rustaceanvim',
+		ft = { 'rust' },
+		key = {
+			vim.keymap.set('n', '<leader>rr', ':RustLsp runnables<cr>'),
+		}
+	},
+	{
+		'saecki/crates.nvim',
+		tag = 'stable',
+		event = { "BufRead Cargo.toml" },
+		dependencies = { 'nvim-lua/plenary.nvim' },
+		config = function()
+			require('crates').setup({
+				null_ls = {
+					enabled = true,
+				},
+			})
+			-- setup cmp completion
+			vim.api.nvim_create_autocmd("BufRead", {
+				group = vim.api.nvim_create_augroup("CmpSourceCargo", { clear = true }),
+				pattern = "Cargo.toml",
+				callback = function()
+					require('cmp').setup.buffer({ sources = { { name = "crates" } } })
+				end,
+			})
+		end,
+	},
+
 	-- Code editing
 	{
 		"machakann/vim-sandwich",
@@ -195,6 +229,15 @@ local plugins = {
 		opts = {
 			tabout = { enable = true, hopout = true }
 		},
+	},
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		build = "cd app && yarn install",
+		init = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
 	},
 
 	-- Eye candy UI
@@ -294,9 +337,6 @@ local plugins = {
 			"sindrets/diffview.nvim", -- optional
 		},
 		cmd = { "Neogit", "NeogitResetState" },
-		keys = {
-			vim.keymap.set("n", "<leader>gi", ":Neogit<cr>")
-		},
 		opts = {
 			disable_hint = true,
 		},
