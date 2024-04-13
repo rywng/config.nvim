@@ -65,6 +65,15 @@ local plugins = {
 		}
 	},
 	{
+		"nvim-treesitter/nvim-treesitter-context",
+		config = function()
+			require("treesitter-context").setup {
+				multiline_threshold = 4,
+				max_lines = 8
+			}
+		end
+	},
+	{
 		"L3MON4D3/LuaSnip",
 		dependencies = { "rafamadriz/friendly-snippets" },
 		config = function()
