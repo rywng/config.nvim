@@ -101,7 +101,7 @@ local plugins = {
 		},
 		event = { "InsertEnter", "CmdlineEnter" },
 		config = function()
-			require("plugins/cmp")
+			require("plugins/nvim-cmp")
 		end
 	},
 	{
