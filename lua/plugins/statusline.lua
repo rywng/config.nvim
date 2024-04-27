@@ -1,10 +1,9 @@
-require 'lualine'.setup {
+require('lualine').setup {
 	options = {
 		icons_enabled = true,
 		theme = 'auto',
 		component_separators = "",
-		section_separators = " ",
-		disabled_filetypes = {}
+		section_separators = "",
 	},
 	sections = {
 		lualine_a = { 'mode' },

@@ -49,7 +49,6 @@ local plugins = {
 	-- TS, LSP, Completion
 	{
 		"williamboman/mason.nvim",
-		lazy = true
 	},
 	{
 
@@ -80,7 +79,6 @@ local plugins = {
 			require("luasnip").setup()
 			require("luasnip.loaders.from_vscode").lazy_load()
 		end,
-		lazy = true,
 		-- install jsregexp (optional!).
 		build = "make install_jsregexp"
 	},
@@ -110,7 +108,6 @@ local plugins = {
 		dependencies = {
 			"neovim/nvim-lspconfig",
 		},
-		lazy = true
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -190,7 +187,6 @@ local plugins = {
 	{
 		'nvim-telescope/telescope-fzf-native.nvim',
 		build = 'CFLAGS=-march=native make',
-		lazy = true
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -286,7 +282,6 @@ local plugins = {
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "BufEnter",
-		lazy = true,
 		keys = {
 			-- View changed in git
 			vim.keymap.set('n', ']c', function()
