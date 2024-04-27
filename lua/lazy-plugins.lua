@@ -168,9 +168,12 @@ local plugins = {
 
 	-- Code editing
 	{
-		"machakann/vim-sandwich",
+		"echasnovski/mini.surround",
 		event = "ModeChanged",
-		keys = "s"
+		keys = "s",
+		config = function()
+			require('mini.surround').setup()
+		end
 	},
 	{
 		"numToStr/Comment.nvim",
@@ -257,25 +260,6 @@ local plugins = {
 		event = "CmdlineEnter"
 	},
 	{
-		'cameron-wags/rainbow_csv.nvim',
-		config = true,
-		ft = {
-			'csv',
-			'tsv',
-			'csv_semicolon',
-			'csv_whitespace',
-			'csv_pipe',
-			'rfc_csv',
-			'rfc_semicolon'
-		},
-		cmd = {
-			'RainbowDelim',
-			'RainbowDelimSimple',
-			'RainbowDelimQuoted',
-			'RainbowMultiDelim'
-		}
-	},
-	{
 		'stevearc/dressing.nvim',
 		event = "UIEnter"
 	},
@@ -323,26 +307,10 @@ local plugins = {
 		"sindrets/diffview.nvim",
 		event = "CmdlineEnter"
 	},
-	{
-		"NeogitOrg/neogit",
-		dependencies = {
-			"nvim-lua/plenary.nvim", -- required
-			"nvim-telescope/telescope.nvim", -- optional
-			"sindrets/diffview.nvim", -- optional
-		},
-		cmd = { "Neogit", "NeogitResetState" },
-		opts = {
-			disable_hint = true,
-		},
-	},
 }
 
 local vscode_plugins = {
-	{
-		"machakann/vim-sandwich",
-		event = "BufEnter",
-		keys = "s"
-	},
+	{ 'echasnovski/mini.surround', version = false, lazy = false },
 	{
 		"numToStr/Comment.nvim",
 		config = function()
