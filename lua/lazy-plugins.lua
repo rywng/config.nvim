@@ -219,7 +219,25 @@ local plugins = {
 	},
 	{
 		'kevinhwang91/nvim-bqf',
-		ft = 'qf'
+		ft = 'qf',
+		opts = {
+			-- disable fugitive in preview: https://github.com/kevinhwang91/nvim-bqf?tab=readme-ov-file#customize-configuration
+			preview = {
+				should_preview_cb = function(bufnr, qwinid)
+					local ret = true
+					local bufname = vim.api.nvim_buf_get_name(bufnr)
+					local fsize = vim.fn.getfsize(bufname)
+					if fsize > 100 * 1024 then
+						-- skip file size greater than 100k
+						ret = false
+					elseif bufname:match('^fugitive://') then
+						-- skip fugitive buffer
+						ret = false
+					end
+					return ret
+				end
+			},
+		}
 	},
 	{
 		"danymat/neogen",
@@ -264,6 +282,10 @@ local plugins = {
 		event = "UIEnter"
 	},
 	{
+		"tpope/vim-fugitive",
+		event = "CmdlineEnter"
+	},
+	{
 		"lewis6991/gitsigns.nvim",
 		event = "BufEnter",
 		keys = {
@@ -302,10 +324,6 @@ local plugins = {
 	{
 		"seandewar/killersheep.nvim",
 		cmd = "KillKillKill"
-	},
-	{
-		"sindrets/diffview.nvim",
-		event = "CmdlineEnter"
 	},
 }
 
