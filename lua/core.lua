@@ -20,6 +20,7 @@ vim.opt.diffopt = { "internal", "filler", "closeoff", "iwhite" }
 -- controlling
 global.mapleader = ' '
 o.autoindent = true
+o.complete = nil
 o.ignorecase = true
 o.smartcase = true
 o.smartindent = true

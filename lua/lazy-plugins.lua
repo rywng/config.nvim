@@ -144,27 +144,6 @@ local plugins = {
 			vim.keymap.set('n', '<leader>rr', ':RustLsp runnables<cr>'),
 		}
 	},
-	{
-		'saecki/crates.nvim',
-		tag = 'stable',
-		event = { "BufRead Cargo.toml" },
-		dependencies = { 'nvim-lua/plenary.nvim' },
-		config = function()
-			require('crates').setup({
-				null_ls = {
-					enabled = true,
-				},
-			})
-			-- setup cmp completion
-			vim.api.nvim_create_autocmd("BufRead", {
-				group = vim.api.nvim_create_augroup("CmpSourceCargo", { clear = true }),
-				pattern = "Cargo.toml",
-				callback = function()
-					require('cmp').setup.buffer({ sources = { { name = "crates" } } })
-				end,
-			})
-		end,
-	},
 
 	-- Code editing
 	{
@@ -200,6 +179,7 @@ local plugins = {
 		event = "CmdlineEnter",
 		keys = {
 			vim.keymap.set('n', '<leader>f/', ':Telescope lsp_dynamic_workspace_symbols<cr>'),
+			vim.keymap.set('n', '<leader>f?', ':Telescope lsp_document_symbols<cr>'),
 			vim.keymap.set('n', '<leader>fg', ':Telescope live_grep<cr>'),
 			vim.keymap.set('n', '<leader>fb', ':Telescope buffers<cr>'),
 			vim.keymap.set('n', '<leader>ff', ':Telescope find_files<cr>'),

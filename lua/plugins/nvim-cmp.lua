@@ -16,8 +16,6 @@ cmp.setup({
 		["<C-n>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-			elseif luasnip.locally_jumpable(1) then
-				luasnip.jump(1)
 			else
 				fallback()
 			end
@@ -38,23 +36,21 @@ cmp.setup({
 				if luasnip.expandable() then
 					luasnip.expand()
 				else
-					cmp.confirm({
-						select = true,
-					})
+					cmp.confirm({ select = true })
 				end
 			elseif luasnip.locally_jumpable(1) then
 				luasnip.jump(1)
 			else
 				fallback()
 			end
-		end),
+		end, { "i", "s" }),
 		['<S-Tab>'] = cmp.mapping(function(fallback)
 			if luasnip.locally_jumpable(-1) then
 				luasnip.jump(-1)
 			else
 				fallback()
 			end
-		end),
+		end, { "i", "s" }),
 	},
 	sources = cmp.config.sources({
 		{ name = "luasnip",   max_item_count = 4 }, -- For luasnip users.
