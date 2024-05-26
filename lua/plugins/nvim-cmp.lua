@@ -53,7 +53,7 @@ cmp.setup({
 		end, { "i", "s" }),
 	},
 	sources = cmp.config.sources({
-		{ name = "luasnip",   max_item_count = 4 }, -- For luasnip users.
+		{ name = "luasnip" }, -- For luasnip users.
 		{ name = "nvim_lsp" },
 		{ name = 'nvim_lua' },
 		{ name = "treesitter" },
