@@ -56,10 +56,22 @@ cmp.setup({
 		{ name = "luasnip" }, -- For luasnip users.
 		{ name = "nvim_lsp" },
 		{ name = 'nvim_lua' },
-		{ name = "treesitter" },
 		{ name = "async_path" },
-		{ name = "gitmoji" },
-		{ name = "buffer" },
+		{
+			name = "spell",
+			option = {
+				keep_all_entries = false,
+				preselect_correct_word = true,
+			},
+		},
+		{
+			name = 'buffer',
+			option = {
+				get_bufnrs = function()
+					return vim.api.nvim_list_bufs()
+				end
+			}
+		},
 	}),
 	completion = {
 		completeopt = 'menu,menuone,noinsert'
