@@ -86,7 +86,6 @@ local plugins = {
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"FelipeLema/cmp-async-path",
-			"f3fora/cmp-spell",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-nvim-lsp",
@@ -265,6 +264,16 @@ local plugins = {
 	{
 		"tpope/vim-fugitive",
 		event = "CmdlineEnter"
+	},
+	{
+		"hedyhli/outline.nvim",
+		cmd = { "Outline", "OutlineOpen" },
+		keys = {
+			vim.keymap.set('n', '<leader>o', ':Outline<cr>'),
+		},
+		config = function ()
+			require("outline").setup({})
+		end
 	},
 	{
 		"lewis6991/gitsigns.nvim",

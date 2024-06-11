@@ -5,7 +5,6 @@ local cmp = require("cmp")
 
 
 cmp.setup({
-	-- ... Your other configuration ...
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
@@ -53,25 +52,11 @@ cmp.setup({
 		end, { "i", "s" }),
 	},
 	sources = cmp.config.sources({
+		{ name = "async_path" },
 		{ name = "luasnip" }, -- For luasnip users.
 		{ name = "nvim_lsp" },
+		{ name = 'buffer' },
 		{ name = 'nvim_lua' },
-		{ name = "async_path" },
-		{
-			name = "spell",
-			option = {
-				keep_all_entries = false,
-				preselect_correct_word = true,
-			},
-		},
-		{
-			name = 'buffer',
-			option = {
-				get_bufnrs = function()
-					return vim.api.nvim_list_bufs()
-				end
-			}
-		},
 	}),
 	completion = {
 		completeopt = 'menu,menuone,noinsert'
