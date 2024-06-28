@@ -229,12 +229,28 @@ local plugins = {
 		config = true,
 	},
 	{
-		'altermo/ultimate-autopair.nvim',
-		event = { 'InsertEnter', 'CmdlineEnter' },
+		'abecodes/tabout.nvim',
+		event = 'InsertCharPre',
 		opts = {
-			tabout = { enable = true, hopout = true }
+			tabkey = '<C-l>',
+			backwards_tabkey = '<C-h>',
+			act_as_tab = false
 		},
 	},
+	{
+		'windwp/nvim-autopairs',
+		event = "InsertEnter",
+		config = true,
+		opts = {
+			check_ts = true,
+			ts_config = {
+				lua = { 'string' },
+				javascript = { 'template_string' },
+				java = false,
+			}
+		}
+	},
+
 
 	-- Eye candy UI
 	{
@@ -271,7 +287,7 @@ local plugins = {
 		keys = {
 			vim.keymap.set('n', '<leader>o', ':Outline<cr>'),
 		},
-		config = function ()
+		config = function()
 			require("outline").setup({})
 		end
 	},

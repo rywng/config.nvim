@@ -18,32 +18,27 @@ cmp.setup({
 			else
 				fallback()
 			end
-		end, { "i", "s" }),
+		end),
 		["<C-p>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
 			else
 				fallback()
 			end
-		end, { "i", "s" }),
+		end),
 		['<C-b>'] = cmp.mapping.scroll_docs(-4),
 		['<C-f>'] = cmp.mapping.scroll_docs(4),
 		['<C-Space>'] = cmp.mapping.complete(),
 		['<C-e>'] = cmp.mapping.abort(),
-		['<Tab>'] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				if luasnip.expandable() then
-					luasnip.expand()
-				else
-					cmp.confirm({ select = true })
-				end
-			elseif luasnip.locally_jumpable(1) then
-				luasnip.jump(1)
+		['<C-y>'] = cmp.mapping.confirm { select = true },
+		['<C-l>'] = cmp.mapping(function(fallback)
+			if luasnip.locally_jumpable(1) then
+				luasnip.expand_or_jump()
 			else
 				fallback()
 			end
 		end, { "i", "s" }),
-		['<S-Tab>'] = cmp.mapping(function(fallback)
+		['<C-h>'] = cmp.mapping(function(fallback)
 			if luasnip.locally_jumpable(-1) then
 				luasnip.jump(-1)
 			else

@@ -1,13 +1,13 @@
 -- CORE SETTINGS
 local o = vim.o
-local global = vim.g
+local g = vim.g
 local map = vim.keymap.set
 
 -- look and feel
-global.netrw_banner = 0
-global.netrw_bufsettings = "noma nomod relativenumber nowrap ro nobl"
-global.netrw_liststyle = 3
-global.netrw_winsize = 25
+g.netrw_banner = 0
+g.netrw_bufsettings = "noma nomod relativenumber nowrap ro nobl"
+g.netrw_liststyle = 3
+g.netrw_winsize = 25
 o.number = true
 o.relativenumber = true
 o.ruler = true
@@ -18,8 +18,9 @@ o.title = true
 vim.opt.diffopt = { "internal", "filler", "closeoff", "iwhite" }
 
 -- controlling
-global.mapleader = ' '
+g.mapleader = ' '
 o.autoindent = true
+o.breakindent = true
 o.complete = nil
 o.ignorecase = true
 o.smartcase = true
@@ -29,7 +30,7 @@ vim.opt.completeopt = { 'menu', 'menuone', 'noselect', 'noinsert' }
 -- vscode
 if vim.g.vscode then
 	vim.opt.syntax = "OFF"
-	global.clipboard = global.vscode_clipboard
+	g.clipboard = g.vscode_clipboard
 	-- undo/REDO via vscode
 	map("n", "u", "<Cmd>call VSCodeNotify('undo')<CR>")
 	map("n", "<C-r>", "<Cmd>call VSCodeNotify('redo')<CR>")
