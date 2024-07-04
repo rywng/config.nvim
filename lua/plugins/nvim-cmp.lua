@@ -33,7 +33,7 @@ cmp.setup({
 		['<C-y>'] = cmp.mapping.confirm { select = true },
 		['<C-l>'] = cmp.mapping(function(fallback)
 			if luasnip.locally_jumpable(1) then
-				luasnip.expand_or_jump()
+				luasnip.jump(1)
 			else
 				fallback()
 			end
