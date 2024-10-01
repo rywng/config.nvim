@@ -13,7 +13,6 @@ o.relativenumber = true
 o.ruler = true
 o.scrolloff = 10
 o.showmode = false
-o.termguicolors = true -- Remove this line when updated to neovim v10 TODO
 o.title = true
 vim.opt.diffopt = { "internal", "filler", "closeoff", "iwhite" }
 

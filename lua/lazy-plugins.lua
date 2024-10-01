@@ -330,6 +330,15 @@ local plugins = {
 		"seandewar/killersheep.nvim",
 		cmd = "KillKillKill"
 	},
+	{
+		'vyfor/cord.nvim',
+		build = './build || .\\build',
+		event = 'VeryLazy',
+		config = function ()
+			require("cord").setup()
+		end
+		-- opts = { },
+	}
 }
 
 local vscode_plugins = {
