@@ -344,16 +344,6 @@ local plugins = {
 				-- workspace = 'On '.. vim.uv.os_uname().sysname .. " " .. vim.uv.os_uname().release,
 			}
 		},
-		buttons = {
-			{
-				label = 'View Repository', -- Text displayed on the button
-				url = 'git', -- URL where the button leads to ('git' = automatically fetch Git repository URL)
-			},
-			{
-				label = 'View GitHub Profile',
-				url = 'https://github.com/rywng',
-			}
-		},
 	}
 }
 
