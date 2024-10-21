@@ -287,7 +287,15 @@ local plugins = {
 			vim.keymap.set('n', '<leader>o', ':Outline<cr>'),
 		},
 		config = function()
-			require("outline").setup({})
+			require("outline").setup({
+				preview_window = {
+					auto_preview = true,
+				},
+				keymaps = {
+					peek_location = {},
+					goto_and_close = 'o'
+				}
+			})
 		end
 	},
 	{

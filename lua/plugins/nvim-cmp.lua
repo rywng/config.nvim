@@ -15,15 +15,15 @@ cmp.setup({
 		["<C-n>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-			else
-				fallback()
+			-- else
+			-- 	fallback()
 			end
 		end),
 		["<C-p>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
-			else
-				fallback()
+			-- else
+			-- 	fallback()
 			end
 		end),
 		['<C-b>'] = cmp.mapping.scroll_docs(-4),
