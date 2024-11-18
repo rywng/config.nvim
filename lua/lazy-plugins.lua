@@ -154,14 +154,6 @@ local plugins = {
 		end
 	},
 	{
-		"numToStr/Comment.nvim",
-		event = "ModeChanged",
-		keys = "g",
-		config = function()
-			require("Comment").setup()
-		end
-	},
-	{
 		"andymass/vim-matchup",
 		event = { "BufReadPre", "BufNewFile" },
 	},
