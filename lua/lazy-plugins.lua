@@ -349,12 +349,6 @@ local plugins = {
 
 local vscode_plugins = {
 	{ 'echasnovski/mini.surround', version = false, lazy = false },
-	{
-		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end
-	},
 }
 
 if vim.g.vscode then
