@@ -158,14 +158,9 @@ local plugins = {
 		event = { "BufReadPre", "BufNewFile" },
 	},
 	{
-		'nvim-telescope/telescope-fzf-native.nvim',
-		build = 'CFLAGS=-march=native make',
-	},
-	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			'nvim-lua/plenary.nvim',
-			'nvim-telescope/telescope-fzf-native.nvim'
 		},
 		event = "CmdlineEnter",
 		keys = {
@@ -185,7 +180,6 @@ local plugins = {
 					},
 				},
 			}
-			require('telescope').load_extension('fzf')
 		end
 	},
 	{
