@@ -214,26 +214,27 @@ local plugins = {
 		config = true,
 	},
 	{
-		'abecodes/tabout.nvim',
-		event = 'InsertCharPre',
-		opts = {
-			tabkey = '<C-l>',
-			backwards_tabkey = '<C-h>',
-			act_as_tab = false
-		},
-	},
-	{
 		'windwp/nvim-autopairs',
 		event = "InsertEnter",
-		config = true,
-		opts = {
-			check_ts = true,
-			ts_config = {
-				lua = { 'string' },
-				javascript = { 'template_string' },
-				java = false,
+		config = function()
+			require 'nvim-autopairs'.setup {
+				check_ts = true,
+				ts_config = {
+					lua = { 'string' },
+					javascript = { 'template_string' },
+					java = false,
+				}
 			}
-		}
+			local Rule = require('nvim-autopairs.rule')
+			local npairs = require('nvim-autopairs')
+			local cond = require('nvim-autopairs.conds')
+			-- ' is more often used in rust for lifetime
+			npairs.get_rules("'")[1].not_filetypes = { "rust" }
+			npairs.add_rules({
+				Rule("'", "'", "rust")
+				    :with_pair(cond.not_before_text("&"))
+			})
+		end
 	},
 
 
