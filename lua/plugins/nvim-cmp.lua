@@ -1,27 +1,25 @@
-require("luasnip.loaders.from_vscode").lazy_load()
-
 local luasnip = require("luasnip")
 local cmp = require("cmp")
-
 
 cmp.setup({
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
+			-- For some reason using vim.snippet work but I will play it safe.
 			require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
 		end,
 	},
 	mapping = {
 		["<C-n>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				cmp.select_next_item()
+				cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 			else
 				fallback()
 			end
 		end),
 		["<C-p>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				cmp.select_prev_item()
+				cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
 			else
 				fallback()
 			end
@@ -32,13 +30,9 @@ cmp.setup({
 		['<C-e>'] = cmp.mapping.abort(),
 		['<C-y>'] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				if luasnip.expandable() then
-					luasnip.expand()
-				else
-					cmp.confirm({
-						select = true,
-					})
-				end
+				cmp.confirm({
+					select = true,
+				})
 			else
 				fallback()
 			end
@@ -67,7 +61,7 @@ cmp.setup({
 		{ name = 'nvim_lua' },
 	}),
 	completion = {
-		completeopt = 'menu,menuone,noinsert'
+		completeopt = 'menu,menuone,noinsert,noselect'
 	}
 })
 
