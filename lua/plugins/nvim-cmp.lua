@@ -61,7 +61,7 @@ cmp.setup({
 		{ name = 'nvim_lua' },
 	}),
 	completion = {
-		completeopt = 'menu,menuone,noinsert,noselect'
+		completeopt = 'menu,menuone,noinsert'
 	}
 })
 
