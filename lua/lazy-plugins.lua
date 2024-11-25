@@ -48,9 +48,6 @@ local plugins = {
 	-- TS, LSP, Completion
 	-- The dependency is a mess, I might try to fix them sometime
 	{
-		"williamboman/mason.nvim",
-	},
-	{
 
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
@@ -114,9 +111,7 @@ local plugins = {
 		dependencies = {
 			{
 				"williamboman/mason-lspconfig.nvim",
-				dependencies = {
-					"williamboman/mason.nvim",
-				}
+				"williamboman/mason.nvim",
 			},
 		},
 		config = function()
@@ -139,10 +134,13 @@ local plugins = {
 	{
 		'mrcjkb/rustaceanvim',
 		ft = { 'rust' },
+		dependencies = {
+			"neovim/nvim-lspconfig"
+		},
 		config = function()
 			vim.keymap.set('n', '<leader>rr', ':RustLsp runnables<cr>')
-			vim.keymap.set('n', '<leader>ca', ':RustLsp codeAction<cr>')
-			vim.keymap.set('n', 'K', ":RustLsp hover actions<cr>")
+			-- Override some of generic lsp's actions
+			vim.keymap.set('n', '<leader>e', ":RustLsp renderDiagnostic<cr>")
 		end
 	},
 
