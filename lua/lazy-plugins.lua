@@ -101,7 +101,6 @@ local plugins = {
 	},
 	{
 		"hrsh7th/cmp-nvim-lsp",
-		event = { "FileType" },
 		dependencies = {
 			"neovim/nvim-lspconfig",
 		},
