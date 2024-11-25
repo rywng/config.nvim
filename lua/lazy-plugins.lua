@@ -46,6 +46,7 @@ local plugins = {
 		event = "UIEnter"
 	},
 	-- TS, LSP, Completion
+	-- The dependency is a mess, I might try to fix them sometime
 	{
 		"williamboman/mason.nvim",
 	},
@@ -103,14 +104,13 @@ local plugins = {
 	},
 	{
 		"hrsh7th/cmp-nvim-lsp",
-		event = { "BufReadPre", "BufNewFile" },
+		event = { "FileType" },
 		dependencies = {
 			"neovim/nvim-lspconfig",
 		},
 	},
 	{
 		"neovim/nvim-lspconfig",
-		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			{
 				"williamboman/mason-lspconfig.nvim",
