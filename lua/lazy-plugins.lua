@@ -139,7 +139,7 @@ local plugins = {
 		config = function()
 			vim.keymap.set('n', '<leader>rr', ':RustLsp runnables<cr>')
 			-- Override some of generic lsp's actions
-			vim.keymap.set('n', '<leader>e', ":RustLsp renderDiagnostic<cr>")
+			vim.keymap.set('n', '<leader>e', ":RustLsp renderDiagnostic current<cr>")
 		end
 	},
 
