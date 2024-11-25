@@ -22,7 +22,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 			vim.lsp.buf.format { async = true }
 		end, opts)
 		vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
-		vim.keymap.set('n', '<leader>K', vim.lsp.buf.hover, opts)
 		vim.keymap.set('n', '<leader>ci', vim.lsp.buf.incoming_calls, opts)
 		vim.keymap.set('n', '<leader>co', vim.lsp.buf.outgoing_calls, opts)
 		vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, opts)

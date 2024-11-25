@@ -120,7 +120,7 @@ local plugins = {
 			},
 		},
 		config = function()
-			require("plugins.lsp")
+			require("plugins.lsp") -- Contains lsp keys
 		end,
 	},
 	{
@@ -139,9 +139,11 @@ local plugins = {
 	{
 		'mrcjkb/rustaceanvim',
 		ft = { 'rust' },
-		key = {
-			vim.keymap.set('n', '<leader>rr', ':RustLsp runnables<cr>'),
-		}
+		config = function()
+			vim.keymap.set('n', '<leader>rr', ':RustLsp runnables<cr>')
+			vim.keymap.set('n', '<leader>ca', ':RustLsp codeAction<cr>')
+			vim.keymap.set('n', 'K', ":RustLsp hover actions<cr>")
+		end
 	},
 
 	-- Code editing
@@ -218,13 +220,13 @@ local plugins = {
 		event = "InsertEnter",
 		config = true,
 		opts = {
-				check_ts = true,
-				ts_config = {
-					lua = { 'string' },
-					javascript = { 'template_string' },
-					java = false,
-				}
+			check_ts = true,
+			ts_config = {
+				lua = { 'string' },
+				javascript = { 'template_string' },
+				java = false,
 			}
+		}
 	},
 
 
