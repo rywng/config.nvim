@@ -113,6 +113,7 @@ local plugins = {
 				"williamboman/mason.nvim",
 			},
 		},
+		event = {"BufReadPre", "BufNewFile"},
 		config = function()
 			require("plugins.lsp") -- Contains lsp keys
 		end,
