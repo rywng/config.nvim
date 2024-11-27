@@ -113,7 +113,7 @@ local plugins = {
 				"williamboman/mason.nvim",
 			},
 		},
-		event = {"BufReadPre", "BufNewFile"},
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("plugins.lsp") -- Contains lsp keys
 		end,
@@ -161,6 +161,7 @@ local plugins = {
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			'nvim-lua/plenary.nvim',
+			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' }
 		},
 		event = "CmdlineEnter",
 		keys = {
@@ -180,6 +181,8 @@ local plugins = {
 					},
 				},
 			}
+			-- load fzf
+			require('telescope').load_extension('fzf')
 		end
 	},
 	{
@@ -188,7 +191,7 @@ local plugins = {
 		opts = {
 			-- disable fugitive in preview: https://github.com/kevinhwang91/nvim-bqf?tab=readme-ov-file#customize-configuration
 			preview = {
-				should_preview_cb = function(bufnr, qwinid)
+				should_preview_cb = function(bufnr)
 					local ret = true
 					local bufname = vim.api.nvim_buf_get_name(bufnr)
 					local fsize = vim.fn.getfsize(bufname)
