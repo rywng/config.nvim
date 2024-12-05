@@ -57,7 +57,8 @@ local plugins = {
 		build = ":TSUpdate",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-context",
-			"nvim-treesitter/nvim-treesitter-textobjects"
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			"andymass/vim-matchup",
 		}
 	},
 	{
@@ -152,10 +153,6 @@ local plugins = {
 		config = function()
 			require('mini.surround').setup()
 		end
-	},
-	{
-		"andymass/vim-matchup",
-		event = { "BufReadPre", "BufNewFile" },
 	},
 	{
 		"nvim-telescope/telescope.nvim",
