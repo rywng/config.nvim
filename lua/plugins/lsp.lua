@@ -46,9 +46,16 @@ require("mason-lspconfig").setup_handlers {
 	-- The first entry (without a key) will be the default handler
 	-- and will be called for each installed server that doesn't have
 	-- a dedicated handler.
-	function(server_name) -- default handler (optional)
+	function(server_name) -- Default handler (optional)
 		require("lspconfig")[server_name].setup {}
 	end,
+
+	["clangd"] = function()
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities.offsetEncoding = { "utf-16" }
+		require("lspconfig").clangd.setup({ capabilities = capabilities })
+	end
+
 }
 
 -- customize lsp symbols
