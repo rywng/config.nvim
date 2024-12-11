@@ -76,7 +76,15 @@ local plugins = {
 		config = function()
 			require("luasnip").setup()
 			require("luasnip.loaders.from_vscode").lazy_load()
-			require("luasnip").filetype_extend("htmldjango", { "html" }) -- for some reason this is needed
+			require("luasnip.loaders.from_vscode").load({ paths = "./snippets" }) -- relative to the directory of $MYVIMRC
+			require("luasnip").filetype_extend("htmldjango", { "html" })
+			require("luasnip").filetype_extend("lua", { "luadoc" })
+			require("luasnip").filetype_extend("python", { "pydoc" })
+			require("luasnip").filetype_extend("rust", { "rustdoc" })
+			require("luasnip").filetype_extend("java", { "javadoc" })
+			require("luasnip").filetype_extend("c", { "cdoc" })
+			require("luasnip").filetype_extend("cpp", { "cppdoc" })
+			require("luasnip").filetype_extend("sh", { "shelldoc" })
 		end,
 		-- install jsregexp (optional!).
 		build = "make install_jsregexp"
