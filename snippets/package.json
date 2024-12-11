@@ -1,0 +1,19 @@
+{
+	"name": "Personal snippets",
+	"contributes": {
+		"snippets": [
+			{
+				"language": [
+					"all"
+				],
+				"path": "./all.json"
+			},
+			{
+				"language": [
+					"markdown"
+				],
+				"path": "./markdown.json"
+			}
+		]
+	}
+}

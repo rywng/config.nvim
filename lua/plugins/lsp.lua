@@ -47,7 +47,11 @@ require("mason-lspconfig").setup_handlers {
 	-- and will be called for each installed server that doesn't have
 	-- a dedicated handler.
 	function(server_name) -- Default handler (optional)
-		require("lspconfig")[server_name].setup {}
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities.textDocument.completion.completionItem.snippetSupport = true
+		require("lspconfig")[server_name].setup {
+			capabilities = capabilities
+		}
 	end,
 
 	["clangd"] = function()
@@ -57,7 +61,12 @@ require("mason-lspconfig").setup_handlers {
 	end,
 
 	["html"] = function()
-		require("lspconfig").html.setup({ filetypes = { "html", "htmldjango" } })
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities.textDocument.completion.completionItem.snippetSupport = true
+		require("lspconfig").html.setup({
+			filetypes = { "html", "htmldjango" },
+			capabilities = capabilities
+		})
 	end
 
 }
