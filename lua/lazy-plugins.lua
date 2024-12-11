@@ -76,6 +76,7 @@ local plugins = {
 		config = function()
 			require("luasnip").setup()
 			require("luasnip.loaders.from_vscode").lazy_load()
+			require("luasnip").filetype_extend("htmldjango", { "html" }) -- for some reason this is needed
 		end,
 		-- install jsregexp (optional!).
 		build = "make install_jsregexp"

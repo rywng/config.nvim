@@ -54,11 +54,15 @@ require("mason-lspconfig").setup_handlers {
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities.offsetEncoding = { "utf-16" }
 		require("lspconfig").clangd.setup({ capabilities = capabilities })
+	end,
+
+	["html"] = function()
+		require("lspconfig").html.setup({ filetypes = { "html", "htmldjango" } })
 	end
 
 }
 
--- customize lsp symbols
+-- Customize lsp symbols
 local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
