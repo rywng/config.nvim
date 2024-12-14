@@ -61,15 +61,6 @@ local plugins = {
 		}
 	},
 	{
-		"nvim-treesitter/nvim-treesitter-context",
-		config = function()
-			require("treesitter-context").setup {
-				multiline_threshold = 4,
-				max_lines = 8
-			}
-		end
-	},
-	{
 		"L3MON4D3/LuaSnip",
 		dependencies = { "rafamadriz/friendly-snippets" },
 		config = function()
@@ -242,7 +233,7 @@ local plugins = {
 		cmd = { "ColorizerAttachToBuffer",
 			"ColorizerToggle"
 		},
-		event = "BufRead",
+		event = "VeryLazy",
 		config = function()
 			require 'colorizer'.setup {
 				filetypes = {
@@ -254,12 +245,8 @@ local plugins = {
 		end
 	},
 	{
-		"winston0410/range-highlight.nvim",
-		event = "CmdlineEnter"
-	},
-	{
 		'stevearc/dressing.nvim',
-		event = "UIEnter"
+		event = "VeryLazy"
 	},
 	{
 		"tpope/vim-fugitive",
