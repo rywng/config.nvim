@@ -8,8 +8,14 @@
       "[taxonomies]",
       "tags = [\"${2:tag}\"]",
       "+++",
+      "",
       ""
     ],
     "description": "Insert TOML frontmatter to be used in static site generators"
+  },
+  "More": {
+    "prefix": ["more"],
+    "body": ["<!--more-->", "", ""],
+    "description": "Insert more delimiter to separate the content"
   }
 }
