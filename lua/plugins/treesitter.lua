@@ -12,6 +12,7 @@ require("nvim-treesitter.configs").setup({
 	},
 	matchup = {
 		enable = true,
+		include_match_words = true,
 	},
 	highlight = {
 		enable = true,              -- false will disable the whole extension
@@ -100,3 +101,8 @@ vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T_expr, { expr = t
 vim.opt.foldenable = false -- effectively disable fold on load, enable with zi
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
+-- Matchup settings
+vim.g.matchup_matchparen_offscreen = {
+	method = "popup"
+}
