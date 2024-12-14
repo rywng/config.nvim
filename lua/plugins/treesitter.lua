@@ -57,6 +57,7 @@ require("nvim-treesitter.configs").setup({
 				["]m"] = "@function.outer",
 				["]]"] = { query = "@class.outer", desc = "Next class start" },
 				["]o"] = "@loop.*",
+				["]s"] = { query = "@local.scope", query_group = "locals", desc = "Next scope" }, -- nvim builtin spell is useless
 				["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
 			},
 			goto_next_end = {
@@ -76,26 +77,16 @@ require("nvim-treesitter.configs").setup({
 		},
 		lsp_interop = {
 			enable = true,
-			border = 'none',
-			floating_preview_opts = {},
 			peek_definition_code = {
 				["<leader>df"] = "@function.outer",
-				["<leader>dF"] = "@class.outer",
+				["<leader>dc"] = "@class.outer",
 			},
 		},
 	},
 })
-local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
 
--- Repeat movement with ; and ,
--- vim way: ; goes to the direction you were moving.
-vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
-vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
--- Optionally, make builtin f, F, t, T also repeatable with ; and ,
-vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f_expr, { expr = true })
-vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F_expr, { expr = true })
-vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t_expr, { expr = true })
-vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T_expr, { expr = true })
+-- Set up repeating with TS
+require("plugins.repeat")
 
 -- Setup fold
 vim.opt.foldenable = false -- effectively disable fold on load, enable with zi

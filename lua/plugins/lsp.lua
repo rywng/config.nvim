@@ -1,6 +1,4 @@
 -- Global mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>ih',
 	function()
 		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
@@ -18,24 +16,20 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		-- Buffer local mappings.
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
 		local opts = { buffer = ev.buf }
-		vim.keymap.set('n', '<leader>wl', function()
-			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-		end, opts)
 		vim.keymap.set('n', '<leader>fm', function()
 			vim.lsp.buf.format { async = true }
 		end, opts)
-		vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
-		vim.keymap.set('n', '<leader>ci', vim.lsp.buf.incoming_calls, opts)
-		vim.keymap.set('n', '<leader>co', vim.lsp.buf.outgoing_calls, opts)
-		vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, opts)
-		vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, opts)
-		vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-		vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
-		vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
+		vim.keymap.set('n', 'grD', vim.lsp.buf.type_definition, opts)
+		vim.keymap.set('n', 'gri', vim.lsp.buf.incoming_calls, opts)
+		vim.keymap.set('n', 'gro', vim.lsp.buf.outgoing_calls, opts)
 		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
 		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-		vim.keymap.set({ 'n', 'i' }, '<C-k>', vim.lsp.buf.signature_help, opts)
-		vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+		-- according to keymaps on latest https://neovim.io/doc/user/lsp.html#lsp-defaults
+		vim.keymap.set('n', 'grn', vim.lsp.buf.rename, opts)
+		vim.keymap.set({ 'n', 'v' }, 'gra', vim.lsp.buf.code_action, opts)
+		vim.keymap.set('n', 'grr', vim.lsp.buf.references, opts)
+		vim.keymap.set('n', 'gri', vim.lsp.buf.implementation, opts)
+		vim.keymap.set({ 'n', 'i' }, '<C-s>', vim.lsp.buf.signature_help, opts)
 	end,
 })
 
