@@ -77,7 +77,7 @@ local plugins = {
 			require("luasnip").filetype_extend("sh", { "shelldoc" })
 		end,
 		-- install jsregexp (optional!).
-		build = "make install_jsregexp"
+		build = "gmake install_jsregexp"
 	},
 	{
 		"hrsh7th/nvim-cmp",
