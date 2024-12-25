@@ -256,7 +256,7 @@ local plugins = {
 		"hedyhli/outline.nvim",
 		cmd = { "Outline", "OutlineOpen" },
 		keys = {
-			vim.keymap.set('n', '<leader>o', ':Outline<cr>'),
+			vim.keymap.set('n', 'gO', ':Outline<cr>'),
 		},
 		config = function()
 			require("outline").setup({
@@ -272,7 +272,7 @@ local plugins = {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		event = 'VeryLazy' ,
+		event = 'VeryLazy',
 		opts = {
 			signcolumn = false,
 			numhl = true,

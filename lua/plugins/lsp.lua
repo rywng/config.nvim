@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set('n', '<leader>fm', function()
 			vim.lsp.buf.format { async = true }
 		end, opts)
-		vim.keymap.set('n', 'grD', vim.lsp.buf.type_definition, opts)
+		vim.keymap.set('n', 'grt', vim.lsp.buf.type_definition, opts)
 		vim.keymap.set('n', 'gri', vim.lsp.buf.incoming_calls, opts)
 		vim.keymap.set('n', 'gro', vim.lsp.buf.outgoing_calls, opts)
 		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
