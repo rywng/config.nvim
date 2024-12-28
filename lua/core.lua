@@ -37,29 +37,12 @@ if vim.g.vscode then
 	map({ "i", "n" }, "", "<Cmd>call VSCodeCall('editor.action.triggerParameterHints')<CR>", { noremap = true })
 end
 
--- generic mappings
-map('v', '<', '<gv', { noremap = true })
-map('v', '>', '>gv', { noremap = true })
+-- Fix Y, and center candidate on search
 map('n', 'Y', 'y$', { noremap = true })
 map('n', 'n', 'nzzzv', { noremap = true })
 map('n', 'N', 'Nzzzv', { noremap = true })
 
--- Shortcutting split navigation
-map('', '<A-h>', '<C-w>h')
-map('', '<A-j>', '<C-w>j')
-map('', '<A-k>', '<C-w>k')
-map('', '<A-l>', '<C-w>l')
-map('', '<A-H>', '<C-w>H')
-map('', '<A-J>', '<C-w>J')
-map('', '<A-K>', '<C-w>K')
-map('', '<A-L>', '<C-w>L')
-map('', '<M-S-.>', '<C-w>>')
-map('', '<M-S-,>', '<C-w><')
-map('', '<M-S-=>', '<C-w>+')
-map('', '<M-->', '<C-w>-')
-map('', '<A-T>', '<C-w>T')
-
--- undo to the last , . or !
+-- undo to the last , . ? or !
 map('i', ',', ',<c-g>u', { noremap = true })
 map('i', '.', '.<c-g>u', { noremap = true })
 map('i', '!', '!<c-g>u', { noremap = true })
