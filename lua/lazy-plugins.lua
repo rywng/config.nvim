@@ -288,21 +288,6 @@ local plugins = {
 	{
 		"seandewar/killersheep.nvim",
 		cmd = "KillKillKill"
-	},
-	{
-		'vyfor/cord.nvim',
-		build = './build || .\\build',
-		event = 'VeryLazy',
-		opts = {
-			display = {
-				show_cursor_position = true,
-			},
-			text = {
-				workspace = string.format('On %s %s', vim.uv.os_uname().sysname,
-					vim.uv.os_uname().release),
-				-- workspace = 'On '.. vim.uv.os_uname().sysname .. " " .. vim.uv.os_uname().release,
-			}
-		},
 	}
 }
 
