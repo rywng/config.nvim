@@ -136,20 +136,6 @@ local plugins = {
 		}
 	},
 
-	-- rust lsp support
-	{
-		'mrcjkb/rustaceanvim',
-		ft = { 'rust' },
-		dependencies = {
-			"neovim/nvim-lspconfig"
-		},
-		config = function()
-			vim.keymap.set('n', '<leader>rr', ':RustLsp runnables<cr>')
-			-- Override some of generic lsp's actions
-			vim.keymap.set('n', '<leader>e', ":RustLsp renderDiagnostic current<cr>")
-		end
-	},
-
 	-- Code editing
 	{
 		"echasnovski/mini.surround",
