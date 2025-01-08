@@ -57,7 +57,13 @@ local plugins = {
 		build = ":TSUpdate",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
-			"andymass/vim-matchup",
+			{
+				"andymass/vim-matchup",
+				keys = {
+					vim.keymap.set('n', '<leader>', ':MatchupWhereAmI<cr>', { silent = true }),
+				},
+			},
+
 		}
 	},
 	{
