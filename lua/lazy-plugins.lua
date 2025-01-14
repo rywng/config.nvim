@@ -200,14 +200,13 @@ local plugins = {
 		dependencies = "nvim-treesitter/nvim-treesitter",
 		cmd = "Neogen",
 		opts = {
-			snippet_engine = "luasnip"
+			snippet_engine = "luasnip",
+			placeholders_hl = None,
 		},
-		config = true,
 	},
 	{
 		'windwp/nvim-autopairs',
 		event = "InsertEnter",
-		config = true,
 		opts = {
 			check_ts = true,
 			ts_config = {
