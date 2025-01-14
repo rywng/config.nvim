@@ -44,14 +44,14 @@ cmp.setup({
 			else
 				fallback()
 			end
-		end),
+		end, { "i", "c", "s" }),
 		['<C-h>'] = cmp.mapping(function(fallback)
 			if luasnip.locally_jumpable(-1) then
 				luasnip.jump(-1)
 			else
 				fallback()
 			end
-		end),
+		end, { "i", "c", "s" }),
 	},
 	sources = cmp.config.sources({
 		{ name = "async_path" },
