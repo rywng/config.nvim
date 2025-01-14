@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set({ 'n', 'v' }, 'gra', vim.lsp.buf.code_action, opts)
 		vim.keymap.set('n', 'grr', vim.lsp.buf.references, opts)
 		vim.keymap.set('n', 'gri', vim.lsp.buf.implementation, opts)
-		vim.keymap.set({ 'n', 'i' }, '<C-s>', vim.lsp.buf.signature_help, opts)
+		vim.keymap.set({ 'n', 'i', 's' }, '<C-s>', vim.lsp.buf.signature_help, opts)
 	end,
 })
 
