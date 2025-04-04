@@ -22,6 +22,11 @@ local opts = {
 		-- try to load one of these colorschemes when starting an installation during startup
 		colorscheme = { "gruvbox-material", "habamax" },
 	},
+	performance = {
+		rtp = {
+			paths = { "/usr/share/vim/vimfiles" }
+		}
+	}
 }
 
 local plugins = {
