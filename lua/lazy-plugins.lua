@@ -281,6 +281,14 @@ local plugins = {
 
 	-- misc and games
 	{
+		"zapling/mason-lock.nvim",
+		init = function()
+			require("mason-lock").setup({
+				lockfile_path = vim.fn.stdpath("config") .. "/mason-lock.json", -- (default)
+			})
+		end,
+	},
+	{
 		"seandewar/killersheep.nvim",
 		cmd = "KillKillKill",
 	},
