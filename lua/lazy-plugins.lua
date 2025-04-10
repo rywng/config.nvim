@@ -16,7 +16,7 @@ local opts = {
 		lazy = true,
 	},
 	dev = {
-		path = "~/.local/src"
+		path = "~/.local/src",
 	},
 	install = {
 		-- try to load one of these colorschemes when starting an installation during startup
@@ -24,9 +24,9 @@ local opts = {
 	},
 	performance = {
 		rtp = {
-			paths = { "/usr/share/vim/vimfiles" }
-		}
-	}
+			paths = { "/usr/share/vim/vimfiles" },
+		},
+	},
 }
 
 local plugins = {
@@ -40,7 +40,7 @@ local plugins = {
 			vim.g.gruvbox_material_enable_bold = true
 			vim.g.gruvbox_material_enable_italic = true
 			vim.cmd([[colorscheme gruvbox-material]])
-		end
+		end,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
@@ -48,7 +48,7 @@ local plugins = {
 		config = function()
 			require("plugins.statusline")
 		end,
-		event = "UIEnter"
+		event = "UIEnter",
 	},
 	-- TS, LSP, Completion
 	-- The dependency is a mess, I might try to fix them sometime
@@ -65,11 +65,10 @@ local plugins = {
 			{
 				"andymass/vim-matchup",
 				keys = {
-					vim.keymap.set('n', '<leader>', ':MatchupWhereAmI<cr>', { silent = true }),
+					vim.keymap.set("n", "<leader>", ":MatchupWhereAmI<cr>", { silent = true }),
 				},
 			},
-
-		}
+		},
 	},
 	{
 		"L3MON4D3/LuaSnip",
@@ -88,7 +87,7 @@ local plugins = {
 			require("luasnip").filetype_extend("sh", { "shelldoc" })
 		end,
 		-- install jsregexp (optional!).
-		build = "gmake install_jsregexp"
+		build = "gmake install_jsregexp",
 	},
 	{
 		"hrsh7th/nvim-cmp",
@@ -101,14 +100,14 @@ local plugins = {
 			{
 				"saadparwaiz1/cmp_luasnip",
 				dependencies = {
-					"L3MON4D3/LuaSnip"
-				}
+					"L3MON4D3/LuaSnip",
+				},
 			},
 		},
 		event = { "InsertEnter", "CmdlineEnter" },
 		config = function()
 			require("plugins/nvim-cmp")
-		end
+		end,
 	},
 	{
 		"hrsh7th/cmp-nvim-lsp",
@@ -137,8 +136,8 @@ local plugins = {
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"williamboman/mason.nvim",
-			"nvimtools/none-ls.nvim"
-		}
+			"nvimtools/none-ls.nvim",
+		},
 	},
 
 	-- Code editing
@@ -147,40 +146,43 @@ local plugins = {
 		event = "ModeChanged",
 		keys = "s",
 		config = function()
-			require('mini.surround').setup()
-		end
+			require("mini.surround").setup()
+		end,
 	},
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
-			'nvim-lua/plenary.nvim',
-			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' }
+			"nvim-lua/plenary.nvim",
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
+			},
 		},
 		event = "CmdlineEnter",
 		keys = {
-			vim.keymap.set('n', '<leader>f/', ':Telescope lsp_dynamic_workspace_symbols<cr>'),
-			vim.keymap.set('n', '<leader>f?', ':Telescope lsp_document_symbols<cr>'),
-			vim.keymap.set('n', '<leader>fg', ':Telescope live_grep<cr>'),
-			vim.keymap.set('n', '<leader>fb', ':Telescope buffers<cr>'),
-			vim.keymap.set('n', '<leader>ff', ':Telescope find_files<cr>'),
-			vim.keymap.set('n', '<leader>fd', ':Telescope diagnostics<cr>'),
+			vim.keymap.set("n", "<leader>f/", ":Telescope lsp_dynamic_workspace_symbols<cr>"),
+			vim.keymap.set("n", "<leader>f?", ":Telescope lsp_document_symbols<cr>"),
+			vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<cr>"),
+			vim.keymap.set("n", "<leader>fb", ":Telescope buffers<cr>"),
+			vim.keymap.set("n", "<leader>ff", ":Telescope find_files<cr>"),
+			vim.keymap.set("n", "<leader>fd", ":Telescope diagnostics<cr>"),
 		},
 		config = function()
-			require("telescope").setup {
+			require("telescope").setup({
 				defaults = {
-					layout_strategy = 'flex',
+					layout_strategy = "flex",
 					layout_config = {
-						flex = { flip_columns = 160 }
+						flex = { flip_columns = 160 },
 					},
 				},
-			}
+			})
 			-- load fzf
-			require('telescope').load_extension('fzf')
-		end
+			require("telescope").load_extension("fzf")
+		end,
 	},
 	{
-		'kevinhwang91/nvim-bqf',
-		ft = 'qf',
+		"kevinhwang91/nvim-bqf",
+		ft = "qf",
 		opts = {
 			-- disable fugitive in preview: https://github.com/kevinhwang91/nvim-bqf?tab=readme-ov-file#customize-configuration
 			preview = {
@@ -191,14 +193,14 @@ local plugins = {
 					if fsize > 100 * 1024 then
 						-- skip file size greater than 100k
 						ret = false
-					elseif bufname:match('^fugitive://') then
+					elseif bufname:match("^fugitive://") then
 						-- skip fugitive buffer
 						ret = false
 					end
 					return ret
-				end
+				end,
 			},
-		}
+		},
 	},
 	{
 		"danymat/neogen",
@@ -210,49 +212,46 @@ local plugins = {
 		},
 	},
 	{
-		'windwp/nvim-autopairs',
+		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		opts = {
 			check_ts = true,
 			ts_config = {
-				lua = { 'string' },
-				javascript = { 'template_string' },
+				lua = { "string" },
+				javascript = { "template_string" },
 				java = false,
-			}
-		}
+			},
+		},
 	},
-
 
 	-- Eye candy UI
 	{
 		"NvChad/nvim-colorizer.lua",
-		cmd = { "ColorizerAttachToBuffer",
-			"ColorizerToggle"
-		},
+		cmd = { "ColorizerAttachToBuffer", "ColorizerToggle" },
 		event = "VeryLazy",
 		config = function()
-			require 'colorizer'.setup {
+			require("colorizer").setup({
 				filetypes = {
-					'*',
-					css = { rgb_fn = true, },
-					html = { names = false, }
+					"*",
+					css = { rgb_fn = true },
+					html = { names = false },
 				},
-			}
-		end
+			})
+		end,
 	},
 	{
-		'stevearc/dressing.nvim',
-		event = "VeryLazy"
+		"stevearc/dressing.nvim",
+		event = "VeryLazy",
 	},
 	{
 		"tpope/vim-fugitive",
-		event = "CmdlineEnter"
+		event = "CmdlineEnter",
 	},
 	{
 		"hedyhli/outline.nvim",
 		cmd = { "Outline", "OutlineOpen" },
 		keys = {
-			vim.keymap.set('n', 'gO', ':Outline<cr>'),
+			vim.keymap.set("n", "gO", ":Outline<cr>"),
 		},
 		config = function()
 			require("outline").setup({
@@ -261,14 +260,14 @@ local plugins = {
 				},
 				keymaps = {
 					peek_location = {},
-					goto_and_close = 'o'
-				}
+					goto_and_close = "o",
+				},
 			})
-		end
+		end,
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		event = 'VeryLazy',
+		event = "VeryLazy",
 		opts = {
 			signcolumn = false,
 			numhl = true,
@@ -283,12 +282,12 @@ local plugins = {
 	-- misc and games
 	{
 		"seandewar/killersheep.nvim",
-		cmd = "KillKillKill"
-	}
+		cmd = "KillKillKill",
+	},
 }
 
 local vscode_plugins = {
-	{ 'echasnovski/mini.surround', version = false, lazy = false },
+	{ "echasnovski/mini.surround", version = false, lazy = false },
 }
 
 if vim.g.vscode then
