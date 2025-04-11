@@ -17,14 +17,14 @@ o.title = true
 vim.opt.diffopt = { "internal", "filler", "closeoff", "iwhite" }
 
 -- controlling
-g.mapleader = ' '
+g.mapleader = " "
 o.autoindent = true
 o.breakindent = true
-o.complete = ''
+o.complete = ""
 o.ignorecase = true
 o.smartcase = true
 o.smartindent = true
-vim.opt.completeopt = { 'menu', 'menuone', 'noselect', 'noinsert' }
+vim.opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
 
 -- vscode
 if vim.g.vscode then
@@ -38,12 +38,24 @@ if vim.g.vscode then
 end
 
 -- Fix Y, and center candidate on search
-map('n', 'Y', 'y$', { noremap = true })
-map('n', 'n', 'nzzzv', { noremap = true })
-map('n', 'N', 'Nzzzv', { noremap = true })
+map("n", "Y", "y$", { noremap = true })
+map("n", "n", "nzzzv", { noremap = true })
+map("n", "N", "Nzzzv", { noremap = true })
 
 -- undo to the last , . ? or !
-map('i', ',', ',<c-g>u', { noremap = true })
-map('i', '.', '.<c-g>u', { noremap = true })
-map('i', '!', '!<c-g>u', { noremap = true })
-map('i', '?', '?<c-g>u', { noremap = true })
+map("i", ",", ",<c-g>u", { noremap = true })
+map("i", ".", ".<c-g>u", { noremap = true })
+map("i", "!", "!<c-g>u", { noremap = true })
+map("i", "?", "?<c-g>u", { noremap = true })
+
+-- Jump
+map({ "i", "s" }, "<C-l>", function()
+	if vim.snippet.active({ 1 }) then
+		vim.snippet.jump(1)
+	end
+end)
+map({ "i", "s" }, "<C-h>", function()
+	if vim.snippet.active({ -1 }) then
+		vim.snippet.jump(-1)
+	end
+end)
