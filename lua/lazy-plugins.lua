@@ -71,45 +71,10 @@ local plugins = {
 		},
 	},
 	{
-		"L3MON4D3/LuaSnip",
-		dependencies = { "rafamadriz/friendly-snippets" },
-		config = function()
-			require("luasnip").setup()
-			require("luasnip.loaders.from_vscode").lazy_load()
-			require("luasnip.loaders.from_vscode").load({ paths = "./snippets" }) -- relative to the directory of $MYVIMRC
-			require("luasnip").filetype_extend("htmldjango", { "html" })
-			require("luasnip").filetype_extend("lua", { "luadoc" })
-			require("luasnip").filetype_extend("python", { "pydoc" })
-			require("luasnip").filetype_extend("rust", { "rustdoc" })
-			require("luasnip").filetype_extend("java", { "javadoc" })
-			require("luasnip").filetype_extend("c", { "cdoc" })
-			require("luasnip").filetype_extend("cpp", { "cppdoc" })
-			require("luasnip").filetype_extend("sh", { "shelldoc" })
-		end,
-		-- install jsregexp (optional!).
-		build = "gmake install_jsregexp",
-	},
-	{
 		"saghen/blink.cmp",
-		-- optional: provides snippets for the snippet source
 		dependencies = { "rafamadriz/friendly-snippets" },
-
-		-- use a release tag to download pre-built binaries
 		version = "1.*",
-		-- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-		-- build = 'cargo build --release',
-		-- If you use nix, you can build from source using latest nightly rust with:
-		-- build = 'nix run .#build-plugin',
-
-		---@module 'blink.cmp'
-		---@type blink.cmp.Config
-		opts = {
-			-- Default list of enabled providers defined so that you can extend it
-			-- elsewhere in your config, without redefining it, due to `opts_extend`
-			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
-			},
-		},
+		opts = {},
 		opts_extend = { "sources.default" },
 	},
 	{
@@ -188,11 +153,8 @@ local plugins = {
 					local ret = true
 					local bufname = vim.api.nvim_buf_get_name(bufnr)
 					local fsize = vim.fn.getfsize(bufname)
-					if fsize > 100 * 1024 then
-						-- skip file size greater than 100k
-						ret = false
-					elseif bufname:match("^fugitive://") then
-						-- skip fugitive buffer
+					if fsize > 100 * 1024 or bufname:match("^fugitive://") then
+						-- skip fugitive buffer and large buffer
 						ret = false
 					end
 					return ret
@@ -204,10 +166,7 @@ local plugins = {
 		"danymat/neogen",
 		dependencies = "nvim-treesitter/nvim-treesitter",
 		cmd = "Neogen",
-		opts = {
-			snippet_engine = "luasnip",
-			placeholders_hl = None,
-		},
+		opts = {},
 	},
 	{
 		"windwp/nvim-autopairs",
