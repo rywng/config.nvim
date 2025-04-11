@@ -90,30 +90,27 @@ local plugins = {
 		build = "gmake install_jsregexp",
 	},
 	{
-		"hrsh7th/nvim-cmp",
-		dependencies = {
-			"FelipeLema/cmp-async-path",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-nvim-lua",
-			{
-				"saadparwaiz1/cmp_luasnip",
-				dependencies = {
-					"L3MON4D3/LuaSnip",
-				},
+		"saghen/blink.cmp",
+		-- optional: provides snippets for the snippet source
+		dependencies = { "rafamadriz/friendly-snippets" },
+
+		-- use a release tag to download pre-built binaries
+		version = "1.*",
+		-- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+		-- build = 'cargo build --release',
+		-- If you use nix, you can build from source using latest nightly rust with:
+		-- build = 'nix run .#build-plugin',
+
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
+		opts = {
+			-- Default list of enabled providers defined so that you can extend it
+			-- elsewhere in your config, without redefining it, due to `opts_extend`
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer" },
 			},
 		},
-		event = { "InsertEnter", "CmdlineEnter" },
-		config = function()
-			require("plugins/nvim-cmp")
-		end,
-	},
-	{
-		"hrsh7th/cmp-nvim-lsp",
-		dependencies = {
-			"neovim/nvim-lspconfig",
-		},
+		opts_extend = { "sources.default" },
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -121,6 +118,7 @@ local plugins = {
 			{
 				"williamboman/mason-lspconfig.nvim",
 				"williamboman/mason.nvim",
+				"saghen/blink.cmp",
 			},
 		},
 		event = { "BufReadPre", "BufNewFile" },

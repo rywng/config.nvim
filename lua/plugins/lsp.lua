@@ -41,21 +41,20 @@ require("mason-lspconfig").setup_handlers {
 	-- and will be called for each installed server that doesn't have
 	-- a dedicated handler.
 	function(server_name) -- Default handler (optional)
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities.textDocument.completion.completionItem.snippetSupport = true
+		local capabilities = require('blink.cmp').get_lsp_capabilities()
 		require("lspconfig")[server_name].setup {
 			capabilities = capabilities
 		}
 	end,
 
 	["clangd"] = function()
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		local capabilities = require('blink.cmp').get_lsp_capabilities()
 		capabilities.offsetEncoding = { "utf-16" }
 		require("lspconfig").clangd.setup({ capabilities = capabilities })
 	end,
 
 	["html"] = function()
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		local capabilities = require('blink.cmp').get_lsp_capabilities()
 		capabilities.textDocument.completion.completionItem.snippetSupport = true
 		require("lspconfig").html.setup({
 			filetypes = { "html", "htmldjango" },
