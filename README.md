@@ -17,7 +17,7 @@ Never override default keymap with different functionality.
 Clone the repository and install the plugins:
 
 ```sh
-git clone git@github.com:rywng/config.nvim ~/.config/rywng/config.nvim
+git clone --depth=3 git@github.com:rywng/config.nvim ~/.config/rywng/config.nvim
 NVIM_APPNAME=rywng/config.nvim/ nvim --headless +"Lazy! sync" +qa
 ```
 
