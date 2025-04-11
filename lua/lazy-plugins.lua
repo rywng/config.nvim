@@ -71,13 +71,12 @@ local plugins = {
 	},
 	{
 		"saghen/blink.cmp",
-		event = { "InsertEnter", "CmdlineEnter" },
+		event = { "InsertEnter", "CmdlineEnter", "CmdwinEnter" },
 		dependencies = { "rafamadriz/friendly-snippets" },
 		version = "1.*",
-		opts = {
-			fuzzy = { implementation = "prefer_rust" },
-		},
-		opts_extend = { "sources.default" },
+		config = function()
+			require("plugins.blink-cmp")
+		end,
 	},
 	{
 		"neovim/nvim-lspconfig",
