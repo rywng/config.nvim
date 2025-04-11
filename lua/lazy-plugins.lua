@@ -83,6 +83,7 @@ local plugins = {
 			{
 				"williamboman/mason-lspconfig.nvim",
 				"williamboman/mason.nvim",
+				"jay-babu/mason-null-ls.nvim",
 				"saghen/blink.cmp",
 			},
 		},
@@ -96,7 +97,6 @@ local plugins = {
 		config = function()
 			require("plugins.null-ls")
 		end,
-		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"williamboman/mason.nvim",
 			"nvimtools/none-ls.nvim",
