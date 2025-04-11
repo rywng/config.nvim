@@ -51,7 +51,6 @@ local plugins = {
 		event = "UIEnter",
 	},
 	-- TS, LSP, Completion
-	-- The dependency is a mess, I might try to fix them sometime
 	{
 
 		"nvim-treesitter/nvim-treesitter",
@@ -72,6 +71,7 @@ local plugins = {
 	},
 	{
 		"saghen/blink.cmp",
+		event = { "InsertEnter", "CmdlineEnter" },
 		dependencies = { "rafamadriz/friendly-snippets" },
 		version = "1.*",
 		opts = {
@@ -95,12 +95,16 @@ local plugins = {
 		end,
 	},
 	{
+		"williamboman/mason.nvim",
+		event = "CmdlineEnter",
+		opts = { ui = { icons = { package_installed = "✓" } } },
+	},
+	{
 		"jay-babu/mason-null-ls.nvim",
 		config = function()
 			require("plugins.null-ls")
 		end,
 		dependencies = {
-			"williamboman/mason.nvim",
 			"nvimtools/none-ls.nvim",
 		},
 	},
@@ -243,6 +247,7 @@ local plugins = {
 	{
 		"zapling/mason-lock.nvim",
 		event = "CmdlineEnter",
+		dependencies = { "williamboman/mason.nvim" },
 		config = function()
 			require("mason-lock").setup({
 				lockfile_path = vim.fn.stdpath("config") .. "/mason-lock.json", -- (default)
