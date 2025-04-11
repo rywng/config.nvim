@@ -1,5 +1,5 @@
 [selene]
-base = "lua53"
+base = "lua51"
 name = "vim"
 
 [vim]
