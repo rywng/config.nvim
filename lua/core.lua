@@ -3,6 +3,10 @@ local o = vim.o
 local g = vim.g
 local map = vim.keymap.set
 
+-- Neo-tree: disable netrw
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+
 -- look and feel
 g.netrw_banner = 0
 g.netrw_bufsettings = "noma nomod relativenumber nowrap ro nobl"

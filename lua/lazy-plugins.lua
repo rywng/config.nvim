@@ -50,6 +50,24 @@ local plugins = {
 		end,
 		event = "UIEnter",
 	},
+
+	-- QoL Mini Plugin
+	{
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		---@type snacks.Config
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+			bigfile = { enabled = true },
+			input = { enabled = true },
+			notifier = { enabled = true },
+			quickfile = { enabled = true },
+			statuscolumn = { enabled = true },
+		},
+	},
 	-- TS, LSP, Completion
 	{
 
@@ -118,6 +136,26 @@ local plugins = {
 		end,
 	},
 	{
+		"danymat/neogen",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		cmd = "Neogen",
+		opts = {},
+	},
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		opts = {
+			check_ts = true,
+			ts_config = {
+				lua = { "string" },
+				javascript = { "template_string" },
+				java = false,
+			},
+		},
+	},
+
+	-- Navigation
+	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -135,7 +173,6 @@ local plugins = {
 			vim.keymap.set("n", "<leader>fd", ":Telescope diagnostics<cr>"),
 			vim.keymap.set("n", "<leader>ff", ":Telescope find_files<cr>"),
 			vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<cr>"),
-			vim.keymap.set("n", "<leader>fo", ":Telescope aerial<cr>"),
 		},
 		config = function()
 			require("telescope").setup({
@@ -170,21 +207,18 @@ local plugins = {
 		},
 	},
 	{
-		"danymat/neogen",
-		dependencies = "nvim-treesitter/nvim-treesitter",
-		cmd = "Neogen",
-		opts = {},
-	},
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		},
+		lazy = false, -- neo-tree will lazily load itself
+		---@module "neo-tree"
+		---@type neotree.Config?
 		opts = {
-			check_ts = true,
-			ts_config = {
-				lua = { "string" },
-				javascript = { "template_string" },
-				java = false,
-			},
+			-- fill any relevant options here
 		},
 	},
 
@@ -204,40 +238,8 @@ local plugins = {
 		end,
 	},
 	{
-		"stevearc/dressing.nvim",
-		event = "VeryLazy",
-	},
-	{
 		"tpope/vim-fugitive",
 		event = "CmdlineEnter",
-	},
-	{
-		"stevearc/aerial.nvim",
-		cmd = { "AerialToggle", "AerialOpen" },
-		keys = {
-			vim.keymap.set("n", "gO", ":AerialOpen<cr>"),
-		},
-		opts = {
-			close_automatic_events = {
-				"switch_buffer",
-				"unsupported",
-			},
-			highlight_on_hover = true,
-			keymaps = {
-				["o"] = {
-					callback = function()
-						require("aerial").select()
-						require("aerial").close()
-					end,
-				},
-			},
-			manage_folds = true,
-			show_guides = true,
-		},
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-tree/nvim-web-devicons",
-		},
 	},
 	{
 		"lewis6991/gitsigns.nvim",
