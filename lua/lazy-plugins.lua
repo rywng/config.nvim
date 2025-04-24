@@ -93,7 +93,7 @@ local plugins = {
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			{
-				"brunotvs/mason-lspconfig.nvim",
+				"williamboman/mason-lspconfig.nvim",
 				"williamboman/mason.nvim",
 				"jay-babu/mason-null-ls.nvim",
 				"saghen/blink.cmp",
@@ -155,12 +155,12 @@ local plugins = {
 		},
 		event = "CmdlineEnter",
 		keys = {
-			vim.keymap.set("n", "<leader>f?", ":Telescope lsp_dynamic_workspace_symbols<cr>"),
-			vim.keymap.set("n", "<leader>f/", ":Telescope lsp_document_symbols<cr>"),
-			vim.keymap.set("n", "<leader>fb", ":Telescope buffers<cr>"),
-			vim.keymap.set("n", "<leader>fd", ":Telescope diagnostics<cr>"),
-			vim.keymap.set("n", "<leader>ff", ":Telescope find_files<cr>"),
+			vim.keymap.set("n", "<leader>f/", ":Telescope lsp_dynamic_workspace_symbols<cr>"),
+			vim.keymap.set("n", "<leader>f?", ":Telescope lsp_document_symbols<cr>"),
 			vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<cr>"),
+			vim.keymap.set("n", "<leader>fb", ":Telescope buffers<cr>"),
+			vim.keymap.set("n", "<leader>ff", ":Telescope find_files<cr>"),
+			vim.keymap.set("n", "<leader>fd", ":Telescope diagnostics<cr>"),
 		},
 		config = function()
 			require("telescope").setup({
@@ -232,6 +232,24 @@ local plugins = {
 	{
 		"tpope/vim-fugitive",
 		event = "CmdlineEnter",
+	},
+	{
+		"hedyhli/outline.nvim",
+		cmd = { "Outline", "OutlineOpen" },
+		keys = {
+			vim.keymap.set("n", "gO", ":Outline<cr>"),
+		},
+		config = function()
+			require("outline").setup({
+				preview_window = {
+					auto_preview = true,
+				},
+				keymaps = {
+					peek_location = {},
+					goto_and_close = "o",
+				},
+			})
+		end,
 	},
 	{
 		"lewis6991/gitsigns.nvim",
