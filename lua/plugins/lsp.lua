@@ -3,6 +3,8 @@ vim.keymap.set("n", "<leader>ih", function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end)
 
+local builtin = require('telescope.builtin')
+
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -17,16 +19,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>fm", function()
 			vim.lsp.buf.format({ async = true })
 		end, opts)
-		vim.keymap.set("n", "grt", vim.lsp.buf.type_definition, opts)
-		vim.keymap.set("n", "gri", vim.lsp.buf.incoming_calls, opts)
-		vim.keymap.set("n", "gro", vim.lsp.buf.outgoing_calls, opts)
+		vim.keymap.set("n", "grt", builtin.lsp_type_definitions, opts)
+		vim.keymap.set("n", "gri", builtin.lsp_implementations, opts)
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+		vim.keymap.set("n", "gd", builtin.lsp_definitions, opts)
 		-- according to keymaps on latest https://neovim.io/doc/user/lsp.html#lsp-defaults
 		vim.keymap.set("n", "grn", vim.lsp.buf.rename, opts)
 		vim.keymap.set({ "n", "v" }, "gra", vim.lsp.buf.code_action, opts)
-		vim.keymap.set("n", "grr", vim.lsp.buf.references, opts)
-		vim.keymap.set("n", "gri", vim.lsp.buf.implementation, opts)
+		vim.keymap.set("n", "grr", builtin.lsp_references, opts)
 		vim.keymap.set({ "n", "i", "s" }, "<C-s>", vim.lsp.buf.signature_help, opts)
 	end,
 })

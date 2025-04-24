@@ -145,6 +145,9 @@ local plugins = {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			{
+				"nvim-telescope/telescope-ui-select.nvim",
+			},
+			{
 				"nvim-telescope/telescope-fzf-native.nvim",
 				build =
 				"cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
@@ -161,6 +164,11 @@ local plugins = {
 		},
 		config = function()
 			require("telescope").setup({
+				extensions = {
+					["ui-select"] = {
+						require("telescope.themes").get_dropdown({}),
+					},
+				},
 				defaults = {
 					layout_strategy = "flex",
 					layout_config = {
@@ -170,6 +178,7 @@ local plugins = {
 			})
 			-- load fzf
 			require("telescope").load_extension("fzf")
+			require("telescope").load_extension("ui-select")
 		end,
 	},
 	{
@@ -200,9 +209,9 @@ local plugins = {
 			"MunifTanjim/nui.nvim",
 		},
 		event = "VeryLazy",
-		config = function ()
+		config = function()
 			require("plugins.neo-tree")
-		end
+		end,
 	},
 
 	-- Eye candy UI
