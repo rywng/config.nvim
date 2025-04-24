@@ -82,7 +82,7 @@ local plugins = {
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			{
-				"williamboman/mason-lspconfig.nvim",
+				"brunotvs/mason-lspconfig.nvim",
 				"williamboman/mason.nvim",
 				"jay-babu/mason-null-ls.nvim",
 				"saghen/blink.cmp",
@@ -129,12 +129,13 @@ local plugins = {
 		},
 		event = "CmdlineEnter",
 		keys = {
-			vim.keymap.set("n", "<leader>f/", ":Telescope lsp_dynamic_workspace_symbols<cr>"),
-			vim.keymap.set("n", "<leader>f?", ":Telescope lsp_document_symbols<cr>"),
-			vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<cr>"),
+			vim.keymap.set("n", "<leader>f?", ":Telescope lsp_dynamic_workspace_symbols<cr>"),
+			vim.keymap.set("n", "<leader>f/", ":Telescope lsp_document_symbols<cr>"),
 			vim.keymap.set("n", "<leader>fb", ":Telescope buffers<cr>"),
-			vim.keymap.set("n", "<leader>ff", ":Telescope find_files<cr>"),
 			vim.keymap.set("n", "<leader>fd", ":Telescope diagnostics<cr>"),
+			vim.keymap.set("n", "<leader>ff", ":Telescope find_files<cr>"),
+			vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<cr>"),
+			vim.keymap.set("n", "<leader>fo", ":Telescope aerial<cr>"),
 		},
 		config = function()
 			require("telescope").setup({
@@ -211,22 +212,32 @@ local plugins = {
 		event = "CmdlineEnter",
 	},
 	{
-		"hedyhli/outline.nvim",
-		cmd = { "Outline", "OutlineOpen" },
+		"stevearc/aerial.nvim",
+		cmd = { "AerialToggle", "AerialOpen" },
 		keys = {
-			vim.keymap.set("n", "gO", ":Outline<cr>"),
+			vim.keymap.set("n", "gO", ":AerialOpen<cr>"),
 		},
-		config = function()
-			require("outline").setup({
-				preview_window = {
-					auto_preview = true,
+		opts = {
+			close_automatic_events = {
+				"switch_buffer",
+				"unsupported",
+			},
+			highlight_on_hover = true,
+			keymaps = {
+				["o"] = {
+					callback = function()
+						require("aerial").select()
+						require("aerial").close()
+					end,
 				},
-				keymaps = {
-					peek_location = {},
-					goto_and_close = "o",
-				},
-			})
-		end,
+			},
+			manage_folds = true,
+			show_guides = true,
+		},
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
 	},
 	{
 		"lewis6991/gitsigns.nvim",
