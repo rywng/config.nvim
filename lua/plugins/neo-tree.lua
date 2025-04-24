@@ -48,4 +48,7 @@ require("neo-tree").setup({
 			["Ot"] = { "order_by_type" },
 		},
 	},
+	filesystem = {
+		hijack_netrw_behavior = "open_default",
+	},
 })
