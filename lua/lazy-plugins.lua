@@ -53,21 +53,14 @@ local plugins = {
 
 	-- QoL Mini Plugin
 	{
-		"folke/snacks.nvim",
-		priority = 1000,
-		lazy = false,
-		---@type snacks.Config
-		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
-			bigfile = { enabled = true },
-			input = { enabled = true },
-			notifier = { enabled = true },
-			quickfile = { enabled = true },
-			statuscolumn = { enabled = true },
-		},
+		"echasnovski/mini.surround",
+		event = "ModeChanged",
+		keys = "s",
+		config = function()
+			require("mini.surround").setup()
+		end,
 	},
+
 	-- TS, LSP, Completion
 	{
 
@@ -127,14 +120,6 @@ local plugins = {
 	},
 
 	-- Code editing
-	{
-		"echasnovski/mini.surround",
-		event = "ModeChanged",
-		keys = "s",
-		config = function()
-			require("mini.surround").setup()
-		end,
-	},
 	{
 		"danymat/neogen",
 		dependencies = "nvim-treesitter/nvim-treesitter",
@@ -214,12 +199,10 @@ local plugins = {
 			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 			"MunifTanjim/nui.nvim",
 		},
-		lazy = false, -- neo-tree will lazily load itself
-		---@module "neo-tree"
-		---@type neotree.Config?
-		opts = {
-			-- fill any relevant options here
-		},
+		event = "VeryLazy",
+		config = function ()
+			require("plugins.neo-tree")
+		end
 	},
 
 	-- Eye candy UI
