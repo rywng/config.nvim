@@ -2,13 +2,19 @@
 ---@type neotree.Config?
 require("neo-tree").setup({
 	open_files_using_relative_paths = true,
+	sources = {
+		"filesystem",
+		"buffers",
+		"git_status",
+		"document_symbols",
+	},
 	name = {
 		trailing_slash = true,
 	},
 	commands = {
 		-- If item is a file it will close neotree after opening it.
 		open_and_close_neotree = function(state)
-			require("neo-tree.sources.filesystem.commands").open(state)
+			require("neo-tree.sources.common.commands").open(state)
 
 			local tree = state.tree
 			local success, node = pcall(tree.get_node, tree)
