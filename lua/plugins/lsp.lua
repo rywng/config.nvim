@@ -33,25 +33,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 require("mason-lspconfig").setup({})
 -- Dynamic loading of lsp servers
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 require("mason-lspconfig").setup_handlers({
 	-- The first entry (without a key) will be the default handler
 	-- and will be called for each installed server that doesn't have
 	-- a dedicated handler.
 	function(server_name) -- Default handler (optional)
-		local capabilities = require("blink.cmp").get_lsp_capabilities()
 		require("lspconfig")[server_name].setup({
 			capabilities = capabilities,
 		})
 	end,
 
 	["clangd"] = function()
-		local capabilities = require("blink.cmp").get_lsp_capabilities()
 		capabilities.offsetEncoding = { "utf-16" }
 		require("lspconfig").clangd.setup({ capabilities = capabilities })
 	end,
 
 	["html"] = function()
-		local capabilities = require("blink.cmp").get_lsp_capabilities()
 		capabilities.textDocument.completion.completionItem.snippetSupport = true
 		require("lspconfig").html.setup({
 			filetypes = { "html", "htmldjango" },
