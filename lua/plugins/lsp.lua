@@ -3,7 +3,7 @@ vim.keymap.set("n", "<leader>ih", function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end)
 
-local builtin = require('telescope.builtin')
+local builtin = require("telescope.builtin")
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -33,7 +33,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 require("mason-lspconfig").setup({})
 -- Dynamic loading of lsp servers
-local capabilities = require("blink.cmp").get_lsp_capabilities()
+local capabilities = require("blink.cmp").get_lsp_capabilities() -- TODO, this may introduce race condition
+-- Use something like clone
 require("mason-lspconfig").setup_handlers({
 	-- The first entry (without a key) will be the default handler
 	-- and will be called for each installed server that doesn't have
@@ -53,6 +54,37 @@ require("mason-lspconfig").setup_handlers({
 		capabilities.textDocument.completion.completionItem.snippetSupport = true
 		require("lspconfig").html.setup({
 			filetypes = { "html", "htmldjango" },
+			capabilities = capabilities,
+		})
+	end,
+
+	["tailwindcss"] = function()
+		require("lspconfig").tailwindcss.setup({
+			settings = {
+				tailwindCSS = {
+					includeLanguages = {
+						rust = "html",
+					},
+					experimental = {
+						classRegex = {
+							'class:\\s*"(.*)"',
+						},
+					},
+				},
+			},
+			capabilities = capabilities,
+		})
+	end,
+
+	["rust_analyzer"] = function()
+		require("lspconfig").rust_analyzer.setup({
+			settings = {
+				["rust-analyzer"] = {
+					cargo = {
+						features = "all",
+					},
+				},
+			},
 			capabilities = capabilities,
 		})
 	end,
