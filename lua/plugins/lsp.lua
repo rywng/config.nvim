@@ -1,8 +1,3 @@
--- Global mappings.
-vim.keymap.set("n", "<leader>ih", function()
-	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-end)
-
 local builtin = require("telescope.builtin")
 
 -- Use LspAttach autocommand to only map the following keys
@@ -20,20 +15,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.lsp.buf.format({ async = true })
 		end, opts)
 		vim.keymap.set("n", "grt", builtin.lsp_type_definitions, opts)
-		vim.keymap.set("n", "gri", builtin.lsp_implementations, opts)
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 		vim.keymap.set("n", "gd", builtin.lsp_definitions, opts)
 		-- according to keymaps on latest https://neovim.io/doc/user/lsp.html#lsp-defaults
 		vim.keymap.set("n", "grn", vim.lsp.buf.rename, opts)
 		vim.keymap.set({ "n", "v" }, "gra", vim.lsp.buf.code_action, opts)
 		vim.keymap.set("n", "grr", builtin.lsp_references, opts)
+		vim.keymap.set("n", "gri", builtin.lsp_implementations, opts)
 		vim.keymap.set({ "n", "i", "s" }, "<C-s>", vim.lsp.buf.signature_help, opts)
+		-- Inlay hint
+		vim.keymap.set("n", "<leader>ih", function()
+			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+		end)
 	end,
 })
-
--- Customize lsp symbols
-local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = nil })
-end
