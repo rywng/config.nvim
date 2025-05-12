@@ -92,31 +92,23 @@ local plugins = {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			{
-				"williamboman/mason-lspconfig.nvim",
-				"williamboman/mason.nvim",
-				"jay-babu/mason-null-ls.nvim",
-				"saghen/blink.cmp",
-			},
+			"saghen/blink.cmp",
 		},
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("plugins.lsp") -- Contains lsp keys
+			require("plugins.lsp-servers")
 		end,
 	},
 	{
-		"williamboman/mason.nvim",
-		event = "CmdlineEnter",
-		opts = { ui = { icons = { package_installed = "✓" } } },
-	},
-	{
-		"jay-babu/mason-null-ls.nvim",
+		"nvimtools/none-ls.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("plugins.null-ls")
 		end,
-		dependencies = {
-			"nvimtools/none-ls.nvim",
-		},
 	},
 
 	-- Code editing
@@ -253,16 +245,6 @@ local plugins = {
 	},
 
 	-- misc and games
-	{
-		"zapling/mason-lock.nvim",
-		event = "CmdlineEnter",
-		dependencies = { "williamboman/mason.nvim" },
-		config = function()
-			require("mason-lock").setup({
-				lockfile_path = vim.fn.stdpath("config") .. "/mason-lock.json", -- (default)
-			})
-		end,
-	},
 	{
 		"seandewar/killersheep.nvim",
 		cmd = "KillKillKill",
