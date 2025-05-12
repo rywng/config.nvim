@@ -53,3 +53,12 @@ vim.lsp.config('lua_ls', {
 vim.lsp.enable("rust_analyzer")
 -- Nix
 vim.lsp.enable("nil_ls")
+vim.lsp.config("nil_ls", {
+	settings = {
+		['nil'] = {
+			formatting = {
+				command = { "alejandra" },
+			},
+		},
+	},
+})
