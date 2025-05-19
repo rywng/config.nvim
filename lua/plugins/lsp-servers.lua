@@ -62,3 +62,5 @@ vim.lsp.config("nil_ls", {
 		},
 	},
 })
+-- Toml
+vim.lsp.enable("taplo")
