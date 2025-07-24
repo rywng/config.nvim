@@ -3,6 +3,7 @@ null_ls.setup({
 	sources = {
 		null_ls.builtins.code_actions.gitsigns,
 		null_ls.builtins.diagnostics.selene,
+		null_ls.builtins.formatting.prettierd,
 		function()
 			if vim.fn.executable("dx") == 1 then
 				return null_ls.builtins.formatting.dxfmt
