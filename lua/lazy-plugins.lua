@@ -83,7 +83,7 @@ local plugins = {
 		dependencies = {
 			"saghen/blink.cmp",
 		},
-		event = { "BufReadPre", "BufNewFile" },
+		event = "VeryLazy",
 		config = function()
 			require("plugins.lsp") -- Contains lsp keys
 			require("plugins.lsp-servers")
@@ -94,7 +94,7 @@ local plugins = {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-		event = { "BufReadPre", "BufNewFile" },
+		event = "VeryLazy",
 		config = function()
 			require("plugins.null-ls")
 		end,
