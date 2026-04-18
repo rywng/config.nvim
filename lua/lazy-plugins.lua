@@ -57,17 +57,21 @@ local plugins = {
 		"echasnovski/mini.surround",
 		event = "ModeChanged",
 		keys = "s",
-		config = function()
-			require("mini.surround").setup()
-		end,
+		opts = {}
 	},
 
 	-- TS, LSP, Completion
 	{
 		"andymass/vim-matchup",
+		lazy = false, -- This only works with lazy = false. It's 3ms more to the loading time.
 		keys = {
 			vim.keymap.set("n", "<leader>", ":MatchupWhereAmI<cr>", { silent = true }),
 		},
+		opts = {
+			treesitter = {
+				stopline = 500,
+			}
+		}
 	},
 	{
 		"saghen/blink.cmp",
@@ -82,6 +86,7 @@ local plugins = {
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"saghen/blink.cmp",
+			"nvimtools/none-ls.nvim",
 		},
 		event = "VeryLazy",
 		config = function()
@@ -94,7 +99,6 @@ local plugins = {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-		event = "VeryLazy",
 		config = function()
 			require("plugins.null-ls")
 		end,
