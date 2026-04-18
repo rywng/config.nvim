@@ -165,15 +165,9 @@ local plugins = {
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "VeryLazy",
-		opts = {
-			signcolumn = false,
-			numhl = true,
-			current_line_blame_opts = {
-				delay = 300,
-				ignore_whitespace = false,
-				virt_text_priority = 100,
-			},
-		},
+		config = function()
+			require("plugins.gitsigns")
+		end
 	},
 
 	-- misc and games
