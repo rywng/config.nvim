@@ -125,8 +125,9 @@ local plugins = {
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",
 				build =
-				"cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
+				'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install'
 			},
+			dependencies = { "nvim-tree/nvim-web-devicons" },
 		},
 		event = "CmdlineEnter",
 		keys = {
@@ -143,6 +144,9 @@ local plugins = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown({}),
 					},
+					fzf = {
+						case_mode = "respect_case",
+					}
 				},
 				defaults = {
 					layout_strategy = "flex",
