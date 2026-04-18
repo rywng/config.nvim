@@ -6,6 +6,7 @@ if not vim.loop.fs_stat(lazypath) then
 		"--filter=blob:none",
 		"https://github.com/folke/lazy.nvim.git",
 		"--branch=stable", -- latest stable release
+		"--depth=1",
 		lazypath,
 	})
 end
@@ -63,21 +64,9 @@ local plugins = {
 
 	-- TS, LSP, Completion
 	{
-
-		"nvim-treesitter/nvim-treesitter",
-		config = function()
-			require("plugins.treesitter")
-		end,
-		event = { "BufReadPre", "BufNewFile" },
-		build = ":TSUpdate",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-			{
-				"andymass/vim-matchup",
-				keys = {
-					vim.keymap.set("n", "<leader>", ":MatchupWhereAmI<cr>", { silent = true }),
-				},
-			},
+		"andymass/vim-matchup",
+		keys = {
+			vim.keymap.set("n", "<leader>", ":MatchupWhereAmI<cr>", { silent = true }),
 		},
 	},
 	{
