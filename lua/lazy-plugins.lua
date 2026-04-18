@@ -177,14 +177,5 @@ local plugins = {
 	},
 }
 
-local vscode_plugins = {
-	{ "echasnovski/mini.surround", version = false, lazy = false },
-}
-
-if vim.g.vscode then
-	-- VSCode extension
-	require("lazy").setup(vscode_plugins, opts)
-else
-	-- ordinary Neovim
-	require("lazy").setup(plugins, opts)
-end
+-- ordinary Neovim
+require("lazy").setup(plugins, opts)
