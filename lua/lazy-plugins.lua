@@ -113,12 +113,6 @@ local plugins = {
 
 	-- Code editing
 	{
-		"danymat/neogen",
-		dependencies = "nvim-treesitter/nvim-treesitter",
-		cmd = "Neogen",
-		opts = {},
-	},
-	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		opts = {
@@ -173,63 +167,8 @@ local plugins = {
 			require("telescope").load_extension("ui-select")
 		end,
 	},
-	{
-		"kevinhwang91/nvim-bqf",
-		ft = "qf",
-		opts = {
-			-- disable fugitive in preview: https://github.com/kevinhwang91/nvim-bqf?tab=readme-ov-file#customize-configuration
-			preview = {
-				should_preview_cb = function(bufnr)
-					local ret = true
-					local bufname = vim.api.nvim_buf_get_name(bufnr)
-					local fsize = vim.fn.getfsize(bufname)
-					if fsize > 100 * 1024 or bufname:match("^fugitive://") then
-						-- skip fugitive buffer and large buffer
-						ret = false
-					end
-					return ret
-				end,
-			},
-		},
-	},
 
 	-- Eye candy UI
-	{
-		"NvChad/nvim-colorizer.lua",
-		cmd = { "ColorizerAttachToBuffer", "ColorizerToggle" },
-		event = "VeryLazy",
-		config = function()
-			require("colorizer").setup({
-				filetypes = {
-					"*",
-					css = { rgb_fn = true },
-					html = { names = false },
-				},
-			})
-		end,
-	},
-	{
-		"tpope/vim-fugitive",
-		event = "CmdlineEnter",
-	},
-	{
-		"hedyhli/outline.nvim",
-		cmd = { "Outline", "OutlineOpen" },
-		keys = {
-			vim.keymap.set("n", "gO", ":Outline<cr>"),
-		},
-		config = function()
-			require("outline").setup({
-				preview_window = {
-					auto_preview = true,
-				},
-				keymaps = {
-					peek_location = {},
-					goto_and_close = "o",
-				},
-			})
-		end,
-	},
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "VeryLazy",
