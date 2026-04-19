@@ -145,9 +145,6 @@ local plugins = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown({}),
 					},
-					fzf = {
-						case_mode = "respect_case",
-					}
 				},
 				defaults = {
 					layout_strategy = "flex",
