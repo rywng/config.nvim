@@ -24,7 +24,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 vim.diagnostic.config({
-	virtual_lines = true,
+	virtual_lines = {
+		severity = vim.diagnostic.severity.ERROR
+
+	},
+	virtual_text =  {
+		severity = {
+			max = vim.diagnostic.severity.WARN
+		}
+	},
 	jump = {
 		float = true
 	}
