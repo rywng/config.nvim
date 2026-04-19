@@ -59,3 +59,10 @@ map({ "i", "s" }, "<C-h>", function()
 		vim.snippet.jump(-1)
 	end
 end)
+
+-- Minimal treesitter setup
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function(ev)
+        pcall(vim.treesitter.start, ev.buf)
+    end
+})
