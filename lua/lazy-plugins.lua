@@ -135,12 +135,9 @@ local plugins = {
 		},
 		event = "CmdlineEnter",
 		keys = {
-			vim.keymap.set("n", "<leader>f/", ":Telescope lsp_dynamic_workspace_symbols<cr>"),
-			vim.keymap.set("n", "<leader>f?", ":Telescope lsp_document_symbols<cr>"),
 			vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<cr>"),
 			vim.keymap.set("n", "<leader>fb", ":Telescope buffers<cr>"),
 			vim.keymap.set("n", "<leader>ff", ":Telescope find_files<cr>"),
-			vim.keymap.set("n", "<leader>fd", ":Telescope diagnostics<cr>"),
 		},
 		config = function()
 			require("telescope").setup({
@@ -159,9 +156,8 @@ local plugins = {
 					},
 				},
 			})
-			-- load fzf
 			require("telescope").load_extension("fzf")
-			require("telescope").load_extension("ui-select")
+			require("telescope").load_extension("ui-select") -- make nvim's ui_select use telescope, like code actions
 		end,
 	},
 
