@@ -38,4 +38,4 @@ vim.lsp.enable("taplo")
 -- Clang
 vim.lsp.enable("clangd")
 -- Python
-vim.lsp.enable("zuban")
+vim.lsp.enable("pylsp")
