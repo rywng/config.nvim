@@ -1,6 +1,6 @@
 -- Reference :h lspconfig-all
 -- Lua
-vim.lsp.config['lua_ls'] = {
+vim.lsp.config('lua_ls', {
 	-- Command and arguments to start the server.
 	cmd = { 'lua-language-server' },
 	-- Filetypes to automatically attach to.
@@ -18,7 +18,7 @@ vim.lsp.config['lua_ls'] = {
 			}
 		}
 	}
-}
+})
 vim.lsp.enable('lua_ls')
 -- Rust
 vim.lsp.enable("rust_analyzer")
@@ -38,7 +38,7 @@ vim.lsp.enable("taplo")
 -- Clang
 vim.lsp.enable("clangd")
 -- Python
-vim.lsp.config['pylsp'] = {
+vim.lsp.config('pylsp', {
 	settings = {
 		pylsp = {
 			plugins = {
@@ -48,5 +48,5 @@ vim.lsp.config['pylsp'] = {
 			}
 		}
 	}
-}
+})
 vim.lsp.enable("pylsp")
