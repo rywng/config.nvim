@@ -38,15 +38,4 @@ vim.lsp.enable("taplo")
 -- Clang
 vim.lsp.enable("clangd")
 -- Python
-vim.lsp.config('pylsp', {
-	settings = {
-		pylsp = {
-			plugins = {
-				rope_autoimport = {
-					enabled = true
-				}
-			}
-		}
-	}
-})
-vim.lsp.enable("pylsp")
+vim.lsp.enable('ty')
