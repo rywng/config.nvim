@@ -39,3 +39,4 @@ vim.lsp.enable("taplo")
 vim.lsp.enable("clangd")
 -- Python
 vim.lsp.enable('ty')
+vim.lsp.enable('ruff')
