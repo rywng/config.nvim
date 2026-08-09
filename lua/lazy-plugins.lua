@@ -43,14 +43,6 @@ local plugins = {
 			vim.cmd([[colorscheme gruvbox-material]])
 		end,
 	},
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("plugins.statusline")
-		end,
-		event = "UIEnter",
-	},
 
 	-- QoL Mini Plugin
 	{
