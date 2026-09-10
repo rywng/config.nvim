@@ -7,9 +7,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
 		-- Buffer local mappings. See `:help vim.lsp.*` for documentation on any of the below functions
 		local opts = { buffer = ev.buf }
-		vim.keymap.set("n", "<leader>fm", function()
-			vim.lsp.buf.format({ async = true })
-		end, opts)
+		vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format, opts)
 		-- see :h lsp-defaults. Use telescope for handling these.
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 		vim.keymap.set("n", "gd", builtin.lsp_definitions, opts)
