@@ -14,8 +14,6 @@ vim.lsp.config("nil_ls", {
 	},
 })
 vim.lsp.enable("nil_ls")
--- Toml
-vim.lsp.enable("taplo")
 -- Clang
 vim.lsp.enable("clangd")
 -- Python
