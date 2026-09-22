@@ -19,3 +19,5 @@ vim.lsp.enable('ty')
 vim.lsp.enable('ruff')
 -- Arduino
 vim.lsp.enable("arduino_language_server")
+-- Latex
+vim.lsp.enable("texlab")
