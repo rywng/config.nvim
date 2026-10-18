@@ -98,16 +98,9 @@ local plugins = {
 
 	-- Code editing
 	{
-		"windwp/nvim-autopairs",
+		"nvim-mini/mini.pairs",
 		event = "InsertEnter",
-		opts = {
-			check_ts = true,
-			ts_config = {
-				lua = { "string" },
-				javascript = { "template_string" },
-				java = false,
-			},
-		},
+		opts = {}
 	},
 
 	-- Navigation
