@@ -44,14 +44,6 @@ local plugins = {
 		end,
 	},
 
-	-- QoL Mini Plugin
-	{
-		"echasnovski/mini.surround",
-		event = "ModeChanged",
-		keys = "s",
-		opts = {}
-	},
-
 	-- TS, LSP, Completion
 	{
 		"andymass/vim-matchup",
@@ -97,6 +89,12 @@ local plugins = {
 	},
 
 	-- Code editing
+	{
+		"echasnovski/mini.surround",
+		event = "ModeChanged",
+		keys = "s",
+		opts = {}
+	},
 	{
 		"nvim-mini/mini.pairs",
 		event = "InsertEnter",
