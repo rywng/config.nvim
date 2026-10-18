@@ -100,6 +100,10 @@ local plugins = {
 		event = "InsertEnter",
 		opts = {}
 	},
+	{
+		"rywng/vim-mcrl2",
+		lazy = false
+	},
 
 	-- Navigation
 	{
