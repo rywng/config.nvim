@@ -4,7 +4,7 @@ null_ls.setup({
 		null_ls.builtins.code_actions.gitsigns,
 		function()
 			if vim.fn.executable("selene") == 1 then
-				return null_ls.builtins.formatting.selene
+				return null_ls.builtins.diagnostics.selene
 			end
 		end,
 		function()
