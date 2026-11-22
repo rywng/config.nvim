@@ -20,4 +20,23 @@ vim.lsp.enable('ruff')
 -- Arduino
 vim.lsp.enable("arduino_language_server")
 -- Latex
+vim.lsp.config("texlab", {
+	settings = {
+		['texlab'] = {
+			build = {
+				executable = "tectonic",
+				args = { "-X",
+					"compile",
+					"%f",
+					"--synctex",
+					"--keep-logs",
+					"--keep-intermediates" 
+				},
+				pdfDirectory= "build",
+				auxDirectory= "build",
+			},
+			latexFormatter = "tex-fmt"
+		}
+	}
+})
 vim.lsp.enable("texlab")
